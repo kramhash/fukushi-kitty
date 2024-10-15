@@ -12,6 +12,8 @@ export const Label = ({
   borderWidth = 5,
   px = 30,
   py = 10,
+  lineHeight = 1,
+  fontSize = "20px",
 }: {
   bgColor?: string;
   fontColor?: string;
@@ -21,10 +23,12 @@ export const Label = ({
   borderWidth?: number;
   px?: number;
   py?: number;
+  lineHeight?: number | string;
+  fontSize?: number | string;
 }) => {
   return (
     <motion.h3
-      className={` inline-block mx-auto ${bgColor} ${fontColor} rounded-full  font-mplus1c font-black text-[20px] ${
+      className={` inline-block mx-auto ${bgColor} ${fontColor} rounded-full  font-mplus1c font-black ${
         className ?? ""
       }`}
       style={{
@@ -33,6 +37,8 @@ export const Label = ({
         paddingRight: px,
         paddingTop: py,
         paddingBottom: py,
+        lineHeight,
+        fontSize,
       }}
     >
       {children}

@@ -22,19 +22,19 @@ export const Top = memo(function Top() {
 
 const Background = () => {
   const ref = useRef<HTMLDivElement>(null);
-
-  const { width = 1080, height = 540 } = useResizeObserver({ ref });
+  //height = 540
+  const { width = 1080 } = useResizeObserver({ ref });
 
   const { offsetTop } = useMemo(() => {
-    const l = Math.sqrt(Math.pow(width, 2) + Math.pow(height, 2));
-    console.log(l);
+    // const l = Math.sqrt(Math.pow(width, 2) + Math.pow(height, 2));
+
     return {
       // offsetTop: Math.sqrt(Math.pow(width, 2) + Math.pow(height, 2)),
       offsetTop: width * 1.2 * 0.5 + Math.min(width * 0.2, 200),
       bgWidth: width,
       bgHeight: width,
     };
-  }, [width, height]);
+  }, [width]);
 
   const backgroundImage = useMotionTemplate`radial-gradient(circle ${
     width * 0.5

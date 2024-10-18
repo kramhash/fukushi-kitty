@@ -24,3 +24,4 @@ export const genJobAtom = atom("");
 export const genNameAtom = atom("");
 export const genTriggerAtom = atom("");
 export const generatedImageAtom = atom<string | null>(null);
+export const windowSizeAtom = atom({ width: 0, height: 0, scale: 1 });

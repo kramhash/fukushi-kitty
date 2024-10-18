@@ -1,23 +1,47 @@
 "use client";
 
-import { memo, useMemo, useRef } from "react";
+import { memo, useEffect, useMemo, useRef } from "react";
 import { motion, useMotionTemplate } from "framer-motion";
 
 import { InterviewLine } from "./interview-line";
 import { About } from "./about";
 import { Logo } from "../commons";
-import { useResizeObserver } from "usehooks-ts";
+import { useResizeObserver, useWindowSize } from "usehooks-ts";
+import { useAtomValue, useSetAtom } from "jotai";
+import { windowSizeAtom } from "../states";
 
 export const Top = memo(function Top() {
   return (
     <motion.section className="w-full relative">
+      <Resize />
       <Background />
       <InterviewLine y={-60} />
-      <Logo y={-60} />
+      <LogoCover />
       <InterviewLine direction={-1} />
       <About />
     </motion.section>
   );
+});
+
+const LogoCover = memo(function LogoCover() {
+  const { width } = useAtomValue(windowSizeAtom);
+  const size = useMemo(() => {
+    const scale = Math.min(1, width / 1280);
+    return { width: Math.min(1039, width * 0.9), scale };
+  }, [width]);
+
+  return <Logo y={-60} width={size.width} iconPadding={size.scale * 166} />;
+});
+
+const Resize = memo(function Resize() {
+  const { width = 400, height = 700 } = useWindowSize();
+  const setSize = useSetAtom(windowSizeAtom);
+
+  useEffect(() => {
+    setSize({ width, height, scale: Math.min(1, width / 1280) });
+  }, [setSize, width, height]);
+
+  return <></>;
 });
 
 const Background = () => {

@@ -9,7 +9,9 @@ import {
 
 import { People } from "./people";
 import { useMemo } from "react";
-import { useWindowSize } from "usehooks-ts";
+
+import { useAtomValue } from "jotai";
+import { windowSizeAtom } from "../states";
 
 const DefaultImageWidth = 359;
 const DefaultGap = 70;
@@ -27,27 +29,19 @@ export const InterviewLine = ({
   y?: number;
   direction?: number;
 }) => {
-  const { width = 375 } = useWindowSize();
+  const { scale } = useAtomValue(windowSizeAtom);
 
-  const {
-    scale,
-    itemWidth,
-    imageWidth,
-    ribbonWidth,
-    paddingTop,
-    paddingRight,
-  } = useMemo(() => {
-    const scale = Math.min(1, width / 1024);
-
-    return {
-      itemWidth: (DefaultImageWidth + DefaultGap) * scale,
-      imageWidth: DefaultImageWidth * scale,
-      ribbonWidth: DefaultRibbonWidth * scale,
-      paddingTop: DefaultTop * scale,
-      paddingRight: DefaultGap * scale,
-      scale,
-    };
-  }, [width]);
+  const { itemWidth, imageWidth, ribbonWidth, paddingTop, paddingRight } =
+    useMemo(() => {
+      return {
+        itemWidth: (DefaultImageWidth + DefaultGap) * scale,
+        imageWidth: DefaultImageWidth * scale,
+        ribbonWidth: DefaultRibbonWidth * scale,
+        paddingTop: DefaultTop * scale,
+        paddingRight: DefaultGap * scale,
+        scale,
+      };
+    }, [scale]);
 
   const baseX = useMotionValue(0);
   const x = useTransform(baseX, (v) => `${wrap(0, -itemWidth * 4, v)}px`);

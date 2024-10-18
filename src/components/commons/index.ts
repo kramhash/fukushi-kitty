@@ -6,3 +6,4 @@ export * from "./smallbox";
 export * from "./specialbox";
 export * from "./display-number";
 export * from "./svg-title";
+export * from "./footer";

@@ -9,6 +9,7 @@ export const About = () => {
         src="assets/commons/title.svg"
         width={761}
         className="mt-[20px]"
+        minScale={0.3}
       />
       <motion.div className=" whitespace-pre-wrap text-center font-bold text-[1.5rem] leading-[200%] pt-[20px] pb-[50px]">
         {`福祉の仕事は、

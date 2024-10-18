@@ -19,6 +19,9 @@ const config: Config = {
         kitty_blue: "var(--kittyblue)",
         kitty_gray: "var(--grey)",
       },
+      screens: {
+        s: "460px",
+      },
     },
   },
   plugins: [],

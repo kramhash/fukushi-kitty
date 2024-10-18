@@ -9,12 +9,14 @@ export const SVGTitle = ({
   src,
   width,
   className,
+  minScale = 0.5,
 }: {
   src: string;
   width: number;
   children?: ReactNode;
   className?: string;
   useBreakPoint?: boolean;
+  minScale?: number;
 }) => {
   const breakPoint1 = useMediaQuery("(min-width: 768px)");
 
@@ -26,7 +28,7 @@ export const SVGTitle = ({
     <motion.h3
       className={`flex mx-auto ${className ?? ""}`}
       style={{
-        width: `clamp(${width * 0.5}px, ${
+        width: `clamp(${width * minScale}px, ${
           width * (check ? 1 : 0.75)
         }px, 100vw * ${width} / ${check ? 1024 : 375})`,
       }}

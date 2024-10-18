@@ -1,6 +1,7 @@
 import { Marquee } from "@/components/commons";
 
 import { Top, Interview, Info, MessageForm, Gallery } from "@/components/top";
+import { Footer } from "@/components/commons";
 
 import { getInterviewList, getGallery } from "@/lib/newt";
 
@@ -16,6 +17,7 @@ export default async function Home() {
       <Info />
       <MessageForm />
       <Gallery data={galleries} />
+      <Footer />
     </main>
   );
 }

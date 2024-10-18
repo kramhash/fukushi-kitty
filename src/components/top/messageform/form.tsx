@@ -12,7 +12,7 @@ import {
   uploadImageAtom,
 } from "@/components/states";
 import { prefix } from "@/utils";
-import { DisplayNumber, Label } from "@/components/commons";
+import { DisplayNumber, Label, SVGTitle } from "@/components/commons";
 import { Generator } from "./canvas";
 
 import { formMode, GeneratedImage } from "./";
@@ -24,11 +24,9 @@ export const Form = () => {
 
   return (
     <motion.section className="max-w-[964px] flex flex-col mx-auto w-[calc(100% - 20px)] mt-[125px] mb-[30px]">
-      <motion.h3 className="mx-auto mb-[30px]">
-        <motion.img src={prefix("assets/top/messageform/generator.svg")} />
-      </motion.h3>
+      <SVGTitle src="assets/top/messageform/generator.svg" width={558} />
       <motion.section
-        className="rounded-[50px] bg-white w-full text-black px-[30px] py-[40px] min-h-[500px] relative overflow-hidden border-[5px] border-black"
+        className="rounded-[50px] bg-white w-full text-black px-[30px] py-[40px] min-h-[500px] relative overflow-hidden border-[5px] border-black mt-[20px]"
         layout
         transition={{ duration: 0.3 }}
       >
@@ -121,11 +119,11 @@ const GeneratorForm = memo(function GeneratorForm({
 
       <motion.div className="bg-[#f5f5f5] h-[118px]  px-[20px] pt-[20px] rounded-[20px] border-[3px] border-black mt-[60px]">
         <motion.div className="overflow-y-scroll h-full">
-          <motion.div className="text-[14px] leading-[150%] h-full text-left">{`ここに規約を入れる！ここに規約を入れる！ここに規約を入れる！ここに規約を入れる！ここに規約を入れる！ここに規約を入れる！ここに規約を入れる！ここに規約を入れる！ここに規約を入れる！ここに規約を入れる！ここに規約を入れる！ここに規約を入れる！ここに規約を入れる！ここに規約を入れる！ここに規約を入れる！ここに規約を入れる！ここに規約を入れる！ここに規約を入れる！ここに規約を入れる！ここに規約を入れる！ここに規約を入れる！ここに規約を入れる！ここに規約を入れる！ここに規約を入れる！ここに規約を入れる！`}</motion.div>
+          <motion.div className="text-[0.875rem] leading-[150%] h-full text-left">{`ここに規約を入れる！ここに規約を入れる！ここに規約を入れる！ここに規約を入れる！ここに規約を入れる！ここに規約を入れる！ここに規約を入れる！ここに規約を入れる！ここに規約を入れる！ここに規約を入れる！ここに規約を入れる！ここに規約を入れる！ここに規約を入れる！ここに規約を入れる！ここに規約を入れる！ここに規約を入れる！ここに規約を入れる！ここに規約を入れる！ここに規約を入れる！ここに規約を入れる！ここに規約を入れる！ここに規約を入れる！ここに規約を入れる！ここに規約を入れる！ここに規約を入れる！`}</motion.div>
         </motion.div>
       </motion.div>
 
-      <motion.div className="mt-[30px]">
+      <motion.div className="mt-[30px] flex justify-center">
         <motion.button
           onClick={() => {
             setMode("processing");
@@ -134,7 +132,7 @@ const GeneratorForm = memo(function GeneratorForm({
             }, 2000);
           }}
         >
-          <Label borderWidth={0} py={15} px={85}>
+          <Label borderWidth={4} py={15} px={85}>
             画像生成
           </Label>
         </motion.button>
@@ -195,7 +193,7 @@ const InputTitle = ({
       {hasNumber && (
         <DisplayNumber className="basis-[13%] shrink-0">{n}</DisplayNumber>
       )}
-      <motion.div className="text-[24px] font-mplus1c font-black">
+      <motion.div className="text-[1.5rem] font-mplus1c font-black">
         {children}
       </motion.div>
     </motion.div>

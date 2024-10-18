@@ -37,3 +37,8 @@ body {
     text-wrap: balance;
   }
 }
+
+p,
+div {
+  letter-spacing: 0.02rem;
+}

@@ -1,6 +1,6 @@
 "use client";
 import { motion } from "framer-motion";
-import { Box, Label, SmallBox } from "../commons";
+import { Box, Label, SmallBox, SVGTitle } from "../commons";
 import { ReactNode } from "react";
 import { prefix } from "@/utils";
 
@@ -22,6 +22,7 @@ export const Info = () => {
             "目の前の人に貢献したい人",
             "手に職をつけたい",
           ]}
+          titleWidth={350}
         ></InfoBox>
         <InfoBox
           title="management"
@@ -32,9 +33,10 @@ export const Info = () => {
             "キャリアアップを目指したい",
           ]}
           className="bg-kitty_blue text-white"
+          titleWidth={252}
         ></InfoBox>
       </motion.div>
-      <motion.div className="flex gap-[10px]">
+      <motion.div className=" flex flex-col md:flex-row gap-[10px]">
         <InfoBox
           title="planner"
           description={`チームで支えていく福祉の仕事は、リーダーの存在が必要不可欠です。福祉の仕事は若くしてリーダーポジションにつきやすいのが特徴の1つ。リーダーになると給与アップも目指せます。`}
@@ -43,12 +45,14 @@ export const Info = () => {
             "思いを尊重した支援をしたい",
           ]}
           className="bg-kitty_red text-white"
+          titleWidth={210}
         ></InfoBox>
         <InfoBox
           title="coordinator"
           description={`チームで支えていく福祉の仕事は、リーダーの存在が必要不可欠です。福祉の仕事は若くしてリーダーポジションにつきやすいのが特徴の1つ。リーダーになると給与アップも目指せます。`}
           recommendTexts={["人と繋がるのが好き", "地域づくりに関心がある"]}
           className=""
+          titleWidth={336}
         ></InfoBox>
       </motion.div>
     </motion.section>
@@ -61,6 +65,7 @@ const InfoBox = ({
   className,
   // children,
   recommendTexts,
+  titleWidth,
 }: // color = "",
 {
   title: string;
@@ -69,16 +74,12 @@ const InfoBox = ({
   children?: ReactNode;
   recommendTexts: string[];
   color?: string;
+  titleWidth: number;
 }) => {
   return (
     <Box className={`mb-[50px] ${className}`}>
       <motion.div className="flex flex-col justify-start">
-        <motion.h3 className="text-center">
-          <motion.img
-            src={prefix(`assets/top/info/${title}.svg`)}
-            className="mx-auto"
-          />
-        </motion.h3>
+        <SVGTitle src={`assets/top/info/${title}.svg`} width={titleWidth} />
         {/* <motion.p className="font-notosans font-black text-[16px] mt-[50px]">
           {description}
         </motion.p> */}

@@ -13,7 +13,7 @@ export const Label = ({
   px = 30,
   py = 10,
   lineHeight = 1,
-  fontSize = "20px",
+  fontSize = "1.25rem",
 }: {
   bgColor?: string;
   fontColor?: string;

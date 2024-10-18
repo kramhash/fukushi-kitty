@@ -48,8 +48,6 @@ export const InterviewLine = ({
     const dummyWidth = 302 * scale;
     const gap = 20 * scale;
 
-    console.log(dummyWidth);
-
     const lineWidth =
       a1.length * itemWidth +
       a2.length * dummyWidth +

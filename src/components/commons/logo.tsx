@@ -21,7 +21,7 @@ export const Logo = ({
       style={{ width, paddingTop, paddingRight: iconPadding, y }}
     >
       <motion.img
-        src={prefix("assets/commons/campaign_logo.png")}
+        src={prefix("assets/commons/title.svg")}
         className="relative"
       />
       <motion.img

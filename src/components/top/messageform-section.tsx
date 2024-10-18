@@ -1,10 +1,10 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Label, SpecialBox } from "../commons";
+import { Label, SpecialBox, SVGTitle } from "../commons";
 import { ReactNode } from "react";
 import { prefix } from "@/utils";
-import { Form } from "./messageform";
+import { Form, PresentSection } from "./messageform";
 
 export const MessageForm = () => {
   return (
@@ -82,7 +82,7 @@ export const MessageForm = () => {
           />
         </motion.div>
 
-        <motion.section className="flex flex-col md:flex-row mx-auto justify-center mt-[60px] items-center md:items-stretch gap-[30px] md:gap-0">
+        <motion.section className="flex flex-col md:flex-row mx-auto justify-center mt-[60px] items-center md:items-stretch gap-12 md:gap-0 mb-[92px]">
           <Step
             step={1}
             text="東京都福祉局のアカウント（@tocho_fukuho）をフォロー＆リツイート"
@@ -119,27 +119,23 @@ export const MessageForm = () => {
           </Step>
         </motion.section>
 
-        <motion.section className="flex flex-col mt-[30px] justify-center">
-          <motion.h3 className="text-center mx-auto mb-[30px]">
-            <motion.img src={prefix("assets/top/messageform/period.svg")} />
-          </motion.h3>
-          <motion.p className="font-mplus1c font-black text-[26px] text-center">
-            2024年11月1日 (日) 00:00 ～ 11月30日(火) 23:59
+        <motion.section className="flex flex-col justify-center">
+          <SVGTitle src="assets/top/messageform/period.svg" width={248} />
+          <motion.p className="font-mplus1c font-black text-center mt-[20px] text-[1.625rem] leading-[150%]">
+            <span>2024年</span>
+            <span className="text-[2.875rem]">11</span>
+            <span>月</span>
+            <span className="text-[2.875rem]">1</span>
+            <span>日 (金) 00:00 ～ </span>
+            <span className="text-[2.875rem]">11</span>
+            <span>月</span>
+            <span className="text-[2.875rem]">30</span>
+            <span>日(土) 23:59</span>
           </motion.p>
         </motion.section>
 
-        <motion.section className="flex flex-col mt-[125px] max-w-[620px] mx-auto">
-          <motion.h3 className="text-center mx-auto mb-[30px]">
-            <motion.img src={prefix("assets/top/messageform/present.svg")} />
-          </motion.h3>
-          <motion.p className="font-mplus1c text-left ">
-            {`上記、ハッシュタグ投稿をいただいた方の中から抽選で、ヘラルボニーの「トートバッグ」または「マスク」をプレゼント！`}
-          </motion.p>
+        <PresentSection />
 
-          <motion.div>
-            <motion.p></motion.p>
-          </motion.div>
-        </motion.section>
         <Form />
       </SpecialBox>
     </motion.section>
@@ -158,7 +154,7 @@ const Step = ({
   return (
     <motion.div className="flex flex-col max-w-[234px] basis-[30%]">
       <Label px={20} py={5} borderWidth={3}>{`Step${step}`}</Label>
-      <motion.div className="text-[16px] md:text-[14px] lg:text-[18px] leading-[150%] text-left mt-[20px]  mb-[30px] grow">
+      <motion.div className=" text-[1.125rem]  leading-[150%] text-left  my-4 grow">
         {text}
       </motion.div>
       <motion.div className=" self-start  md:aspect-[234/357] w-full ">

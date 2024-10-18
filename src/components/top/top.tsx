@@ -14,7 +14,7 @@ export const Top = memo(function Top() {
       <Background />
       <InterviewLine y={-60} />
       <Logo y={-60} />
-      <InterviewLine />
+      <InterviewLine direction={-1} />
       <About />
     </motion.section>
   );

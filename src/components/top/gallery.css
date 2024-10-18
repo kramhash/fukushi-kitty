@@ -1,0 +1,13 @@
+.swiper {
+  width: 100%;
+}
+
+.swiper-wrapper {
+  align-items: stretch;
+}
+
+.swiper-slide {
+  /* aspect-ratio: 442/622; */
+  height: 100%;
+  max-width: 442px;
+}

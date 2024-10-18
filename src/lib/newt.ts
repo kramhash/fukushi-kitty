@@ -1,5 +1,5 @@
 import "server-only";
-import type { IArticle, IArticleShort } from "@/types/newt";
+import { IGallery, type IArticle, type IArticleShort } from "@/types/newt";
 import { createClient } from "newt-client-js";
 import { cache } from "react";
 
@@ -31,4 +31,13 @@ export const getInterview = cache(async (id: string) => {
   });
 
   return item;
+});
+
+export const getGallery = cache(async () => {
+  const { items } = await client.getContents<IGallery>({
+    appUid: "interview",
+    modelUid: "gallery",
+  });
+
+  return items;
 });

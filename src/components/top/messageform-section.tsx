@@ -14,7 +14,7 @@ export const MessageForm = () => {
 なおハッシュタグ「#なにゆえ私が福祉職 」をつけて画像をXに投稿すると、抽選で特別なグッズをプレゼントさせていただきます。`}</motion.p>
         <motion.p className="text-[16px] whitespace-pre-wrap text-left mx-auto max-w-[620px] leading-[160%]">{`応募方法がここに入ります！応募方法がここに入ります！応募方法がここに入ります！応募方法がここに入ります！応募方法がここに入ります！応募方法がここに入ります！応募方法がここに入ります！応募方法がここに入ります！応募方法がここに入ります！応募方法がここに入ります！`}</motion.p>
 
-        <motion.section className="flex mx-auto justify-center mt-[60px]">
+        <motion.section className="flex flex-col md:flex-row mx-auto justify-center mt-[60px] items-center md:items-stretch gap-[30px] md:gap-0">
           <Step
             step={1}
             text="東京都福祉局のアカウント（@tocho_fukuho）をフォロー＆リツイート"
@@ -22,20 +22,20 @@ export const MessageForm = () => {
             <motion.img src={prefix("assets/top/messageform/step1.png")} />
           </Step>
 
-          <motion.div className="pt-[6px]">
+          <motion.div className="pt-[6px] hidden md:block shrink basis-[5%]">
             <Arrow />
           </motion.div>
 
-          <Step step={1} text="下記のジェネレーターで画像を生成">
+          <Step step={2} text="下記のジェネレーターで画像を生成">
             <motion.img src={prefix("assets/top/messageform/step2.png")} />
           </Step>
 
-          <motion.div className="pt-[6px]">
+          <motion.div className="pt-[6px] hidden md:block shrink basis-[5%]">
             <Arrow />
           </motion.div>
 
           <Step
-            step={1}
+            step={3}
             text="生成した画像とハッシュタグ「＃なにゆえ私が福祉職」を付けてXで投稿する。※画像を付けると当選確率アップ"
           >
             <motion.img src={prefix("assets/top/messageform/step3.png")} />
@@ -58,6 +58,10 @@ export const MessageForm = () => {
           <motion.p className="font-mplus1c text-left">
             応募方法がここに入ります！応募方法がここに入ります！応募方法がここに入ります！応募方法がここに入ります！応募方法がここに入ります！応募方法がここに入ります！応募方法がここに入ります！応募方法がここに入ります！応募方法がここに入ります！応募方法がここに入ります！
           </motion.p>
+
+          <motion.div>
+            <motion.p></motion.p>
+          </motion.div>
         </motion.section>
         <Form />
       </SpecialBox>
@@ -75,12 +79,14 @@ const Step = ({
   children?: ReactNode;
 }) => {
   return (
-    <motion.div className="flex flex-col max-w-[234px] ">
+    <motion.div className="flex flex-col max-w-[234px] basis-[30%]">
       <Label px={20} py={5} borderWidth={3}>{`Step${step}`}</Label>
-      <motion.div className="text-[18px] leading-[150%] text-left mt-[20px] h-[150px]">
+      <motion.div className="text-[16px] md:text-[14px] lg:text-[18px] leading-[150%] text-left mt-[20px]  mb-[30px] grow">
         {text}
       </motion.div>
-      <motion.div>{children}</motion.div>
+      <motion.div className=" self-start  md:aspect-[117/158] ">
+        {children}
+      </motion.div>
     </motion.div>
   );
 };
@@ -93,6 +99,7 @@ const Arrow = () => {
       viewBox="0 0 64 24"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
+      className="w-full"
     >
       <path
         d="M2 12.002L52 12.0019"

@@ -10,24 +10,87 @@ export const MessageForm = () => {
   return (
     <motion.section className="w-full ">
       <SpecialBox bgColor="bg-kitty_blue" fontColor="text-white">
-        <Label
-          bgColor="bg-white"
-          fontColor="text-black"
-          borderWidth={0}
-          fontSize="1rem"
-        >
-          画像生成
-        </Label>
-        <motion.p className="text-[16px] whitespace-pre-wrap text-left w-[80%] mx-auto leading-[160%] max-w-[620px]">{`#なにゆえ私が福祉職 ジェネレーターは、福祉職に関するメッセージを画像にできる装置です。福祉職についた理由や、福祉職の方への感謝のメッセージなど、日頃の想いを発信してみませんか？
-なおハッシュタグ「#なにゆえ私が福祉職 」をつけて画像をXに投稿すると、抽選で特別なグッズをプレゼントさせていただきます。`}</motion.p>
-        <motion.p className="text-[16px] whitespace-pre-wrap text-left mx-auto max-w-[620px] leading-[160%]">{`応募方法がここに入ります！応募方法がここに入ります！応募方法がここに入ります！応募方法がここに入ります！応募方法がここに入ります！応募方法がここに入ります！応募方法がここに入ります！応募方法がここに入ります！応募方法がここに入ります！応募方法がここに入ります！`}</motion.p>
+        <motion.div className="flex justify-center mb-[73px]">
+          <Label
+            bgColor="bg-white"
+            fontColor="text-kitty_red"
+            borderWidth={0}
+            fontSize="1rem"
+            px={60}
+            py={15}
+          >
+            画像生成
+          </Label>
+        </motion.div>
+
+        <motion.div className="max-w-[744px] mx-auto w-[72.5%] mb-[50px]">
+          <motion.h2>
+            <motion.img
+              src={prefix("assets/top/messageform/message-title.svg")}
+              title="なにゆえ私が福祉職？メッセージを投稿しよう！"
+              width={"100%"}
+            />
+          </motion.h2>
+        </motion.div>
+
+        <motion.p className=" whitespace-pre-wrap text-left w-[80%] mx-auto leading-[160%] max-w-[620px]">{`#なにゆえ私が福祉職 ジェネレーターは、福祉職で働く「理由」や「きっかけ」を画像にできる装置です。日頃の想いを発信してみませんか？なおハッシュタグ「#なにゆえ私が福祉職 」をつけて、生成した画像をXに投稿すると、抽選で特別なグッズがGETできるチャンス！ぜひ、皆さんの話を聞かせてくださいね。`}</motion.p>
+
+        <motion.div className="relative aspect-[10/6] w-full">
+          <motion.img
+            src={prefix("assets/top/messageform/img1.png")}
+            className="absolute top-1/2 left-1/2"
+            style={{
+              width: "min(30vw, 354px)",
+              // rotate: -12.34,
+
+              // x: "138%",
+              // y: "15%",
+            }}
+            initial={{
+              rotate: 0,
+              x: "-50%",
+              y: "-50%",
+            }}
+            whileInView={{
+              rotate: -12.34,
+              x: "0%",
+              y: "-66%",
+            }}
+            // transition={{ stiffness: 100 }}
+            viewport={{ margin: "0px 0px -300px 0px", once: true }}
+          />
+          <motion.img
+            src={prefix("assets/top/messageform/img3.png")}
+            className="absolute top-1/2 left-1/2"
+            style={{
+              width: "min(30vw, 354px)",
+            }}
+            initial={{ rotate: 0, x: "-50%", y: "-50%" }}
+            whileInView={{ rotate: 12.9, x: "-100%", y: "-60%" }}
+            viewport={{ margin: "0px 0px -300px 0px", once: true }}
+          />
+
+          <motion.img
+            src={prefix("assets/top/messageform/img2.png")}
+            className="absolute top-1/2 left-1/2"
+            style={{
+              width: "min(30vw, 354px)",
+            }}
+            initial={{ rotate: 0, x: "-50%", y: "-50%" }}
+            whileInView={{ rotate: -5.8, x: "-50%", y: "-35%" }}
+            viewport={{ margin: "0px 0px -300px 0px", once: true }}
+          />
+        </motion.div>
 
         <motion.section className="flex flex-col md:flex-row mx-auto justify-center mt-[60px] items-center md:items-stretch gap-[30px] md:gap-0">
           <Step
             step={1}
             text="東京都福祉局のアカウント（@tocho_fukuho）をフォロー＆リツイート"
           >
-            <motion.img src={prefix("assets/top/messageform/step1.png")} />
+            <motion.img
+              src={prefix("assets/top/messageform/step1-img.png")}
+              className="w-full"
+            />
           </Step>
 
           <motion.div className="pt-[6px] hidden md:block shrink basis-[5%]">
@@ -35,7 +98,10 @@ export const MessageForm = () => {
           </motion.div>
 
           <Step step={2} text="下記のジェネレーターで画像を生成">
-            <motion.img src={prefix("assets/top/messageform/step2.png")} />
+            <motion.img
+              src={prefix("assets/top/messageform/step2-img.png")}
+              className="w-full"
+            />
           </Step>
 
           <motion.div className="pt-[6px] hidden md:block shrink basis-[5%]">
@@ -46,7 +112,10 @@ export const MessageForm = () => {
             step={3}
             text="生成した画像とハッシュタグ「＃なにゆえ私が福祉職」を付けてXで投稿する。※画像を付けると当選確率アップ"
           >
-            <motion.img src={prefix("assets/top/messageform/step3.png")} />
+            <motion.img
+              src={prefix("assets/top/messageform/step3-img.png")}
+              className="w-full"
+            />
           </Step>
         </motion.section>
 
@@ -63,8 +132,8 @@ export const MessageForm = () => {
           <motion.h3 className="text-center mx-auto mb-[30px]">
             <motion.img src={prefix("assets/top/messageform/present.svg")} />
           </motion.h3>
-          <motion.p className="font-mplus1c text-left text-[1.2rem]">
-            応募方法がここに入ります！応募方法がここに入ります！応募方法がここに入ります！応募方法がここに入ります！応募方法がここに入ります！応募方法がここに入ります！応募方法がここに入ります！応募方法がここに入ります！応募方法がここに入ります！応募方法がここに入ります！
+          <motion.p className="font-mplus1c text-left ">
+            {`上記、ハッシュタグ投稿をいただいた方の中から抽選で、ヘラルボニーの「トートバッグ」または「マスク」をプレゼント！`}
           </motion.p>
 
           <motion.div>
@@ -92,7 +161,7 @@ const Step = ({
       <motion.div className="text-[16px] md:text-[14px] lg:text-[18px] leading-[150%] text-left mt-[20px]  mb-[30px] grow">
         {text}
       </motion.div>
-      <motion.div className=" self-start  md:aspect-[117/158] ">
+      <motion.div className=" self-start  md:aspect-[234/357] w-full ">
         {children}
       </motion.div>
     </motion.div>

@@ -55,7 +55,7 @@ export const SpecialBox = ({
       <motion.div
         className={`border-[5px] border-black rounded-[90px] w-full ${bgColor} relative`}
       >
-        <motion.div className=" font-bold text-[24px] pt-[20px] px-[min(30px,2vw)] ">
+        <motion.div className=" font-bold pt-[20px] px-[min(30px,2vw)] ">
           {children}
         </motion.div>
       </motion.div>

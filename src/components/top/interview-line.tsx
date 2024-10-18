@@ -12,6 +12,7 @@ import { useMemo } from "react";
 
 import { useAtomValue } from "jotai";
 import { windowSizeAtom } from "../states";
+import { prefix } from "@/utils";
 
 const DefaultImageWidth = 359;
 const DefaultGap = 70;
@@ -19,32 +20,56 @@ const DefaultRibbonWidth = 265;
 const DefaultTop = 100;
 
 export const InterviewLine = ({
-  targets = [1, 2, 3, 2],
+  targets = [1, "", 2, "", 3, "", 2, ""],
   className,
   y = 0,
   direction = 1,
 }: {
-  targets?: number[];
+  targets?: (number | string)[];
   className?: string;
   y?: number;
   direction?: number;
 }) => {
   const { scale } = useAtomValue(windowSizeAtom);
 
-  const { itemWidth, imageWidth, ribbonWidth, paddingTop, paddingRight } =
-    useMemo(() => {
-      return {
-        itemWidth: (DefaultImageWidth + DefaultGap) * scale,
-        imageWidth: DefaultImageWidth * scale,
-        ribbonWidth: DefaultRibbonWidth * scale,
-        paddingTop: DefaultTop * scale,
-        paddingRight: DefaultGap * scale,
-        scale,
-      };
-    }, [scale]);
+  const {
+    imageWidth,
+    ribbonWidth,
+    paddingTop,
+    paddingRight,
+    dummyWidth,
+    lineWidth,
+    gap,
+  } = useMemo(() => {
+    const a1 = targets.filter((v) => typeof v === "number");
+    const a2 = targets.filter((v) => typeof v === "string");
+
+    const itemWidth = (DefaultImageWidth + DefaultGap) * scale;
+    const dummyWidth = 302 * scale;
+    const gap = 20 * scale;
+
+    console.log(dummyWidth);
+
+    const lineWidth =
+      a1.length * itemWidth +
+      a2.length * dummyWidth +
+      gap * (targets.length - 1);
+
+    return {
+      gap,
+      itemWidth,
+      imageWidth: DefaultImageWidth * scale,
+      ribbonWidth: DefaultRibbonWidth * scale,
+      paddingTop: DefaultTop * scale,
+      paddingRight: DefaultGap * scale,
+      dummyWidth,
+      lineWidth,
+      scale,
+    };
+  }, [scale, targets]);
 
   const baseX = useMotionValue(0);
-  const x = useTransform(baseX, (v) => `${wrap(0, -itemWidth * 4, v)}px`);
+  const x = useTransform(baseX, (v) => `${wrap(0, -lineWidth, v)}px`);
 
   useAnimationFrame(() => {
     baseX.set(baseX.get() - 1 * direction);
@@ -60,18 +85,54 @@ export const InterviewLine = ({
       style={{ y: y * scale }}
       suppressHydrationWarning
     >
-      <motion.div className="flex flex-nowrap" style={{ x }}>
-        {targetArray.map((pid, index) => (
-          <People
-            key={`p-${index}`}
-            pid={pid}
-            width={imageWidth}
-            ribbonWidth={ribbonWidth}
-            paddingRight={paddingRight}
-            paddingTop={paddingTop}
-          />
-        ))}
+      <motion.div
+        className="flex flex-nowrap"
+        style={{ x, gap }}
+        suppressHydrationWarning
+      >
+        {targetArray.map((pid, index) => {
+          // console.log(pid, typeof pid);
+          if (typeof pid === "number") {
+            return (
+              <People
+                key={`p-${index}`}
+                pid={pid}
+                width={imageWidth}
+                ribbonWidth={ribbonWidth}
+                paddingRight={paddingRight}
+                paddingTop={paddingTop}
+              />
+            );
+          } else {
+            return (
+              <Dummy key={`p-${index}`} width={dummyWidth} scale={scale} />
+            );
+          }
+        })}
       </motion.div>
     </motion.section>
+  );
+};
+
+const Dummy = ({ width, scale }: { width: number; scale: number }) => {
+  useMemo(() => {}, []);
+
+  return (
+    <motion.div
+      className="relative shrink-0 self-end"
+      style={{ width, paddingRight: 100 * scale }}
+      suppressHydrationWarning
+    >
+      <motion.div className="w-full">
+        <motion.img src={prefix("assets/top/quest.svg")} />
+      </motion.div>
+
+      <motion.img
+        src={prefix("assets/commons/ribbon_master.svg")}
+        className="absolute top-0 right-0"
+        width={265 * scale}
+        style={{ y: -143 * scale }}
+      />
+    </motion.div>
   );
 };

@@ -8,8 +8,16 @@ import { Form } from "./messageform";
 
 export const MessageForm = () => {
   return (
-    <motion.section className="w-full">
+    <motion.section className="w-full ">
       <SpecialBox bgColor="bg-kitty_blue" fontColor="text-white">
+        <Label
+          bgColor="bg-white"
+          fontColor="text-black"
+          borderWidth={0}
+          fontSize="1rem"
+        >
+          画像生成
+        </Label>
         <motion.p className="text-[16px] whitespace-pre-wrap text-left w-[80%] mx-auto leading-[160%] max-w-[620px]">{`#なにゆえ私が福祉職 ジェネレーターは、福祉職に関するメッセージを画像にできる装置です。福祉職についた理由や、福祉職の方への感謝のメッセージなど、日頃の想いを発信してみませんか？
 なおハッシュタグ「#なにゆえ私が福祉職 」をつけて画像をXに投稿すると、抽選で特別なグッズをプレゼントさせていただきます。`}</motion.p>
         <motion.p className="text-[16px] whitespace-pre-wrap text-left mx-auto max-w-[620px] leading-[160%]">{`応募方法がここに入ります！応募方法がここに入ります！応募方法がここに入ります！応募方法がここに入ります！応募方法がここに入ります！応募方法がここに入ります！応募方法がここに入ります！応募方法がここに入ります！応募方法がここに入ります！応募方法がここに入ります！`}</motion.p>
@@ -42,11 +50,11 @@ export const MessageForm = () => {
           </Step>
         </motion.section>
 
-        <motion.section className="flex flex-col mt-[30px]">
+        <motion.section className="flex flex-col mt-[30px] justify-center">
           <motion.h3 className="text-center mx-auto mb-[30px]">
             <motion.img src={prefix("assets/top/messageform/period.svg")} />
           </motion.h3>
-          <motion.p className="font-mplus1c font-black text-[26px]">
+          <motion.p className="font-mplus1c font-black text-[26px] text-center">
             2024年11月1日 (日) 00:00 ～ 11月30日(火) 23:59
           </motion.p>
         </motion.section>
@@ -55,7 +63,7 @@ export const MessageForm = () => {
           <motion.h3 className="text-center mx-auto mb-[30px]">
             <motion.img src={prefix("assets/top/messageform/present.svg")} />
           </motion.h3>
-          <motion.p className="font-mplus1c text-left">
+          <motion.p className="font-mplus1c text-left text-[1.2rem]">
             応募方法がここに入ります！応募方法がここに入ります！応募方法がここに入ります！応募方法がここに入ります！応募方法がここに入ります！応募方法がここに入ります！応募方法がここに入ります！応募方法がここに入ります！応募方法がここに入ります！応募方法がここに入ります！
           </motion.p>
 

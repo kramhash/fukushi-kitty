@@ -51,7 +51,7 @@ const Composite = ({ setMode }: { setMode: (mode: formMode) => void }) => {
       setTimeout(() => {
         const data = stage.toDataURL();
         setImage(data);
-      }, 0);
+      }, 1000);
     }
   }, [setImage]);
 

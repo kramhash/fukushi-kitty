@@ -18,6 +18,14 @@
   }
 }
 
+html {
+  font-size: clamp(10px, 14px, 100vw * 10 / 375);
+
+  @media screen and (min-width: 768px) {
+    font-size: min(16px, 100vw * 14 / 768);
+  }
+}
+
 body {
   color: var(--foreground);
   background: var(--background);

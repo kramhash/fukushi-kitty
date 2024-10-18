@@ -15,7 +15,7 @@ export const Box = ({
 }) => {
   return (
     <motion.div
-      className={`relative rounded-[72px] px-[10%] max-w-[878px] border-[5px] border-black mx-auto w-full ${
+      className={`relative rounded-[72px] px-[calc(min(4vw,30px))] max-w-[878px] border-[5px] border-black mx-auto w-full ${
         className ?? ""
       }`}
       style={{ paddingTop: pt, paddingBottom: pb }}

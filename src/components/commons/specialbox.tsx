@@ -1,8 +1,9 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { useAtomValue } from "jotai";
 import { ReactNode, useMemo } from "react";
-import { useWindowSize } from "usehooks-ts";
+import { windowSizeAtom } from "../states";
 
 export const SpecialBox = ({
   bgColor = "bg-white",
@@ -13,17 +14,33 @@ export const SpecialBox = ({
   fontColor?: string;
   children?: ReactNode;
 }) => {
-  const { width = 1024 } = useWindowSize();
+  const { width = 1024 } = useAtomValue(windowSizeAtom);
 
-  const { maskWidth, maskHeight, offsetX, radius } = useMemo(() => {
-    const maskWidth = Math.min(368, width * 0.3);
-    const radius = Math.min(740, width * 1.1);
+  const { maskWidth, maskHeight, offsetX, radius, paddingTop } = useMemo(() => {
+    let maskWidth = 368;
+    let paddingTop = 43;
+    // const maskWidth = Math.min(368, width * 0.3);
+    let radius = 740;
+    if (width < 480) {
+      maskWidth = 100;
+      paddingTop = 8;
+      radius = 200;
+    } else if (width < 768) {
+      maskWidth = 184;
+      paddingTop = 19;
+      radius = 370;
+    } else if (width < 1024) {
+      maskWidth = 276;
+      paddingTop = 27;
+    } else {
+    }
 
     return {
       maskWidth,
       maskHeight: maskWidth * (48 / 368),
       radius,
       offsetX: -(radius - maskWidth) / 2,
+      paddingTop,
     };
   }, [width]);
 
@@ -31,14 +48,14 @@ export const SpecialBox = ({
 
   return (
     <motion.section
-      className={` relative  w-[90%] mx-auto mt-[133px] ${fontColor}`}
-      style={{ paddingTop: maskHeight }}
+      className={` relative  w-[90%] mx-auto mt-[133px] max-w-[1024px]  ${fontColor}`}
+      style={{ paddingTop }}
       suppressHydrationWarning
     >
       <motion.div
         className={`border-[5px] border-black rounded-[90px] w-full ${bgColor} relative`}
       >
-        <motion.div className=" whitespace-pre-wrap text-center font-bold text-[24px] leading-[200%] pt-[20px]">
+        <motion.div className=" font-bold text-[24px] pt-[20px] px-[min(30px,2vw)] ">
           {children}
         </motion.div>
       </motion.div>

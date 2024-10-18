@@ -76,7 +76,7 @@ const GeneratorForm = memo(function GeneratorForm({
               setName(value);
             }}
           >
-            名前を記入して下さい
+            名前(ニックネーム可)を記入して下さい
           </Input>
           <Input
             n={2}
@@ -103,12 +103,19 @@ const GeneratorForm = memo(function GeneratorForm({
         </motion.div>
       </motion.div>
 
-      <motion.div className="flex-col md:flex-row flex justify-center w-full mt-[30px] gap-[30px]">
-        <Input n={5} name="xaccount" className="mb-[15px] w-full">
-          Xアカウント名
-        </Input>
-        <Input n={6} name="email" className=" w-full">
+      <hr className="border-t-[4px] border-t-black mt-[50px] mb-[30px]" />
+
+      <motion.div className="w-full flex flex-col justify-center gap-[30px]">
+        <Input n={6} name="email" className=" w-full" hasNumber={false}>
           メールアドレス
+        </Input>
+        <Input
+          n={5}
+          name="xaccount"
+          className="mb-[15px] w-full"
+          hasNumber={false}
+        >
+          Xアカウント名
         </Input>
       </motion.div>
 
@@ -143,6 +150,7 @@ const Input = ({
   className,
   name,
   onChange,
+  hasNumber = true,
 }: {
   n: number;
   children?: ReactNode;
@@ -150,10 +158,13 @@ const Input = ({
   className?: string;
   name: string;
   onChange?: ChangeEventHandler<HTMLInputElement>;
+  hasNumber?: boolean;
 }) => {
   return (
     <motion.div className={`flex items-start flex-col ${className ?? ""}`}>
-      <InputTitle n={n}>{children}</InputTitle>
+      <InputTitle n={n} hasNumber={hasNumber}>
+        {children}
+      </InputTitle>
       <input
         className="px-[10px] py-[5px] border-[rgba(0,0,0,0.5)] border-[3px] rounded-[10px] bg-[#f5f5f5] w-full mt-[15px] text-[16px]"
         maxLength={maxLength}
@@ -164,10 +175,26 @@ const Input = ({
   );
 };
 
-const InputTitle = ({ n, children }: { n: number; children?: ReactNode }) => {
+const InputTitle = ({
+  n,
+  children,
+  hasNumber,
+  justifyContent = "start",
+}: {
+  n: number;
+  children?: ReactNode;
+  hasNumber?: boolean;
+  justifyContent?: string;
+}) => {
   return (
-    <motion.div className="flex items-center text-left leading-[150%] gap-[10px]">
-      <DisplayNumber>{n}</DisplayNumber>
+    <motion.div
+      className="flex items-center text-left leading-[150%] gap-[10px] w-full"
+      style={{ justifyContent }}
+      suppressHydrationWarning
+    >
+      {hasNumber && (
+        <DisplayNumber className="basis-[13%] shrink-0">{n}</DisplayNumber>
+      )}
       <motion.div className="text-[24px] font-mplus1c font-black">
         {children}
       </motion.div>

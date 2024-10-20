@@ -1,6 +1,10 @@
 .interview-section {
-  @apply md:text-18lg font-extrabold;
+  @apply text-18iv font-extrabold;
   font-family: var(--font-mplus);
+}
+
+.interview-section p {
+  @apply leading-[180%];
 }
 
 .interview-section p:has(img) {

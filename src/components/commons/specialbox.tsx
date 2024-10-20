@@ -48,7 +48,7 @@ export const SpecialBox = ({
 
   return (
     <motion.section
-      className={` relative  w-[90%] mx-auto mt-[133px] max-w-[1024px]  ${fontColor}`}
+      className={` relative w-[calc(100%-10px)] md:w-[calc(100%-20px)] mx-auto mt-[133px] max-w-[1024px]  ${fontColor}`}
       style={{ paddingTop }}
       suppressHydrationWarning
     >

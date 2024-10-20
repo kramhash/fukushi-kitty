@@ -14,13 +14,13 @@ export const Interview = memo(function Interview({
   interviews: IArticleShort[];
 }) {
   return (
-    <motion.section className=" w-full bg-kitty_red pb-[200px]">
+    <motion.section className=" w-full bg-kitty_red pb-[200px] overflow-hidden">
       <motion.div className="flex flex-col mt-[80px] mb-[20px]">
         <motion.div className="rounded-full px-[70px] bg-white mx-auto inline-block text-kitty_red font-black py-[5px]">
           インタビュー
         </motion.div>
       </motion.div>
-      <motion.div className="grid grid-cols-2 md:grid-cols-3 gap-x-[0.7%] gap-y-[70px] max-w-[1280px] mx-auto w-[calc(100%-60px)]">
+      <motion.div className="grid grid-cols-2 md:grid-cols-3 gap-x-[0.7%] gap-y-[70px] max-w-[1280px] mx-auto w-full">
         {interviews.map((data, i) => (
           <InterviewCard key={`interview-${data._id}`} index={i} data={data} />
         ))}
@@ -61,7 +61,7 @@ const InterviewCard = ({
         animate={state}
       >
         <motion.div
-          className=" origin-center relative rounded-[10%]  lg:rounded-[10%] overflow-hidden border-[3px] border-black"
+          className=" origin-center relative rounded-[1.5rem]  lg:rounded-[3rem] overflow-hidden border-[3px] border-black"
           variants={{
             init: { rotate: rotation },
             hover: { rotate: 0, scale: 1.2, zIndex: 1 },
@@ -89,14 +89,14 @@ const InterviewCard = ({
               className="bottom-[-1px] relative"
             />
 
-            <motion.div className="absolute top-0 text-white font-mplus1c font-extrabold pl-[8%] pt-[12%] pr-[5%]">
-              <motion.div className="text-8 md:text-20md mb-[4%] whitespace-pre-wrap leading-[145%]">
+            <motion.div className="absolute top-0 text-white font-mplus1c font-extrabold pl-[8%] pt-[12%] pr-[5%] pb-[5%] flex flex-col h-full">
+              <motion.div className="text-20 md:text-20md mb-[4%] whitespace-pre-wrap leading-[145%] grow shrink-0">
                 {data.title}
               </motion.div>
-              <motion.div className="text-7 md:text-16md leading-none mb-[2%]">
+              <motion.div className="text-7 md:text-16md leading-none mb-[2%] grow-0">
                 {data.job}
               </motion.div>
-              <motion.div className="text-7 md:text-16md leaidng-none">
+              <motion.div className="text-7 md:text-16md leaidng-none grow-0">
                 {data.name}
               </motion.div>
             </motion.div>

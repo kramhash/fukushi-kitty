@@ -206,9 +206,11 @@ const InputTitle = ({
       suppressHydrationWarning
     >
       {hasNumber && (
-        <DisplayNumber className="basis-[13%] shrink-0">{n}</DisplayNumber>
+        <DisplayNumber className="shrink-0 text-30md px-[max(8px,4%)]">
+          {n}
+        </DisplayNumber>
       )}
-      <motion.div className="text-[1.5rem] font-mplus1c font-black">
+      <motion.div className="text-24md font-mplus1c font-black leading-[150%]">
         {children}
       </motion.div>
     </motion.div>

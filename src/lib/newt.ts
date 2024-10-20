@@ -13,7 +13,9 @@ export const getInterviewList = cache(async () => {
   const { items } = await client.getContents<IArticleShort>({
     appUid: "interview",
     modelUid: "article",
+
     query: {
+      order: ["id"],
       select: ["title", "id", "_id", "cardImage", "job", "name"],
     },
   });

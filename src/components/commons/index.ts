@@ -7,3 +7,5 @@ export * from "./specialbox";
 export * from "./display-number";
 export * from "./svg-title";
 export * from "./footer";
+export * from "./provider";
+export * from "./header";

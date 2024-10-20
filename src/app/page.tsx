@@ -1,4 +1,4 @@
-import { Marquee } from "@/components/commons";
+import { Header, JotaiProvider, Marquee } from "@/components/commons";
 
 import { Top, Interview, Info, MessageForm, Gallery } from "@/components/top";
 import { Footer } from "@/components/commons";
@@ -11,13 +11,16 @@ export default async function Home() {
 
   return (
     <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-      <Top />
-      <Marquee />
-      <Interview interviews={items} />
-      <Info />
-      <MessageForm />
-      <Gallery data={galleries} />
-      <Footer />
+      <JotaiProvider>
+        <Top />
+        <Marquee />
+        <Interview interviews={items} />
+        <Info />
+        <MessageForm />
+        <Gallery data={galleries} />
+        <Header />
+        <Footer />
+      </JotaiProvider>
     </main>
   );
 }

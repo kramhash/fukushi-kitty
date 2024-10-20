@@ -111,6 +111,14 @@ const InfoBox = ({
               </motion.div>
             ))}
           </motion.div>
+          <motion.div className="absolute top-0 left-0 flex justify-center w-full">
+            <motion.div
+              className="overflow-hidden bg-white font-mplus1c px-[5%] py-[1%] font-black text-black rounded-[1.5rem] border-black border-[3px]"
+              style={{ y: "-50%" }}
+            >
+              こんな人におすすめ
+            </motion.div>
+          </motion.div>
         </SmallBox>
 
         <motion.div className="">

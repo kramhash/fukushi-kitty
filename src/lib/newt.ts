@@ -14,7 +14,7 @@ export const getInterviewList = cache(async () => {
     appUid: "interview",
     modelUid: "article",
     query: {
-      select: ["title", "id", "_id"],
+      select: ["title", "id", "_id", "cardImage", "job", "name"],
     },
   });
 

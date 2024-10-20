@@ -20,19 +20,25 @@ export const Interview = memo(function Interview({
           インタビュー
         </motion.div>
       </motion.div>
-      <motion.div className="grid grid-cols-2 md:grid-cols-3 gap-x-[1%] gap-y-[70px] max-w-[1000px] mx-auto w-[calc(100%-60px)]">
+      <motion.div className="grid grid-cols-2 md:grid-cols-3 gap-x-[0.7%] gap-y-[70px] max-w-[1280px] mx-auto w-[calc(100%-60px)]">
         {interviews.map((data, i) => (
-          <InterviewBox key={`interview-${data._id}`} index={i} pid={data.id} />
+          <InterviewCard key={`interview-${data._id}`} index={i} data={data} />
         ))}
       </motion.div>
     </motion.section>
   );
 });
 
-const InterviewBox = ({ pid, index }: { pid: string; index: number }) => {
+const InterviewCard = ({
+  data,
+  index,
+}: {
+  data: IArticleShort;
+  index: number;
+}) => {
   const { rotation } = useMemo(() => {
     return {
-      rotation: index % 2 === 0 ? 5 : -5,
+      rotation: index % 2 === 0 ? -5 : 5,
     };
   }, [index]);
 
@@ -40,7 +46,7 @@ const InterviewBox = ({ pid, index }: { pid: string; index: number }) => {
 
   return (
     <Link
-      href={`/interview/${pid}/`}
+      href={`/interview/${data.id}/`}
       className=" cursor-pointer block"
       onMouseOver={() => {
         setState("hover");
@@ -55,16 +61,46 @@ const InterviewBox = ({ pid, index }: { pid: string; index: number }) => {
         animate={state}
       >
         <motion.div
-          className=" origin-center relative"
+          className=" origin-center relative rounded-[10%]  lg:rounded-[10%] overflow-hidden border-[3px] border-black"
           variants={{
             init: { rotate: rotation },
             hover: { rotate: 0, scale: 1.2, zIndex: 1 },
           }}
         >
-          <motion.img
+          <motion.img src={prefix(`assets/top/interview/${data.id}.webp`)} />
+          {/* <motion.img
             src={prefix(`assets/interview-section/interview-${pid}.png`)}
             className="w-full"
-          />
+          /> */}
+
+          <motion.div
+            className="absolute bottom-[45%] left-[49.5%]"
+            style={{ x: "-50%" }}
+          >
+            <motion.img
+              src={prefix(`assets/commons/beforeafter.png`)}
+              width={209}
+              className=" "
+            />
+          </motion.div>
+          <motion.div className="absolute bottom-0">
+            <motion.img
+              src={prefix(`assets/top/card-mask.png`)}
+              className="bottom-[-1px] relative"
+            />
+
+            <motion.div className="absolute top-0 text-white font-mplus1c font-extrabold pl-[8%] pt-[12%] pr-[5%]">
+              <motion.div className="text-8 md:text-20md mb-[4%] whitespace-pre-wrap leading-[145%]">
+                {data.title}
+              </motion.div>
+              <motion.div className="text-7 md:text-16md leading-none mb-[2%]">
+                {data.job}
+              </motion.div>
+              <motion.div className="text-7 md:text-16md leaidng-none">
+                {data.name}
+              </motion.div>
+            </motion.div>
+          </motion.div>
         </motion.div>
       </motion.div>
     </Link>

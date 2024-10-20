@@ -9,6 +9,7 @@ import { IGallery } from "@/types/newt";
 import { prefix } from "@/utils";
 
 import "./gallery.css";
+import { Label } from "../commons";
 
 export const Gallery = ({ data }: { data: IGallery[] }) => {
   return (
@@ -37,6 +38,33 @@ const GalleryInternal = ({ data }: { data: IGallery[] }) => {
           </SwiperSlide>
         ))}
       </Swiper>
+      <motion.div className="flex justify-center mt-[30px]">
+        <motion.a
+          target="_blank"
+          rel="noreferrer"
+          href="https://x.com/hashtag/FGO"
+        >
+          <Label bgColor="bg-white" fontColor="text-black" borderWidth={2}>
+            <div className="flex items-center gap-[5px]">
+              <p>その他の投稿はこちら（X）</p>
+              <div>
+                <svg
+                  width="10"
+                  height="11"
+                  viewBox="0 0 10 11"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M9 3.76795C10.3333 4.53775 10.3333 6.46225 9 7.23205L3 10.6962C1.66666 11.466 -5.6841e-07 10.5037 -5.01112e-07 8.9641L-1.9827e-07 2.0359C-1.30972e-07 0.496296 1.66667 -0.465953 3 0.303847L9 3.76795Z"
+                    fill="black"
+                  />
+                </svg>
+              </div>
+            </div>
+          </Label>
+        </motion.a>
+      </motion.div>
     </motion.div>
   );
 };

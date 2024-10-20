@@ -5,7 +5,9 @@ export interface IArticle {
   belong: string;
   job: string;
   name: string;
+  subtitle: string;
   body: IArticleSection[];
+  cardImage: INewtImage;
 }
 export type IArticleShort = Pick<
   IArticle,

@@ -103,21 +103,34 @@ const GeneratorForm = memo(function GeneratorForm({
 
       <hr className="border-t-[4px] border-t-black mt-[50px] mb-[30px]" />
 
-      <motion.div className="w-full flex flex-col justify-center gap-[30px]">
-        <Input n={6} name="email" className=" w-full" hasNumber={false}>
-          メールアドレス
-        </Input>
+      <motion.div className="w-full flex flex-col justify-center gap-[30px] max-w-[534px] mx-auto">
+        <motion.div>
+          <Input
+            n={6}
+            name="email"
+            className=" w-full"
+            hasNumber={false}
+            labelJustify="center"
+          >
+            ご連絡先(メールアドレス)
+          </Input>
+          <motion.p className="mt-[1%] text-14 md:text-14md">
+            本キャンペーンの当選者には、キャンペーン期間終了後の12月9日(月)頃までにメールにてご連絡させていただきます。
+          </motion.p>
+        </motion.div>
+
         <Input
           n={5}
           name="xaccount"
           className="mb-[15px] w-full"
           hasNumber={false}
+          labelJustify="center"
         >
-          Xアカウント名
+          SNSアカウント名(XorInstagram)
         </Input>
       </motion.div>
 
-      <motion.div className="bg-[#f5f5f5] h-[118px]  px-[20px] pt-[20px] rounded-[20px] border-[3px] border-black mt-[60px]">
+      <motion.div className="bg-[#f5f5f5] h-[118px]  px-[20px] pt-[20px] rounded-[20px] border-[3px] border-border_color mt-[60px]">
         <motion.div className="overflow-y-scroll h-full">
           <motion.div className="text-[0.875rem] leading-[150%] h-full text-left">{`ここに規約を入れる！ここに規約を入れる！ここに規約を入れる！ここに規約を入れる！ここに規約を入れる！ここに規約を入れる！ここに規約を入れる！ここに規約を入れる！ここに規約を入れる！ここに規約を入れる！ここに規約を入れる！ここに規約を入れる！ここに規約を入れる！ここに規約を入れる！ここに規約を入れる！ここに規約を入れる！ここに規約を入れる！ここに規約を入れる！ここに規約を入れる！ここに規約を入れる！ここに規約を入れる！ここに規約を入れる！ここに規約を入れる！ここに規約を入れる！ここに規約を入れる！`}</motion.div>
         </motion.div>
@@ -149,6 +162,7 @@ const Input = ({
   name,
   onChange,
   hasNumber = true,
+  labelJustify,
 }: {
   n: number;
   children?: ReactNode;
@@ -157,10 +171,11 @@ const Input = ({
   name: string;
   onChange?: ChangeEventHandler<HTMLInputElement>;
   hasNumber?: boolean;
+  labelJustify?: string;
 }) => {
   return (
     <motion.div className={`flex items-start flex-col ${className ?? ""}`}>
-      <InputTitle n={n} hasNumber={hasNumber}>
+      <InputTitle n={n} hasNumber={hasNumber} justifyContent={labelJustify}>
         {children}
       </InputTitle>
       <input

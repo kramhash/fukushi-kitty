@@ -1,0 +1,12 @@
+.interview-section {
+  @apply md:text-18lg font-extrabold;
+  font-family: var(--font-mplus);
+}
+
+.interview-section p:has(img) {
+  @apply mt-[5%];
+}
+.interview-section img {
+  border-radius: 22px;
+  overflow: hidden;
+}

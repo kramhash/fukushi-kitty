@@ -2,6 +2,8 @@ import { notFound } from "next/navigation";
 import { getInterview, getInterviewList } from "@/lib/newt";
 import { Interview } from "@/components/interview";
 
+import "./interview.css";
+
 export default async function Page({ params }: { params: { id: string } }) {
   const item = await getInterview(params.id);
   if (item === null) {

@@ -21,8 +21,8 @@ const decode = (data: string) => {
 
 const send = async (formData: FormData) => {
   console.log("endPoint", endPoint);
-  // const res = await fetch(endPoint!, { method: "POST", body: formData });
-  // console.log(res);
+  const res = await fetch(endPoint!, { method: "POST", body: formData });
+  console.log(res);
 };
 
 export const useSendForm = ({

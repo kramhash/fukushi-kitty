@@ -1,7 +1,7 @@
 "use client";
 
 import { useAtom } from "jotai";
-import { memo, useEffect, useRef } from "react";
+import { memo, useEffect, useRef, useState } from "react";
 import { animate, AnimatePresence, motion, useInView } from "framer-motion";
 import { formDataAtom } from "@/components/states";
 import { useForm } from "react-hook-form";
@@ -40,13 +40,13 @@ export const Form = () => {
   useEffect(() => {
     if (isInView) {
       console.log("in view");
-      animate(".grecaptcha-badge", { opacity: 1 });
+      try {
+        animate(".grecaptcha-badge", { opacity: 1 });
+      } catch (_) {}
     } else {
       try {
         animate(".grecaptcha-badge", { opacity: 0 });
-      } catch (e) {
-        console.error(e);
-      }
+      } catch (_) {}
     }
   }, [isInView]);
 
@@ -100,6 +100,7 @@ const GeneratorForm = memo(function GeneratorForm({
 }: {
   setMode: (mode: formMode) => void;
 }) {
+  const [agree, setAgree] = useState(false);
   const { executeRecaptcha } = useGoogleReCaptcha();
   const [formData, setForm] = useAtom(formDataAtom);
   const scroll = useScrollTo("generator-form");
@@ -116,8 +117,7 @@ const GeneratorForm = memo(function GeneratorForm({
     console.log("on submit", data);
     if (!executeRecaptcha) return;
     const token = await executeRecaptcha("submit");
-
-    console.log("token", token);
+    // console.log("token", token);
 
     setForm({ ...data, googleReCaptchaToken: token });
     scroll();
@@ -216,37 +216,30 @@ const GeneratorForm = memo(function GeneratorForm({
         <motion.div
           className="flex justify-center items-center mt-[5%] gap-[2%] whitespace-nowrap cursor-pointer select-none"
           onClick={() => {
-            console.log("test");
+            setAgree(!agree);
+
             return false;
           }}
         >
-          <input
-            type="checkbox"
-            name="agree"
-            defaultChecked={false}
-            onChange={(e) => {
-              e.stopPropagation();
-              console.log(e.target.checked);
-            }}
-            className="hidden"
-          />
           <motion.div className="rounded-[5px] md:rounded-[10px] border-[3px] w-[clamp(20px,5vw,40px)] h-[clamp(20px,5vw,40px)] border-black aspect-square flex items-center justify-center p-[0.5%]">
-            <svg
-              width="28"
-              height="22"
-              viewBox="0 0 28 22"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-              className="w-full"
-            >
-              <path
-                d="M3 9L12.4286 19L25 3"
-                stroke="#E60020"
-                strokeWidth="5"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-            </svg>
+            {agree && (
+              <svg
+                width="28"
+                height="22"
+                viewBox="0 0 28 22"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                className="w-full"
+              >
+                <path
+                  d="M3 9L12.4286 19L25 3"
+                  stroke="#E60020"
+                  strokeWidth="5"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
+            )}
           </motion.div>
           <motion.div className="font-mplus1c">規約に同意する</motion.div>
         </motion.div>
@@ -261,7 +254,8 @@ const GeneratorForm = memo(function GeneratorForm({
               //   setMode("composite");
               // }, 2000);
             }}
-            className="w-full"
+            disabled={!agree}
+            className={`w-full ${agree ? "" : "opacity-30"}`}
           >
             <Label borderWidth={4} py={15} px={85}>
               画像生成

@@ -1,10 +1,12 @@
 "use client";
 
-import { useAtom, useSetAtom } from "jotai";
-import { memo } from "react";
-import { AnimatePresence, motion } from "framer-motion";
-// import { useForm } from "react-hook-form";
+import { useAtom } from "jotai";
+import { memo, useEffect, useRef } from "react";
+import { animate, AnimatePresence, motion, useInView } from "framer-motion";
 import { formDataAtom } from "@/components/states";
+import { useForm } from "react-hook-form";
+import * as yup from "yup";
+import { yupResolver } from "@hookform/resolvers/yup";
 
 import { Label, SVGTitle } from "@/components/commons";
 import { Generator } from "./canvas";
@@ -12,48 +14,84 @@ import { GeneratedImage, ImageTarget, Input } from "./";
 import { modeAtom } from "@/components/states";
 import type { formMode, IForm } from "@/types";
 import { useScrollTo } from "@/hooks";
-import { useForm } from "react-hook-form";
-import { FormRule } from "./form-rule";
+
+import {
+  GoogleReCaptchaProvider,
+  useGoogleReCaptcha,
+} from "react-google-recaptcha-v3";
+
+const schema = yup.object().shape({
+  name: yup.string().required("名前を入力してください"),
+  job: yup.string().required("職種を入力してください"),
+  trigger: yup.string().required("働くきっかけを入力してください"),
+  email: yup
+    .string()
+    .email("メールアドレスの形式が正しくありません")
+    .required("メールアドレスを入力してください"),
+  xaccount: yup.string().required("SNSアカウント名を入力してください"),
+  googleReCaptchaToken: yup.string(),
+});
 
 export const Form = () => {
   const [mode, setMode] = useAtom(modeAtom);
+  const ref = useRef<HTMLDivElement>(null);
+  const isInView = useInView(ref);
+
+  useEffect(() => {
+    if (isInView) {
+      console.log("in view");
+      animate(".grecaptcha-badge", { opacity: 1 });
+    } else {
+      try {
+        animate(".grecaptcha-badge", { opacity: 0 });
+      } catch (e) {
+        console.error(e);
+      }
+    }
+  }, [isInView]);
 
   return (
-    <motion.section
-      className="max-w-[964px] flex flex-col mx-auto w-[calc(100% - 20px)] mt-[125px] mb-[30px] has-anchor"
-      id="generator-form"
+    <GoogleReCaptchaProvider
+      reCaptchaKey={process.env.NEXT_PUBLIC_CAPTCHA_KEY ?? ""}
+      language="ja"
     >
-      <SVGTitle src="assets/top/messageform/generator.svg" width={558} />
       <motion.section
-        className="rounded-[50px] bg-white w-full text-black px-[5%] py-[40px] min-h-[500px] relative overflow-hidden border-[5px] border-black mt-[20px]"
-        layout
-        transition={{ duration: 0.3 }}
+        className="max-w-[964px] flex flex-col mx-auto w-[calc(100% - 20px)] mt-[125px] mb-[30px] has-anchor"
+        id="generator-form"
+        ref={ref}
       >
-        <AnimatePresence mode="wait">
-          {mode == "composite" && (
-            <>
-              <GeneratedImage />
-            </>
-          )}
-          {(mode == "form" || mode == "processing") && (
-            <GeneratorForm key={"generator-form"} setMode={setMode} />
-          )}
-        </AnimatePresence>
+        <SVGTitle src="assets/top/messageform/generator.svg" width={558} />
+        <motion.section
+          className="rounded-[50px] bg-white w-full text-black px-[5%] py-[40px] min-h-[500px] relative overflow-hidden border-[5px] border-black mt-[20px]"
+          layout
+          transition={{ duration: 0.3 }}
+        >
+          <AnimatePresence mode="wait">
+            {mode == "composite" && (
+              <>
+                <GeneratedImage />
+              </>
+            )}
+            {(mode == "form" || mode == "processing") && (
+              <GeneratorForm key={"generator-form"} setMode={setMode} />
+            )}
+          </AnimatePresence>
 
-        <AnimatePresence mode="wait">
-          {mode == "processing" && (
-            <motion.div
-              className="w-full h-full bg-[rgba(255,255,255,0.9)] absolute top-0 left-0"
-              layout
-              exit={{ opacity: 0, transition: { delay: 0.2 } }}
-              key={"loading"}
-            ></motion.div>
-          )}
-        </AnimatePresence>
+          <AnimatePresence mode="wait">
+            {mode == "processing" && (
+              <motion.div
+                className="w-full h-full bg-[rgba(255,255,255,0.9)] absolute top-0 left-0"
+                layout
+                exit={{ opacity: 0, transition: { delay: 0.2 } }}
+                key={"loading"}
+              ></motion.div>
+            )}
+          </AnimatePresence>
 
-        <Generator key={`generator-composite`} />
+          <Generator key={`generator-composite`} />
+        </motion.section>
       </motion.section>
-    </motion.section>
+    </GoogleReCaptchaProvider>
   );
 };
 
@@ -62,18 +100,26 @@ const GeneratorForm = memo(function GeneratorForm({
 }: {
   setMode: (mode: formMode) => void;
 }) {
+  const { executeRecaptcha } = useGoogleReCaptcha();
   const [formData, setForm] = useAtom(formDataAtom);
   const scroll = useScrollTo("generator-form");
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<IForm>({ mode: "onChange" });
+  } = useForm<Omit<IForm, "googleReCaptchaToken">>({
+    mode: "onChange",
+    resolver: yupResolver(schema),
+  });
 
   const onSubmit = handleSubmit(async (data) => {
     console.log("on submit", data);
+    if (!executeRecaptcha) return;
+    const token = await executeRecaptcha("submit");
 
-    setForm(data);
+    console.log("token", token);
+
+    setForm({ ...data, googleReCaptchaToken: token });
     scroll();
     setMode("processing");
     // setTimeout(() => {
@@ -89,7 +135,7 @@ const GeneratorForm = memo(function GeneratorForm({
             <Input
               n={1}
               name="name"
-              register={register("name", FormRule.name)}
+              register={register("name")}
               maxLength={10}
               errors={errors.name}
               placeholder={"名前"}
@@ -102,7 +148,7 @@ const GeneratorForm = memo(function GeneratorForm({
               name="job"
               errors={errors.job}
               placeholder={"職種"}
-              register={register("job", FormRule.job)}
+              register={register("job")}
               defaultValue={formData.job}
             >
               職種を記入して下さい
@@ -110,7 +156,7 @@ const GeneratorForm = memo(function GeneratorForm({
             <Input
               n={3}
               name="trigger"
-              register={register("trigger", FormRule.trigger)}
+              register={register("trigger")}
               errors={errors.trigger}
               placeholder={"働くきっかけ"}
               defaultValue={formData.trigger}
@@ -131,7 +177,7 @@ const GeneratorForm = memo(function GeneratorForm({
               className=" w-full"
               hasNumber={false}
               labelJustify="center"
-              register={register("email", FormRule.email)}
+              register={register("email")}
               errors={errors.email}
               placeholder="メールアドレス"
               defaultValue={formData.email}
@@ -151,7 +197,7 @@ const GeneratorForm = memo(function GeneratorForm({
               hasNumber={false}
               labelJustify="center"
               errors={errors.xaccount}
-              register={register("xaccount", FormRule.xaccount)}
+              register={register("xaccount")}
             >
               SNSアカウント名(XorInstagram)
             </Input>
@@ -165,6 +211,44 @@ const GeneratorForm = memo(function GeneratorForm({
           <motion.div className="overflow-y-scroll h-full">
             <motion.div className="text-[0.875rem] leading-[150%] h-full text-left">{`ここに規約を入れる！ここに規約を入れる！ここに規約を入れる！ここに規約を入れる！ここに規約を入れる！ここに規約を入れる！ここに規約を入れる！ここに規約を入れる！ここに規約を入れる！ここに規約を入れる！ここに規約を入れる！ここに規約を入れる！ここに規約を入れる！ここに規約を入れる！ここに規約を入れる！ここに規約を入れる！ここに規約を入れる！ここに規約を入れる！ここに規約を入れる！ここに規約を入れる！ここに規約を入れる！ここに規約を入れる！ここに規約を入れる！ここに規約を入れる！ここに規約を入れる！`}</motion.div>
           </motion.div>
+        </motion.div>
+
+        <motion.div
+          className="flex justify-center items-center mt-[5%] gap-[2%] whitespace-nowrap cursor-pointer select-none"
+          onClick={() => {
+            console.log("test");
+            return false;
+          }}
+        >
+          <input
+            type="checkbox"
+            name="agree"
+            defaultChecked={false}
+            onChange={(e) => {
+              e.stopPropagation();
+              console.log(e.target.checked);
+            }}
+            className="hidden"
+          />
+          <motion.div className="rounded-[5px] md:rounded-[10px] border-[3px] w-[clamp(20px,5vw,40px)] h-[clamp(20px,5vw,40px)] border-black aspect-square flex items-center justify-center p-[0.5%]">
+            <svg
+              width="28"
+              height="22"
+              viewBox="0 0 28 22"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              className="w-full"
+            >
+              <path
+                d="M3 9L12.4286 19L25 3"
+                stroke="#E60020"
+                strokeWidth="5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
+          </motion.div>
+          <motion.div className="font-mplus1c">規約に同意する</motion.div>
         </motion.div>
 
         <motion.div className="mt-[30px] flex justify-center">

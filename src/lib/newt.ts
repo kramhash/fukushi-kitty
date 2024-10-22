@@ -12,11 +12,11 @@ const client = createClient({
 export const getInterviewList = cache(async () => {
   const { items } = await client.getContents<IArticleShort>({
     appUid: "interview",
-    modelUid: "article",
+    modelUid: "interview",
 
     query: {
       order: ["id"],
-      select: ["title", "id", "_id", "cardImage", "job", "name"],
+      select: ["motivation", "id", "_id", "cardImage", "job", "name"],
     },
   });
 
@@ -26,7 +26,7 @@ export const getInterviewList = cache(async () => {
 export const getInterview = cache(async (id: string) => {
   const item = await client.getFirstContent<IArticle>({
     appUid: "interview",
-    modelUid: "article",
+    modelUid: "interview",
     query: {
       id,
     },

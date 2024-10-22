@@ -5,13 +5,13 @@ export interface IArticle {
   belong: string;
   job: string;
   name: string;
-  subtitle: string;
+  motivation: string;
   body: IArticleSection[];
   cardImage: INewtImage;
 }
 export type IArticleShort = Pick<
   IArticle,
-  "_id" | "id" | "title" | "belong" | "job" | "name"
+  "_id" | "id" | "motivation" | "belong" | "job" | "name"
 >;
 
 export interface IArticleSection {

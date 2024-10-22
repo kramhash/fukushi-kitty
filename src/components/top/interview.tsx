@@ -91,7 +91,7 @@ const InterviewCard = ({
 
             <motion.div className="absolute top-0 text-white font-mplus1c font-extrabold pl-[8%] pt-[12%] pr-[5%] pb-[5%] flex flex-col h-full">
               <motion.div className="text-20 md:text-20md mb-[4%] whitespace-pre-wrap leading-[145%] grow shrink-0">
-                {data.title}
+                {data.motivation}
               </motion.div>
               <motion.div className="text-7 md:text-16xl leading-none mb-[2%] grow-0">
                 {data.job}

@@ -3,6 +3,7 @@
 import { useAtomValue, useSetAtom } from "jotai";
 import { motion } from "framer-motion";
 import {
+  formDataAtom,
   generatedImageAtom,
   modeAtom,
   uploadImageAtom,
@@ -10,14 +11,15 @@ import {
 import { Label } from "@/components/commons";
 import { prefix } from "@/utils";
 import { useResetAtom } from "jotai/utils";
-import { useCallback } from "react";
-import { useScrollTo } from "@/hooks";
+import { useCallback, useEffect } from "react";
+import { useScrollTo, useSendForm } from "@/hooks";
 
 export const GeneratedImage = () => {
   const imageData = useAtomValue(generatedImageAtom);
   const setMode = useSetAtom(modeAtom);
   const resetUploadImage = useResetAtom(uploadImageAtom);
   const scroll = useScrollTo("generator-form");
+  const formData = useAtomValue(formDataAtom);
 
   const reset = useCallback(async () => {
     resetUploadImage();
@@ -27,6 +29,10 @@ export const GeneratedImage = () => {
 
     scroll();
   }, []);
+
+  useSendForm({ data: formData, dataUrl: imageData });
+
+  useEffect(() => {}, []);
 
   const decode = useCallback((data: string) => {
     const decodeData = atob(data.replace(/^.*,/, ""));
@@ -40,6 +46,7 @@ export const GeneratedImage = () => {
       });
       return blob;
     } catch (e) {
+      console.error(e);
       return null;
     }
   }, []);
@@ -57,9 +64,9 @@ export const GeneratedImage = () => {
     try {
       await navigator.share({ text: "これはテストです #test", files: [file] });
     } catch (e) {
-      // console.error(e);
+      console.error(e);
     }
-  }, [imageData]);
+  }, [imageData, decode]);
 
   const download = useCallback(() => {
     if (imageData) {

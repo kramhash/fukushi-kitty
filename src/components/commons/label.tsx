@@ -9,7 +9,7 @@ export const Label = ({
   bgColor = "bg-kitty_red",
   fontColor = "text-white",
   lineHeight = 1,
-  // fontSize = "var(--font-25lg)",
+  fontSize,
   size,
 }: {
   bgColor?: string;
@@ -31,7 +31,7 @@ export const Label = ({
       } ${size ?? ""}`}
       style={{
         lineHeight,
-        // fontSize,
+        fontSize,
       }}
     >
       {children}

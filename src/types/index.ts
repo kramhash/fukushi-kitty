@@ -5,4 +5,5 @@ export type IForm = {
   trigger: string;
   email: string;
   xaccount: string;
+  googleReCaptchaToken: string;
 };

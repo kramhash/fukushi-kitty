@@ -12,7 +12,7 @@ export const Interview = memo(function Interview({ data }: { data: IArticle }) {
       <motion.div className="rounded-[72px] bg-white max-w-[878px] mx-auto">
         <motion.div className="max-w-[692px] w-[90%] mx-auto pt-[10%]">
           <motion.h2 className="font-mplus1c text-36iv font-extrabold text-center whitespace-pre-wrap mb-[5%]">
-            {data.subtitle}
+            {data.title}
           </motion.h2>
           <TOC data={data.body} />
         </motion.div>

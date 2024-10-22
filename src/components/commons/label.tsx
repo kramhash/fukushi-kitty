@@ -8,12 +8,9 @@ export const Label = ({
   className,
   bgColor = "bg-kitty_red",
   fontColor = "text-white",
-  hasBorder = true,
-  borderWidth = 5,
-  px = 30,
-  py = 10,
   lineHeight = 1,
-  fontSize = "1.25rem",
+  // fontSize = "var(--font-25lg)",
+  size,
 }: {
   bgColor?: string;
   fontColor?: string;
@@ -25,20 +22,16 @@ export const Label = ({
   py?: number;
   lineHeight?: number | string;
   fontSize?: number | string;
+  size?: "s" | "m" | "l";
 }) => {
   return (
     <motion.h3
-      className={` inline-block mx-auto ${bgColor} ${fontColor} rounded-full  font-mplus1c font-black ${
+      className={` inline-block  ${bgColor} ${fontColor} rounded-full w-fit text-center font-mplus1c font-black label ${
         className ?? ""
-      }`}
+      } ${size ?? ""}`}
       style={{
-        border: hasBorder ? `${borderWidth}px solid black` : "none",
-        paddingLeft: px,
-        paddingRight: px,
-        paddingTop: py,
-        paddingBottom: py,
         lineHeight,
-        fontSize,
+        // fontSize,
       }}
     >
       {children}

@@ -9,7 +9,12 @@
   --kittyblue: #0170ba;
   --grey: #ebebeb;
   --font-mplus: "M PLUS Rounded 1c", sans-serif;
-  --border: "rgba(0,0,0,0.5)";
+  --border: rgba(0, 0, 0, 0.5);
+  --font-16lg: clamp(14px, 100vw * 16 / 1280, 16px);
+  --font-20lg: clamp(14px, 100vw * 20 / 1024, 20px);
+  --font-21lg: clamp(14px, 100vw * 21 / 1024, 21px);
+  --font-24lg: clamp(20px, 100vw * 24 / 1024, 24px);
+  --font-25lg: clamp(20px, 100vw * 25 / 1024, 25px);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -23,7 +28,7 @@ html {
   font-size: clamp(10px, 14px, 100vw * 10 / 375);
 
   @media screen and (min-width: 768px) {
-    font-size: min(16px, 100vw * 14 / 768);
+    font-size: clamp(14px, 100vw * 16 / 1024, 16px);
   }
 }
 
@@ -42,4 +47,29 @@ body {
 p,
 div {
   letter-spacing: 0.02rem;
+}
+
+hr {
+  @apply border-t-[3px] md:border-t-[5px];
+  border-color: #000;
+}
+
+.box {
+  @apply border-[3px] md:border-[5px];
+}
+
+.label {
+  @apply border-[2px] md:border-[4px] border-black px-[5%] py-[1.5%] text-20lg;
+}
+
+.label.l {
+  @apply border-[3px] md:border-[5px] py-[5%] text-25lg;
+}
+
+.label.s {
+  @apply border-[2px] md:border-[4px] py-[1.5%];
+}
+
+.has-anchor {
+  scroll-margin-top: 100px;
 }

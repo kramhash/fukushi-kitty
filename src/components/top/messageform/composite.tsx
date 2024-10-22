@@ -7,53 +7,69 @@ import type Konva from "konva";
 import { motion } from "framer-motion";
 import useImage from "use-image";
 import { useResizeObserver } from "usehooks-ts";
-import {
-  memo,
-  useCallback,
-  useLayoutEffect,
-  useMemo,
-  useRef,
-  useState,
-} from "react";
+import { memo, useCallback, useEffect, useMemo, useRef, useState } from "react";
 import "./konva.css";
-import { useAtomValue, useSetAtom } from "jotai";
-import { Label } from "@/components/commons";
+import { useAtom, useAtomValue, useSetAtom } from "jotai";
+
 import {
-  genJobAtom,
-  genNameAtom,
-  genTriggerAtom,
   uploadImageAtom,
+  modeAtom,
   generatedImageAtom,
+  formDataAtom,
 } from "@/components/states";
 
-import { formMode } from ".";
+import { atomWithReset } from "jotai/utils";
 
-const Composite = ({ setMode }: { setMode: (mode: formMode) => void }) => {
+const imageLoadedAtom = atomWithReset(false);
+
+const Composite = () => {
   const stageRef = useRef<Konva.Stage>(null);
   const ref = useRef<HTMLDivElement>(null);
   const { width = 1024 } = useResizeObserver({ ref });
+  const [mode, setMode] = useAtom(modeAtom);
   const setImage = useSetAtom(generatedImageAtom);
+  const [data, setData] = useAtom(formDataAtom);
+  const uploadImage = useAtomValue(uploadImageAtom);
+  const imageLoaded = useAtomValue(imageLoadedAtom);
 
   // const { scale } = useMemo(() => {
   //   //   // console.log(width, 1600);
   //   return { scale: Math.min(1, width / 1600) };
   // }, [width]);
 
-  const onClick = useCallback(() => {
-    // console.log(stageRef.current);
-    setMode("form");
-  }, [setMode]);
+  // useLayoutEffect(() => {
+  //   if (stageRef.current) {
+  //     const stage = stageRef.current;
+  //     // console.log(stage);
+  //     setTimeout(() => {
+  //       const data = stage.toDataURL();
+  //       console.log("create image");
+  //       setImage(data);
+  //     }, 1500);
+  //   }
+  // }, [setImage]);
 
-  useLayoutEffect(() => {
-    if (stageRef.current) {
-      const stage = stageRef.current;
-      console.log(stage);
-      setTimeout(() => {
-        const data = stage.toDataURL();
+  const generate = useCallback(async () => {
+    await new Promise((resolve) => setTimeout(resolve, 1000));
+    setMode("composite");
+  }, []);
+
+  useEffect(() => {
+    if (mode === "composite") {
+      console.log("composite");
+      if (stageRef.current) {
+        const stage = stageRef.current;
+        const data = stage.toDataURL({ mimeType: "image/png" });
         setImage(data);
-      }, 1000);
+      }
+    } else if (mode === "processing") {
+      if (!uploadImage) {
+        generate();
+      } else if (imageLoaded) {
+        generate();
+      }
     }
-  }, [setImage]);
+  }, [mode, uploadImage, imageLoaded]);
 
   return (
     <motion.section ref={ref} className="w-full md:px-[100px] hidden">
@@ -68,17 +84,11 @@ const Composite = ({ setMode }: { setMode: (mode: formMode) => void }) => {
         <Layer>
           <UserImage />
           <ImageFrame width={width} />
-          <TriggerText />
-          <JobText />
-          <NameText />
+          <TriggerText text={data.trigger} />
+          <JobText job={data.job} name={data.name} />
+          {/* <NameText text={data.job} /> */}
         </Layer>
       </Stage>
-
-      <motion.div>
-        <motion.button onClick={onClick}>
-          <Label>もう一回</Label>
-        </motion.button>
-      </motion.div>
     </motion.section>
   );
 };
@@ -86,20 +96,29 @@ const Composite = ({ setMode }: { setMode: (mode: formMode) => void }) => {
 const UserImage = memo(function UserImage() {
   const [size, setSize] = useState({ width: 0, height: 0 });
   const urltext = useAtomValue(uploadImageAtom);
+  const setImageLoaded = useSetAtom(imageLoadedAtom);
+
   const { img } = useMemo(() => {
     if (!urltext) return { img: null };
+
     const img = document.createElement("img");
     img.src = urltext;
     img.onload = () => {
-      console.log("width", img.width);
+      // console.log("width", img.width);
+      setImageLoaded(true);
       setSize({ width: img.width, height: img.height });
     };
     return { img };
   }, [urltext]);
+
   const matrix = useMemo(() => {
-    const scaleX = Math.max(1, 1600 / size.width);
-    const scaleY = Math.max(1, 1000 / size.height);
+    const scaleX =
+      size.width > 1600 ? 1600 / size.width : Math.max(1, 1600 / size.width);
+    const scaleY =
+      size.height > 1000 ? 1000 / size.height : Math.max(1, 1000 / size.height);
     const scale = Math.max(scaleX, scaleY);
+
+    // console.log(scaleX, scaleY, size);
     const width = size.width * scale;
     const height = size.height * scale;
 
@@ -131,61 +150,65 @@ const UserImage = memo(function UserImage() {
   );
 });
 
-const JobText = memo(function JobText() {
-  const text = useAtomValue(genJobAtom);
+const JobText = memo(function JobText({
+  job,
+  name,
+}: {
+  job: string;
+  name: string;
+}) {
+  const urltext = useAtomValue(uploadImageAtom);
+
+  const { text } = useMemo(() => {
+    return {
+      text: urltext == null ? `${job}\n${name}` : `${job} ${name}`,
+    };
+  }, [job, name, urltext]);
+
   return (
     <Text
       text={text}
-      x={650}
-      y={1220}
-      fontSize={48}
-      width={300}
+      x={600}
+      y={urltext ? 1220 : 1000}
+      fontSize={49}
+      width={400}
       fill="#000000"
       fontFamily="M PLUS Rounded 1c"
       fontStyle="800"
       align="center"
+      lineHeight={1.5}
     />
   );
 });
 
-const NameText = memo(function NameText() {
-  const text = useAtomValue(genNameAtom);
+const TriggerText = ({ text }: { text: string }) => {
+  const urltext = useAtomValue(uploadImageAtom);
+
   return (
     <Text
       text={text}
-      x={650}
-      y={1280}
-      fontSize={48}
-      width={300}
+      x={800}
+      y={urltext ? 1115 : 630}
+      width={urltext ? 1600 : 1200}
+      fontSize={urltext ? 66 : 76}
       fill="#000000"
       fontFamily="M PLUS Rounded 1c"
       fontStyle="800"
       align="center"
-    />
-  );
-});
-
-const TriggerText = () => {
-  const trigger = useAtomValue(genTriggerAtom);
-
-  return (
-    <Text
-      text={trigger}
-      x={0}
-      y={1110}
-      width={1600}
-      fontSize={66}
-      fill="#000000"
-      fontFamily="M PLUS Rounded 1c"
-      fontStyle="800"
-      align="center"
+      lineHeight={1.5}
+      offsetX={urltext ? 800 : 600}
       // fontStyle="black"
     />
   );
 };
 
 const ImageFrame = ({}: { width: number | undefined }) => {
-  const [img] = useImage(prefix("assets/top/messageform/img_frame.png"));
+  const urltext = useAtomValue(uploadImageAtom);
+  const [img] = useImage(
+    prefix(
+      `assets/top/messageform/${urltext ? "img_frame" : "img_txt_frame"}.png`
+    )
+  );
   return <Image image={img} alt="" x={0} y={0} width={1600} height={1600} />;
 };
 

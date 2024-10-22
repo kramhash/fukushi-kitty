@@ -93,10 +93,10 @@ const InterviewCard = ({
               <motion.div className="text-20 md:text-20md mb-[4%] whitespace-pre-wrap leading-[145%] grow shrink-0">
                 {data.title}
               </motion.div>
-              <motion.div className="text-7 md:text-16md leading-none mb-[2%] grow-0">
+              <motion.div className="text-7 md:text-16xl leading-none mb-[2%] grow-0">
                 {data.job}
               </motion.div>
-              <motion.div className="text-7 md:text-16md leaidng-none grow-0">
+              <motion.div className="text-7 md:text-16xl leaidng-none grow-0">
                 {data.name}
               </motion.div>
             </motion.div>

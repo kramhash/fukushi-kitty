@@ -1,53 +1,57 @@
 "use client";
 
-import { atom, useAtom, useSetAtom } from "jotai";
-import { ChangeEventHandler, memo, ReactNode, useCallback } from "react";
-import { useDropzone } from "react-dropzone";
+import { useAtom, useSetAtom } from "jotai";
+import { memo } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 // import { useForm } from "react-hook-form";
-import {
-  genJobAtom,
-  genNameAtom,
-  genTriggerAtom,
-  uploadImageAtom,
-} from "@/components/states";
-import { prefix } from "@/utils";
-import { DisplayNumber, Label, SVGTitle } from "@/components/commons";
+import { formDataAtom } from "@/components/states";
+
+import { Label, SVGTitle } from "@/components/commons";
 import { Generator } from "./canvas";
-
-import { formMode, GeneratedImage } from "./";
-
-const modeAtom = atom<formMode>("form");
+import { GeneratedImage, ImageTarget, Input } from "./";
+import { modeAtom } from "@/components/states";
+import type { formMode, IForm } from "@/types";
+import { useScrollTo } from "@/hooks";
+import { useForm } from "react-hook-form";
+import { FormRule } from "./form-rule";
 
 export const Form = () => {
   const [mode, setMode] = useAtom(modeAtom);
 
   return (
-    <motion.section className="max-w-[964px] flex flex-col mx-auto w-[calc(100% - 20px)] mt-[125px] mb-[30px]">
+    <motion.section
+      className="max-w-[964px] flex flex-col mx-auto w-[calc(100% - 20px)] mt-[125px] mb-[30px] has-anchor"
+      id="generator-form"
+    >
       <SVGTitle src="assets/top/messageform/generator.svg" width={558} />
       <motion.section
-        className="rounded-[50px] bg-white w-full text-black px-[30px] py-[40px] min-h-[500px] relative overflow-hidden border-[5px] border-black mt-[20px]"
+        className="rounded-[50px] bg-white w-full text-black px-[5%] py-[40px] min-h-[500px] relative overflow-hidden border-[5px] border-black mt-[20px]"
         layout
         transition={{ duration: 0.3 }}
       >
-        {(mode == "form" || mode == "processing") && (
-          <GeneratorForm key={"generator-form"} setMode={setMode} />
-        )}
-
-        {mode == "processing" && (
-          <motion.div
-            className="w-full h-full bg-[rgba(255,255,255,0.9)] absolute top-0 left-0"
-            layout
-          ></motion.div>
-        )}
         <AnimatePresence mode="wait">
           {mode == "composite" && (
             <>
               <GeneratedImage />
-              <Generator key={"generator-composite"} setMode={setMode} />
             </>
           )}
+          {(mode == "form" || mode == "processing") && (
+            <GeneratorForm key={"generator-form"} setMode={setMode} />
+          )}
         </AnimatePresence>
+
+        <AnimatePresence mode="wait">
+          {mode == "processing" && (
+            <motion.div
+              className="w-full h-full bg-[rgba(255,255,255,0.9)] absolute top-0 left-0"
+              layout
+              exit={{ opacity: 0, transition: { delay: 0.2 } }}
+              key={"loading"}
+            ></motion.div>
+          )}
+        </AnimatePresence>
+
+        <Generator key={`generator-composite`} />
       </motion.section>
     </motion.section>
   );
@@ -58,212 +62,129 @@ const GeneratorForm = memo(function GeneratorForm({
 }: {
   setMode: (mode: formMode) => void;
 }) {
-  const setTrigger = useSetAtom(genTriggerAtom);
-  const setName = useSetAtom(genNameAtom);
-  const setJob = useSetAtom(genJobAtom);
+  const [formData, setForm] = useAtom(formDataAtom);
+  const scroll = useScrollTo("generator-form");
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<IForm>({ mode: "onChange" });
 
-  return (
-    <motion.div layout>
-      <motion.div className="flex-col md:flex-row flex gap-[40px]" layout>
-        <motion.div className="basis-1/2 flex-grow flex-shrink flex flex-col gap-[25px]">
-          <Input
-            n={1}
-            name="name"
-            onChange={(e) => {
-              const value = e.target.value;
-              setName(value);
-            }}
-          >
-            名前(ニックネーム可)を記入して下さい
-          </Input>
-          <Input
-            n={2}
-            name="trigger"
-            onChange={(e) => {
-              const value = e.target.value;
-              setTrigger(value);
-            }}
-          >{`福祉の仕事のきっかけを
-記入してください`}</Input>
-          <Input
-            n={3}
-            name="job"
-            onChange={(e) => {
-              const value = e.target.value;
-              setJob(value);
-            }}
-          >
-            職業
-          </Input>
-        </motion.div>
-        <motion.div className=" basis-1/2 flex-grow flex-shrink">
-          <ImageTarget />
-        </motion.div>
-      </motion.div>
+  const onSubmit = handleSubmit(async (data) => {
+    console.log("on submit", data);
 
-      <hr className="border-t-[4px] border-t-black mt-[50px] mb-[30px]" />
-
-      <motion.div className="w-full flex flex-col justify-center gap-[30px] max-w-[534px] mx-auto">
-        <motion.div>
-          <Input
-            n={6}
-            name="email"
-            className=" w-full"
-            hasNumber={false}
-            labelJustify="center"
-          >
-            ご連絡先(メールアドレス)
-          </Input>
-          <motion.p className="mt-[1%] text-14 md:text-14md">
-            本キャンペーンの当選者には、キャンペーン期間終了後の12月9日(月)頃までにメールにてご連絡させていただきます。
-          </motion.p>
-        </motion.div>
-
-        <Input
-          n={5}
-          name="xaccount"
-          className="mb-[15px] w-full"
-          hasNumber={false}
-          labelJustify="center"
-        >
-          SNSアカウント名(XorInstagram)
-        </Input>
-      </motion.div>
-
-      <motion.div className="bg-[#f5f5f5] h-[118px]  px-[20px] pt-[20px] rounded-[20px] border-[3px] border-border_color mt-[60px]">
-        <motion.div className="overflow-y-scroll h-full">
-          <motion.div className="text-[0.875rem] leading-[150%] h-full text-left">{`ここに規約を入れる！ここに規約を入れる！ここに規約を入れる！ここに規約を入れる！ここに規約を入れる！ここに規約を入れる！ここに規約を入れる！ここに規約を入れる！ここに規約を入れる！ここに規約を入れる！ここに規約を入れる！ここに規約を入れる！ここに規約を入れる！ここに規約を入れる！ここに規約を入れる！ここに規約を入れる！ここに規約を入れる！ここに規約を入れる！ここに規約を入れる！ここに規約を入れる！ここに規約を入れる！ここに規約を入れる！ここに規約を入れる！ここに規約を入れる！ここに規約を入れる！`}</motion.div>
-        </motion.div>
-      </motion.div>
-
-      <motion.div className="mt-[30px] flex justify-center">
-        <motion.button
-          onClick={() => {
-            setMode("processing");
-            setTimeout(() => {
-              setMode("composite");
-            }, 2000);
-          }}
-        >
-          <Label borderWidth={4} py={15} px={85}>
-            画像生成
-          </Label>
-        </motion.button>
-      </motion.div>
-    </motion.div>
-  );
-});
-
-const Input = ({
-  n,
-  children,
-  maxLength = 22,
-  className,
-  name,
-  onChange,
-  hasNumber = true,
-  labelJustify,
-}: {
-  n: number;
-  children?: ReactNode;
-  maxLength?: number;
-  className?: string;
-  name: string;
-  onChange?: ChangeEventHandler<HTMLInputElement>;
-  hasNumber?: boolean;
-  labelJustify?: string;
-}) => {
-  return (
-    <motion.div className={`flex items-start flex-col ${className ?? ""}`}>
-      <InputTitle n={n} hasNumber={hasNumber} justifyContent={labelJustify}>
-        {children}
-      </InputTitle>
-      <input
-        className="px-[10px] py-[5px] border-[rgba(0,0,0,0.5)] border-[3px] rounded-[10px] bg-[#f5f5f5] w-full mt-[15px] text-[16px]"
-        maxLength={maxLength}
-        name={name}
-        onChange={onChange}
-      />
-    </motion.div>
-  );
-};
-
-const InputTitle = ({
-  n,
-  children,
-  hasNumber,
-  justifyContent = "start",
-}: {
-  n: number;
-  children?: ReactNode;
-  hasNumber?: boolean;
-  justifyContent?: string;
-}) => {
-  return (
-    <motion.div
-      className="flex items-center text-left leading-[150%] gap-[10px] w-full"
-      style={{ justifyContent }}
-      suppressHydrationWarning
-    >
-      {hasNumber && (
-        <DisplayNumber className="shrink-0 text-30md px-[max(8px,4%)]">
-          {n}
-        </DisplayNumber>
-      )}
-      <motion.div className="text-24md font-mplus1c font-black leading-[150%]">
-        {children}
-      </motion.div>
-    </motion.div>
-  );
-};
-
-const ImageTarget = memo(function ImageTarget() {
-  const [imageURL, setImage] = useAtom(uploadImageAtom);
-
-  const onDrop = useCallback((file: File[]) => {
-    if (file.length === 0) return;
-    const reader = new FileReader();
-    reader.onload = () => {
-      const r = reader.result;
-      console.log(typeof r);
-      setImage(r as string);
-    };
-    reader.readAsDataURL(file[0]);
-  }, []);
-
-  const { getRootProps, getInputProps } = useDropzone({
-    onDrop,
-    multiple: false,
-    accept: { "image/*": [".jpg", ".jpeg", ".png"] },
-    maxFiles: 1,
+    setForm(data);
+    scroll();
+    setMode("processing");
+    // setTimeout(() => {
+    //   setMode("composite");
+    // }, 2000);
   });
 
   return (
-    <section className="  relative" {...getRootProps()}>
-      <motion.img
-        src={prefix("assets/top/messageform/dragtarget.svg")}
-        className="w-full "
-        width={452}
-        height={462}
-      />
-      <input {...getInputProps()} className="relative" />
-      <motion.div className="w-full h-full absolute top-0 left-0 flex flex-col items-center justify-center p-[10px]">
-        {!imageURL && (
-          <>
-            <motion.div>ここに画像をアップロードする</motion.div>
-            <motion.button>
-              <Label bgColor="#fff" fontColor="#000" borderWidth={4} px={40}>
-                アップロードする
-              </Label>
-            </motion.button>
-          </>
-        )}
-        {imageURL && (
-          <motion.div className="h-full">
-            <motion.img src={imageURL} className="h-full w-full" />
+    <form onSubmit={onSubmit}>
+      <motion.div layout exit={{ opacity: 0 }}>
+        <motion.div className="flex-col md:flex-row flex gap-[40px]" layout>
+          <motion.div className="basis-1/2 flex-grow flex-shrink flex flex-col gap-[25px]">
+            <Input
+              n={1}
+              name="name"
+              register={register("name", FormRule.name)}
+              maxLength={10}
+              errors={errors.name}
+              placeholder={"名前"}
+              defaultValue={formData.name}
+            >
+              名前(ニックネーム可)を記入して下さい
+            </Input>
+            <Input
+              n={2}
+              name="job"
+              errors={errors.job}
+              placeholder={"職種"}
+              register={register("job", FormRule.job)}
+              defaultValue={formData.job}
+            >
+              職種を記入して下さい
+            </Input>
+            <Input
+              n={3}
+              name="trigger"
+              register={register("trigger", FormRule.trigger)}
+              errors={errors.trigger}
+              placeholder={"働くきっかけ"}
+              defaultValue={formData.trigger}
+            >{`福祉職で働く理由やきっかけを記入してください`}</Input>
           </motion.div>
-        )}
+          <motion.div className=" basis-1/2 flex-grow flex-shrink">
+            <ImageTarget />
+          </motion.div>
+        </motion.div>
+
+        <hr className="border-t-[4px] border-t-black mt-[50px] mb-[30px]" />
+
+        <motion.div className="w-full flex flex-col justify-center gap-[30px] max-w-[534px] mx-auto">
+          <motion.div>
+            <Input
+              n={6}
+              name="email"
+              className=" w-full"
+              hasNumber={false}
+              labelJustify="center"
+              register={register("email", FormRule.email)}
+              errors={errors.email}
+              placeholder="メールアドレス"
+              defaultValue={formData.email}
+            >
+              ご連絡先(メールアドレス)
+            </Input>
+            <motion.p className="mt-[1%] text-14 md:text-14md">
+              本キャンペーンの当選者には、キャンペーン期間終了後の12月9日(月)頃までにメールにてご連絡させていただきます。
+            </motion.p>
+          </motion.div>
+
+          <motion.div>
+            <Input
+              n={5}
+              name="xaccount"
+              className="w-full"
+              hasNumber={false}
+              labelJustify="center"
+              errors={errors.xaccount}
+              register={register("xaccount", FormRule.xaccount)}
+            >
+              SNSアカウント名(XorInstagram)
+            </Input>
+            <motion.p className="mt-[1%] text-14 md:text-14md">
+              キャンペーンの当選確認のためにSNSアカウントを確認させて頂きます。
+            </motion.p>
+          </motion.div>
+        </motion.div>
+
+        <motion.div className="bg-[#f5f5f5] h-[118px]  px-[20px] pt-[20px] rounded-[20px] border-[3px] border-border_color mt-[60px]">
+          <motion.div className="overflow-y-scroll h-full">
+            <motion.div className="text-[0.875rem] leading-[150%] h-full text-left">{`ここに規約を入れる！ここに規約を入れる！ここに規約を入れる！ここに規約を入れる！ここに規約を入れる！ここに規約を入れる！ここに規約を入れる！ここに規約を入れる！ここに規約を入れる！ここに規約を入れる！ここに規約を入れる！ここに規約を入れる！ここに規約を入れる！ここに規約を入れる！ここに規約を入れる！ここに規約を入れる！ここに規約を入れる！ここに規約を入れる！ここに規約を入れる！ここに規約を入れる！ここに規約を入れる！ここに規約を入れる！ここに規約を入れる！ここに規約を入れる！ここに規約を入れる！`}</motion.div>
+          </motion.div>
+        </motion.div>
+
+        <motion.div className="mt-[30px] flex justify-center">
+          <motion.button
+            type="submit"
+            onClick={() => {
+              // scroll();
+              // setMode("processing");
+              // setTimeout(() => {
+              //   setMode("composite");
+              // }, 2000);
+            }}
+            className="w-full"
+          >
+            <Label borderWidth={4} py={15} px={85}>
+              画像生成
+            </Label>
+          </motion.button>
+        </motion.div>
       </motion.div>
-    </section>
+    </form>
   );
 });

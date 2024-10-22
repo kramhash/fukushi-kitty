@@ -5,10 +5,11 @@ import {
   useMotionValue,
   useTransform,
   wrap,
+  animate,
 } from "framer-motion";
 
 import { People } from "./people";
-import { useMemo } from "react";
+import { useEffect, useMemo } from "react";
 
 import { useAtomValue } from "jotai";
 import { windowSizeAtom } from "../states";
@@ -67,11 +68,16 @@ export const InterviewLine = ({
   }, [scale, targets]);
 
   const baseX = useMotionValue(0);
+  const offset = useMotionValue(20);
   const x = useTransform(baseX, (v) => `${wrap(0, -lineWidth, v)}px`);
 
   useAnimationFrame(() => {
-    baseX.set(baseX.get() - 1 * direction);
+    baseX.set(baseX.get() - (1 + offset.get()) * direction);
   });
+
+  useEffect(() => {
+    animate(offset, 0, { duration: 1.5 });
+  }, [offset]);
 
   const targetArray = useMemo(() => {
     return [...targets, ...targets];
@@ -81,6 +87,8 @@ export const InterviewLine = ({
     <motion.section
       className={`w-full overflow-hidden ${className ?? ""}`}
       style={{ y: y * scale }}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1, transition: { duration: 0.5 } }}
       suppressHydrationWarning
     >
       <motion.div

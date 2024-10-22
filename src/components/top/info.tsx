@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { Box, Label, SmallBox, SVGTitle } from "../commons";
 import { ReactNode } from "react";
 import { prefix } from "@/utils";
+import { InfoInterview } from "../info/info-interview";
 
 export const Info = () => {
   return (
@@ -32,8 +33,9 @@ export const Info = () => {
             "責任ある立場で働きたい",
             "キャリアアップを目指したい",
           ]}
-          className="bg-kitty_blue text-white"
+          className="text-white"
           titleWidth={252}
+          bgColor="bg-kitty_blue"
         ></InfoBox>
       </motion.div>
       <motion.div className=" flex flex-col md:flex-row gap-[10px]">
@@ -44,8 +46,9 @@ export const Info = () => {
             "人の相談に乗るのが好きだ",
             "思いを尊重した支援をしたい",
           ]}
-          className="bg-kitty_red text-white"
+          className="text-white"
           titleWidth={210}
+          bgColor="bg-kitty_red"
         ></InfoBox>
         <InfoBox
           title="coordinator"
@@ -55,6 +58,7 @@ export const Info = () => {
           titleWidth={336}
         ></InfoBox>
       </motion.div>
+      <InfoInterview />
     </motion.section>
   );
 };
@@ -66,6 +70,7 @@ const InfoBox = ({
   // children,
   recommendTexts,
   titleWidth,
+  bgColor,
 }: // color = "",
 {
   title: string;
@@ -75,9 +80,10 @@ const InfoBox = ({
   recommendTexts: string[];
   color?: string;
   titleWidth: number;
+  bgColor?: string;
 }) => {
   return (
-    <Box className={`mb-[50px] ${className}`}>
+    <Box className={`mb-[50px] ${className}`} bgColor={bgColor}>
       <motion.div className="flex flex-col justify-start">
         <SVGTitle src={`assets/top/info/${title}.svg`} width={titleWidth} />
         {/* <motion.p className="font-notosans font-black text-[16px] mt-[50px]">

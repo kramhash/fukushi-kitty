@@ -1,6 +1,8 @@
 "use client";
 
 import { atom } from "jotai";
+import { atomWithReset } from "jotai/utils";
+import type { formMode, IForm } from "@/types";
 
 export interface IGenerator {
   name: string;
@@ -10,7 +12,9 @@ export interface IGenerator {
   email: string;
 }
 
-export const uploadImageAtom = atom<string | null>(null);
+export const modeAtom = atom<formMode>("form");
+
+export const uploadImageAtom = atomWithReset<string | null>(null);
 
 export const generatorAtom = atom<IGenerator>({
   name: "",
@@ -20,8 +24,7 @@ export const generatorAtom = atom<IGenerator>({
   email: "",
 });
 
-export const genJobAtom = atom("");
-export const genNameAtom = atom("");
-export const genTriggerAtom = atom("");
+export const generateFlagAtom = atom(false);
 export const generatedImageAtom = atom<string | null>(null);
 export const windowSizeAtom = atom({ width: 0, height: 0, scale: 1 });
+export const formDataAtom = atomWithReset<IForm>({} as IForm);

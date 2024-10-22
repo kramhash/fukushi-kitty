@@ -7,18 +7,33 @@ export const Box = ({
   children,
   pt = 40,
   pb = 40,
+  px = "calc(min(4vw,30px))",
+  // borderWidth = 5,
+  maxWidth = 878,
+  bgColor = "bg-white",
 }: {
   className?: string;
   children?: ReactNode;
   pt?: number;
-  pb?: number;
+  pb?: number | string;
+  px?: string | number;
+  borderWidth?: number;
+  maxWidth?: number;
+  bgColor?: string;
 }) => {
   return (
     <motion.div
-      className={`relative rounded-[72px] px-[calc(min(4vw,30px))] max-w-[878px] border-[5px] border-black mx-auto w-full ${
+      className={`relative rounded-[36px] md:rounded-[72px] border-black mx-auto w-full box ${
         className ?? ""
-      }`}
-      style={{ paddingTop: pt, paddingBottom: pb }}
+      } ${bgColor ?? ""}`}
+      style={{
+        paddingTop: pt,
+        paddingBottom: pb,
+        paddingLeft: px,
+        paddingRight: px,
+        // borderWidth,
+        maxWidth,
+      }}
     >
       {children}
     </motion.div>

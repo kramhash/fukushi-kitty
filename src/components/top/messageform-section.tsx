@@ -153,7 +153,12 @@ const Step = ({
 }) => {
   return (
     <motion.div className="flex flex-col max-w-[234px] basis-[30%]">
-      <Label px={20} py={5} borderWidth={3}>{`Step${step}`}</Label>
+      <Label
+        px={20}
+        py={5}
+        borderWidth={3}
+        className="mx-auto"
+      >{`Step${step}`}</Label>
       <motion.div className=" text-[1.125rem]  leading-[150%] text-left  my-4 grow">
         {text}
       </motion.div>

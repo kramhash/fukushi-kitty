@@ -14,20 +14,35 @@ export const PresentSection = () => {
       </motion.p>
 
       <motion.div className="flex flex-col gap-[30px]">
-        <Present img="present1">ヘラルボニーサブバッグ（M）</Present>
-        <Present img="present2">ヘラルボニーマスク</Present>
+        <Present img="present1" width={617}>
+          ヘラルボニーサブバッグ（M）
+        </Present>
+        <Present img="present2" width={623}>
+          ヘラルボニーマスク
+        </Present>
       </motion.div>
     </motion.section>
   );
 };
 
-const Present = ({ img, children }: { img: string; children?: ReactNode }) => {
+const Present = ({
+  img,
+  children,
+  width,
+}: {
+  img: string;
+  children?: ReactNode;
+  width?: number;
+}) => {
   return (
     <motion.div className="flex flex-col items-center">
       <motion.h4 className="font-mplus1c text-[1.25rem] font-black mb-[15px]">
         {children}
       </motion.h4>
-      <motion.img src={prefix(`assets/top/messageform/${img}.png`)} />
+      <motion.img
+        src={prefix(`assets/top/messageform/${img}.png`)}
+        width={width}
+      />
     </motion.div>
   );
 };

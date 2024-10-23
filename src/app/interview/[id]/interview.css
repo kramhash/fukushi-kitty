@@ -4,7 +4,7 @@
 }
 
 .interview-section p {
-  @apply leading-[180%];
+  @apply leading-[180%] font-medium;
 }
 
 .interview-section p:has(img) {

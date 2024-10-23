@@ -12,7 +12,7 @@ import { windowSizeAtom } from "../states";
 
 export const Top = memo(function Top() {
   return (
-    <motion.section className="w-full relative">
+    <motion.section className="w-full relative" id="top">
       <Resize />
       <Background />
       <InterviewLine y={-60} />

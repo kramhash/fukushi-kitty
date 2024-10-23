@@ -15,7 +15,10 @@ export const Interview = memo(function Interview({
   interviews: IArticleShort[];
 }) {
   return (
-    <motion.section className=" w-full bg-kitty_red pb-[200px] overflow-hidden">
+    <motion.section
+      className=" w-full bg-kitty_red pb-[200px] overflow-hidden has-anchor"
+      id="interview"
+    >
       <motion.div className="flex flex-col mt-[80px] mb-[10%]  items-center gap-[2vw]">
         <Label
           borderWidth={0}

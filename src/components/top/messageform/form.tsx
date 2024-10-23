@@ -96,7 +96,7 @@ const GeneratorForm = memo(function GeneratorForm({
   const [agree, setAgree] = useState(false);
   const { executeRecaptcha } = useGoogleReCaptcha();
   const [formData, setForm] = useAtom(formDataAtom);
-  const scroll = useScrollTo("generator-form");
+  const scroll = useScrollTo();
   const {
     register,
     handleSubmit,
@@ -113,7 +113,7 @@ const GeneratorForm = memo(function GeneratorForm({
     // console.log("token", token);
 
     setForm({ ...data, googleReCaptchaToken: token });
-    scroll();
+    scroll("generator-form");
     setMode("processing");
     // setTimeout(() => {
     //   setMode("composite");

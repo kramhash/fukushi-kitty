@@ -18,7 +18,7 @@ export const GeneratedImage = () => {
   const imageData = useAtomValue(generatedImageAtom);
   const setMode = useSetAtom(modeAtom);
   const resetUploadImage = useResetAtom(uploadImageAtom);
-  const scroll = useScrollTo("generator-form");
+  const scroll = useScrollTo();
   const formData = useAtomValue(formDataAtom);
 
   const reset = useCallback(async () => {
@@ -27,7 +27,7 @@ export const GeneratedImage = () => {
 
     await new Promise((resolve) => setTimeout(resolve, 100));
 
-    scroll();
+    scroll("generator-form");
   }, []);
 
   useSendForm({ data: formData, dataUrl: imageData });

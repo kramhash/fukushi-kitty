@@ -8,7 +8,7 @@ import { InfoInterview } from "../info/info-interview";
 export const Info = () => {
   return (
     <motion.section
-      className="rounded-t-[80px] bg-kitty_gray relative  w-full flex flex-col max-w-[1024px] mx-auto"
+      className="rounded-t-[80px] bg-kitty_gray relative  w-full flex flex-col max-w-[1024px] mx-auto px-[2%]"
       style={{ y: -105 }}
     >
       <Label className="mt-[96px] mx-auto">福祉のいろんな活躍の仕方</Label>

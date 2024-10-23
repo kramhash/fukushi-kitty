@@ -152,7 +152,12 @@ const Step = ({
   children?: ReactNode;
 }) => {
   return (
-    <motion.div className="flex flex-col max-w-[234px] basis-[30%]">
+    <motion.div
+      className="flex flex-col max-w-[234px] basis-[30%]"
+      initial={{ y: 20, opacity: 0 }}
+      whileInView={{ y: 0, opacity: 1, transition: { duration: 0.5 } }}
+      viewport={{ margin: "0px 0px -200px 0px" }}
+    >
       <Label
         px={20}
         py={5}

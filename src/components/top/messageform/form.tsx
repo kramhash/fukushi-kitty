@@ -10,7 +10,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 
 import { Label, SVGTitle } from "@/components/commons";
 import { Generator } from "./canvas";
-import { GeneratedImage, ImageTarget, Input } from "./";
+import { GeneratedImage, ImageTarget, Input, Loading } from "./";
 import { modeAtom } from "@/components/states";
 import type { formMode, IForm } from "@/types";
 import { useScrollTo } from "@/hooks";
@@ -78,14 +78,7 @@ export const Form = () => {
           </AnimatePresence>
 
           <AnimatePresence mode="wait">
-            {mode == "processing" && (
-              <motion.div
-                className="w-full h-full bg-[rgba(255,255,255,0.9)] absolute top-0 left-0"
-                layout
-                exit={{ opacity: 0, transition: { delay: 0.2 } }}
-                key={"loading"}
-              ></motion.div>
-            )}
+            {mode == "processing" && <Loading key={"loading"} />}
           </AnimatePresence>
 
           <Generator key={`generator-composite`} />

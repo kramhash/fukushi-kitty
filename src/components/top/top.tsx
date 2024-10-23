@@ -27,10 +27,10 @@ const LogoCover = memo(function LogoCover() {
   const { width } = useAtomValue(windowSizeAtom);
   const size = useMemo(() => {
     const scale = Math.min(1, width / 1280);
-    return { width: Math.min(1039, width * 0.9), scale };
+    return { width: 1039 * scale, scale };
   }, [width]);
 
-  return <Logo y={-60} width={size.width} iconPadding={size.scale * 166} />;
+  return <Logo y={-60} width={size.width} iconPadding={size.scale * 130} />;
 });
 
 const Resize = memo(function Resize() {
@@ -65,7 +65,7 @@ const Background = () => {
   }px at 50% ${offsetTop}px , var(--grey) 0%, var(--grey) 120%, transparent 120.1%, transparent 200%)`;
   return (
     <motion.div
-      className="w-full h-full bg-kitty_red absolute top-[587px]"
+      className="w-full h-full bg-kitty_red absolute top-[45vw]"
       style={{ backgroundImage, height: width * 0.5 }}
       suppressHydrationWarning
       ref={ref}

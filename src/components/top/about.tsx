@@ -1,18 +1,28 @@
 "use client";
 import { motion } from "framer-motion";
 import { SpecialBox, SVGTitle } from "../commons";
+import { prefix } from "@/utils";
 
 export const About = () => {
   return (
-    <SpecialBox>
-      <SVGTitle
-        src="assets/commons/title.svg"
-        width={761}
-        className="mt-[20px]"
-        minScale={0.3}
-      />
-      <motion.div className=" whitespace-pre-wrap text-center font-bold text-[1.5rem] leading-[200%] pt-[20px] pb-[50px]">
-        {`福祉の仕事は、
+    <motion.div className="relative overflow-hidden w-full">
+      <SpecialBox>
+        <SVGTitle
+          src="assets/commons/title.svg"
+          width={761}
+          className="mt-[20px]"
+          minScale={0.3}
+        />
+        <motion.div className="absolute w-[22%] top-[19%] sm:top-[30%] left-[5%] translate-x-[-40%] md:translate-x-0">
+          <motion.img src={prefix("assets/commons/kitty.png")} />
+        </motion.div>
+
+        <motion.div className="absolute w-[22%] bottom-[19%] sm:bottom-[10%] right-[0%] translate-x-[20%] md:translate-x-[-5%]">
+          <motion.img src={prefix("assets/commons/kitty2.png")} />
+        </motion.div>
+
+        <motion.div className=" whitespace-pre-wrap text-center font-bold leading-[200%] pt-[20px] pb-[50px] text-24lg">
+          {`福祉の仕事は、
 「誰かの役に立つ大切な仕事」
 「日本では将来性のある仕事」
 もちろん、私たちのやりがいです。
@@ -28,7 +38,8 @@ export const About = () => {
 ホンネの話を聞いてみませんか。
 
 ※すこし想豫とはちがうかも`}
-      </motion.div>
-    </SpecialBox>
+        </motion.div>
+      </SpecialBox>
+    </motion.div>
   );
 };

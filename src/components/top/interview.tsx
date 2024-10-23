@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import { IArticleShort } from "@/types/newt";
 import { prefix } from "@/utils";
+import { Label, SVGTitle } from "../commons";
 
 // const interviews = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 
@@ -15,11 +16,18 @@ export const Interview = memo(function Interview({
 }) {
   return (
     <motion.section className=" w-full bg-kitty_red pb-[200px] overflow-hidden">
-      <motion.div className="flex flex-col mt-[80px] mb-[20px]">
-        <motion.div className="rounded-full px-[70px] bg-white mx-auto inline-block text-kitty_red font-black py-[5px]">
-          インタビュー
-        </motion.div>
+      <motion.div className="flex flex-col mt-[80px] mb-[10%]  items-center gap-[2vw]">
+        <Label
+          borderWidth={0}
+          bgColor="bg-white"
+          fontColor="text-kitty_red"
+          className="noborder"
+        >
+          INTERVIEW
+        </Label>
+        <SVGTitle src="assets/top/title-interview.svg" width={477}></SVGTitle>
       </motion.div>
+
       <motion.div className="grid grid-cols-2 md:grid-cols-3 gap-x-[0.7%] gap-y-[70px] max-w-[1280px] mx-auto w-full">
         {interviews.map((data, i) => (
           <InterviewCard key={`interview-${data._id}`} index={i} data={data} />

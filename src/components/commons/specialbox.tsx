@@ -23,11 +23,11 @@ export const SpecialBox = ({
     let radius = 740;
     if (width < 480) {
       maskWidth = 100;
-      paddingTop = 8;
+      paddingTop = 10;
       radius = 200;
     } else if (width < 768) {
       maskWidth = 184;
-      paddingTop = 19;
+      paddingTop = 21;
       radius = 370;
     } else if (width < 1024) {
       maskWidth = 276;
@@ -48,12 +48,12 @@ export const SpecialBox = ({
 
   return (
     <motion.section
-      className={` relative w-[calc(100%-10px)] md:w-[calc(100%-20px)] mx-auto mt-[133px] max-w-[1024px]  ${fontColor}`}
+      className={` relative w-[95%] mx-auto mt-[133px] max-w-[1024px]  ${fontColor}`}
       style={{ paddingTop }}
       suppressHydrationWarning
     >
       <motion.div
-        className={`border-[5px] border-black rounded-[80px] w-full ${bgColor} relative`}
+        className={`border-[3px] md:border-[5px] border-black rounded-[80px] w-full ${bgColor} relative`}
       >
         <motion.div className=" font-bold pt-[20px] px-[min(30px,2vw)] ">
           {children}
@@ -65,7 +65,7 @@ export const SpecialBox = ({
         suppressHydrationWarning
       >
         <motion.div
-          className={` ${bgColor} rounded-full absolute border-[5px] border-black`}
+          className={` ${bgColor} rounded-full absolute border-[3px] md:border-[5px] border-black`}
           style={{ x: offsetX, width: radius, height: radius }}
           suppressHydrationWarning
         ></motion.div>

@@ -11,12 +11,13 @@
   --font-mplus: "M PLUS Rounded 1c", sans-serif;
   --border: rgba(0, 0, 0, 0.5);
   --font-16md: clamp(10px, 100vw * 16 / 768, 16px);
+  --font-14lg: clamp(10px, 100vw * 14 / 1024, 14px);
   --font-16lg: clamp(10px, 100vw * 16 / 1024, 16px);
   --font-18lg: clamp(10px, 100vw * 18 / 1024, 18px);
   --font-20lg: clamp(10px, 100vw * 20 / 1024, 20px);
   --font-21lg: clamp(10px, 100vw * 21 / 1024, 21px);
   --font-23lg: clamp(10px, 100vw * 23 / 1024, 23px);
-  --font-24lg: clamp(16px, 100vw * 24 / 1024, 24px);
+  --font-24lg: clamp(14px, 100vw * 24 / 1024, 24px);
   --font-25lg: clamp(12px, 100vw * 25 / 1024, 25px);
   --font-26lg: clamp(12px, 100vw * 25 / 1024, 26px);
   --font-30lg: clamp(10px, 100vw * 30 / 1024, 30px);
@@ -74,6 +75,9 @@ hr {
 
 .label.s {
   @apply border-[2px] md:border-[3px] py-[1vw];
+}
+.label.noborder {
+  @apply border-none;
 }
 
 .has-anchor {

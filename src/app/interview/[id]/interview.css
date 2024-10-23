@@ -1,5 +1,5 @@
 .interview-section {
-  @apply text-18iv font-extrabold;
+  @apply text-18lg font-extrabold;
   font-family: var(--font-mplus);
 }
 

@@ -6,8 +6,10 @@ export interface IArticle {
   job: string;
   name: string;
   motivation: string;
+  career: string;
   body: IArticleSection[];
   cardImage: INewtImage;
+  mainImage: INewtImage;
 }
 export type IArticleShort = Pick<
   IArticle,

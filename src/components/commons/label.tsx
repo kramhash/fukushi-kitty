@@ -33,7 +33,7 @@ export const Label = ({
 }: ILabel) => {
   return (
     <motion.h3
-      className={`  ${bgColor} ${fontColor} rounded-full w-fit text-center font-mplus1c font-black  label ${
+      className={` flex ${bgColor} ${fontColor} rounded-full w-fit text-center font-mplus1c font-black  label ${
         className ?? ""
       } ${size ?? ""}`}
       style={{
@@ -71,5 +71,33 @@ export const AnchorLabel = ({
         {rightIcon}
       </div>
     </Link>
+  );
+};
+
+export const ButtonLabel = ({
+  children,
+  bgColor = "var(--kittyred)",
+  fontColor = "#ffffff",
+  className,
+  leftIcon,
+  rightIcon = <Empty />,
+  onClick,
+}: ILabel & {
+  onClick?: () => void;
+}) => {
+  return (
+    <motion.button
+      className={`rounded-full flex items-center justify-between gap-[2vw] w-fit mx-auto font-black font-mplus1c label ${
+        className ?? ""
+      }`}
+      style={{ backgroundColor: bgColor, color: fontColor }}
+      onClick={onClick}
+    >
+      <div className="basis-[10%]">{leftIcon}</div>
+      <div className="grow whitespace-nowrap">{children}</div>
+      <div className="basis-[10%] min-w-[2vw] h-[5px]bg-kitty_red">
+        {rightIcon}
+      </div>
+    </motion.button>
   );
 };

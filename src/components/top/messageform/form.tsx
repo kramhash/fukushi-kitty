@@ -8,7 +8,7 @@ import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 
-import { Label, SVGTitle } from "@/components/commons";
+import { ButtonLabel, Label, SVGTitle } from "@/components/commons";
 import { Generator } from "./canvas";
 import { GeneratedImage, ImageTarget, Input, Loading } from "./";
 import { modeAtom } from "@/components/states";
@@ -238,7 +238,8 @@ const GeneratorForm = memo(function GeneratorForm({
         </motion.div>
 
         <motion.div className="mt-[30px] flex justify-center">
-          <motion.button
+          <ButtonLabel>画像生成</ButtonLabel>
+          {/* <motion.button
             type="submit"
             onClick={() => {
               // scroll();
@@ -253,7 +254,7 @@ const GeneratorForm = memo(function GeneratorForm({
             <Label borderWidth={4} py={15} px={85}>
               画像生成
             </Label>
-          </motion.button>
+          </motion.button> */}
         </motion.div>
       </motion.div>
     </form>

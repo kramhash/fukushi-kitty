@@ -76,7 +76,7 @@ hr {
 }
 
 .label.s {
-  @apply border-[2px] md:border-[3px] py-[1vw];
+  @apply border-[2px] md:border-[3px] py-[1vw] md:min-w-[130px];
 }
 .label.noborder {
   @apply border-none;

@@ -6,10 +6,10 @@ import Link from "next/link";
 import { prefix } from "@/utils";
 
 const navItems = [
-  { name: "TOP", href: "#top" },
-  { name: "インタビュー", href: "#interview" },
-  { name: "福祉のいろんな活躍の仕方", href: "#casestudy" },
-  { name: "画像ジェネレーター", href: "#generator-form" },
+  { name: "TOP", href: "/#top" },
+  { name: "インタビュー", href: "/#interview" },
+  { name: "福祉のいろんな活躍の仕方", href: "/#casestudy" },
+  { name: "画像ジェネレーター", href: "/#generator-form" },
 ];
 
 // const baseURL = "https://www.fukushijinzai.metro.tokyo.lg.jp";

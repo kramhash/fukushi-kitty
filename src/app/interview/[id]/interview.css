@@ -1,5 +1,5 @@
 .interview-section {
-  @apply text-18lg font-extrabold;
+  @apply text-18md md:text-18lg font-extrabold mb-[10%];
   font-family: var(--font-mplus);
 }
 
@@ -13,4 +13,7 @@
 .interview-section img {
   @apply rounded-[9px] md:rounded-[20px];
   overflow: hidden;
+}
+.interview-section p img:last-of-type {
+  @apply mt-[5%];
 }

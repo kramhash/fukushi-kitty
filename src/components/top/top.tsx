@@ -9,6 +9,7 @@ import { Logo } from "../commons";
 import { useResizeObserver, useWindowSize } from "usehooks-ts";
 import { useAtomValue, useSetAtom } from "jotai";
 import { windowSizeAtom } from "../states";
+import { useScrollTo } from "@/hooks";
 
 export const Top = memo(function Top() {
   return (
@@ -40,6 +41,24 @@ const Resize = memo(function Resize() {
   useEffect(() => {
     setSize({ width, height, scale: Math.min(1, width / 1280) });
   }, [setSize, width, height]);
+
+  const scroll = useScrollTo();
+
+  useEffect(() => {
+    console.log("test");
+    const hash = window.location.hash;
+    if (hash) {
+      setTimeout(() => {
+        console.log(hash);
+        scroll(hash.replace("#", ""));
+      }, 1);
+    }
+
+    window.addEventListener("load", () => {
+      const hash = window.location.hash;
+      console.log(hash);
+    });
+  }, [scroll]);
 
   return <></>;
 });

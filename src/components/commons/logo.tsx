@@ -27,6 +27,7 @@ export const Logo = ({
       <motion.img
         src={prefix("assets/commons/title.svg")}
         className="relative"
+        width={2037}
       />
       <motion.img
         src={prefix(iconSrc)}

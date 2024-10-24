@@ -34,7 +34,7 @@ const config: Config = {
         "20": "clamp(10px, 100vw * 20 / 768, 20px)",
         "14md": "clamp(10px, 100vw * 14 / 768, 14px)",
         "16md": "clamp(12px, 100vw * 16 / 768, 16px)",
-        "18md": "clamp(12px, 18px, 100vw * 18 / 1280)",
+        "18md": "var(--font-18md)",
         "20md": "clamp(14px, 100vw * 20 / 768, 20px)",
         "24md": "clamp(16px, 100vw * 24 / 1280, 24px)",
         "30md": "clamp(20px, 100vw * 30 / 1280, 30px)",

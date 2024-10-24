@@ -1,17 +1,11 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Link from "next/link";
 import { ReactNode } from "react";
+import { Empty } from "./icon";
 
-export const Label = ({
-  children,
-  className,
-  bgColor = "bg-kitty_red",
-  fontColor = "text-white",
-  lineHeight = 1,
-  fontSize,
-  size,
-}: {
+export interface ILabel {
   bgColor?: string;
   fontColor?: string;
   className?: string;
@@ -23,10 +17,23 @@ export const Label = ({
   lineHeight?: number | string;
   fontSize?: number | string;
   size?: "s" | "m" | "l";
-}) => {
+  leftIcon?: ReactNode;
+  rightIcon?: ReactNode;
+}
+
+export const Label = ({
+  children,
+  className,
+  bgColor = "bg-kitty_red",
+  fontColor = "text-white",
+  lineHeight = 1,
+  fontSize,
+  size,
+  leftIcon,
+}: ILabel) => {
   return (
     <motion.h3
-      className={` inline-block  ${bgColor} ${fontColor} rounded-full w-fit text-center font-mplus1c font-black label ${
+      className={`  ${bgColor} ${fontColor} rounded-full w-fit text-center font-mplus1c font-black  label ${
         className ?? ""
       } ${size ?? ""}`}
       style={{
@@ -34,7 +41,35 @@ export const Label = ({
         fontSize,
       }}
     >
-      {children}
+      {leftIcon && <div className="mt-[1.5%]">{leftIcon}</div>}
+      <div className="grow">{children}</div>
     </motion.h3>
+  );
+};
+
+export const AnchorLabel = ({
+  href,
+  children,
+  bgColor = "--var(--kitty_red)",
+  className,
+  leftIcon,
+  rightIcon = <Empty />,
+}: ILabel & {
+  href: string;
+}) => {
+  return (
+    <Link
+      href={href}
+      className={`rounded-full flex items-center justify-between gap-[2vw] w-fit mx-auto font-black font-mplus1c label ${
+        className ?? ""
+      }`}
+      style={{ backgroundColor: bgColor }}
+    >
+      <div className="basis-[10%]">{leftIcon}</div>
+      <div className="grow whitespace-nowrap">{children}</div>
+      <div className="basis-[10%] min-w-[2vw] h-[5px]bg-kitty_red">
+        {rightIcon}
+      </div>
+    </Link>
   );
 };

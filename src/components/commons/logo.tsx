@@ -8,12 +8,16 @@ export const Logo = ({
   paddingTop = 60,
   iconPadding = 166,
   className,
+  iconScale = 0.16729088639201,
+  iconSrc = "assets/commons/kitty.png",
 }: {
   width?: number;
   y?: number;
   paddingTop?: number;
   iconPadding?: number;
   className?: string;
+  iconScale?: number;
+  iconSrc?: string;
 }) => {
   return (
     <motion.div
@@ -25,10 +29,10 @@ export const Logo = ({
         className="relative"
       />
       <motion.img
-        src={prefix("assets/commons/kitty.png")}
+        src={prefix(iconSrc)}
         className="absolute bottom-0 right-0"
         style={{ y: 5 }}
-        width={width * 0.16729088639201}
+        width={width * iconScale}
       />
     </motion.div>
   );

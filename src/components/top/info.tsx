@@ -38,6 +38,7 @@ export const Info = () => {
           ]}
           iconWidth={149}
           titleWidth={350}
+          jobTarget="介護福祉士、精神保健福祉士、保育士、ガイドヘルパーなど"
         ></InfoBox>
         <InfoBox
           title="management"
@@ -51,6 +52,7 @@ export const Info = () => {
           titleWidth={252}
           bgColor="bg-kitty_blue"
           iconWidth={223}
+          jobTarget="施設長、園長、エリアマネージャーなど"
         ></InfoBox>
       </motion.div>
       <motion.div className=" flex flex-col md:flex-row gap-[10px]">
@@ -65,6 +67,7 @@ export const Info = () => {
           titleWidth={210}
           bgColor="bg-kitty_red"
           iconWidth={127}
+          jobTarget="ケアマネジャー、生活相談員など"
         ></InfoBox>
         <InfoBox
           title="coordinator"
@@ -73,6 +76,7 @@ export const Info = () => {
           className=""
           titleWidth={336}
           iconWidth={187}
+          jobTarget="コミュニティソーシャルワーカーなど"
         ></InfoBox>
       </motion.div>
       <InfoInterview />
@@ -89,6 +93,7 @@ const InfoBox = ({
   titleWidth,
   bgColor,
   iconWidth,
+  jobTarget,
 }: // color = "",
 {
   title: string;
@@ -100,6 +105,7 @@ const InfoBox = ({
   titleWidth: number;
   bgColor?: string;
   iconWidth: number;
+  jobTarget: string;
 }) => {
   return (
     <Box className={`mb-[50px] ${className}`} bgColor={bgColor}>
@@ -153,10 +159,8 @@ const InfoBox = ({
           </motion.div>
         </SmallBox>
 
-        <motion.div className="">
-          <motion.p className="font-notosans font-black ">
-            介護福祉士、精神保健福祉士、保育士、ガイドヘルパーなど
-          </motion.p>
+        <motion.div className="h-[2rem] flex items-center">
+          <motion.p className="font-notosans font-black">{jobTarget}</motion.p>
         </motion.div>
       </motion.div>
     </Box>

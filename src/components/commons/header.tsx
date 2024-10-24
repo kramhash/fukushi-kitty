@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import { prefix } from "@/utils";
 
@@ -19,7 +19,7 @@ export const Header = () => {
   // const scroll = useScrollTo();
 
   useEffect(() => {
-    const hashchange = (e: HashChangeEvent) => {
+    const hashchange = () => {
       // console.log("hashchange", e.newURL.split("#")[1]);
       // scroller.scrollTo(e.newURL.split("#")[1], {});
 
@@ -44,7 +44,7 @@ export const Header = () => {
         }}
       >
         <motion.div className="flex justify-between items-center">
-          <motion.div className="shrink grow-0 w-[11vw] min-w-[70px]">
+          <motion.div className="shrink grow-0 w-[11vw] min-w-[70px] max-w-[118px]">
             <motion.img
               src={prefix("assets/commons/tokyo.png")}
               width={118}
@@ -110,8 +110,6 @@ export const Header = () => {
 };
 
 const MenuBar = ({ state }: { state?: string }) => {
-  useMemo(() => {}, [state]);
-
   return (
     <motion.svg
       width="28"

@@ -11,6 +11,6 @@
   @apply mt-[5%];
 }
 .interview-section img {
-  border-radius: 22px;
+  @apply rounded-[9px] md:rounded-[20px];
   overflow: hidden;
 }

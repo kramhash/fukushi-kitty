@@ -3,6 +3,7 @@ import { getInterview, getInterviewList } from "@/lib/newt";
 import { Interview } from "@/components/interview";
 
 import "./interview.css";
+import { Footer, JotaiProvider } from "@/components/commons";
 
 export default async function Page({ params }: { params: { id: string } }) {
   const item = await getInterview(params.id);
@@ -11,7 +12,10 @@ export default async function Page({ params }: { params: { id: string } }) {
   }
   return (
     <main>
-      <Interview data={item} />
+      <JotaiProvider>
+        <Interview data={item} />
+        <Footer />
+      </JotaiProvider>
     </main>
   );
 }

@@ -19,9 +19,23 @@ const notoSans = Noto_Sans_JP({
   variable: "--font-notosans",
 });
 
+const title = "#なにゆえ私が福祉職キャンペーンサイト｜東京都福祉保健局";
+const desc =
+  "福祉の仕事は、「誰かの役に立つ大切な仕事」「日本では将来性のある仕事」もちろん、私たちのやりがいです。でも、ほんとうの理由は、「おしゃべりが好きだから」「プライベートを大切にしたいから」そんな小さなことが、大きいのかもしれません。さあ、あなたも。ユニークな福祉職の人たちから、ホンネの話を聞いてみませんか。※すこし想豫とはちがうかも";
+
 export const metadata: Metadata = {
-  title: "FUKUSHI",
-  description: "FUKUSHI",
+  title: title,
+  description: desc,
+  openGraph: {
+    url: "https://www.fukushijinzai.metro.tokyo.lg.jp/hello-essential-work/pr-gekkan/",
+    title: title,
+    description: desc,
+    type: "website",
+    siteName: title,
+  },
+  twitter: {
+    card: "summary_large_image",
+  },
 };
 
 export default function RootLayout({
@@ -30,7 +44,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="ja">
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link

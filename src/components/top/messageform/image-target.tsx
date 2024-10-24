@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 import { useAtom } from "jotai";
 import { useDropzone } from "react-dropzone";
 import { uploadImageAtom } from "@/components/states";
-import { Label } from "@/components/commons";
+import { ButtonLabel, Label } from "@/components/commons";
 import { InputTitle } from "./input-title";
 import { prefix } from "@/utils";
 
@@ -61,11 +61,14 @@ export const ImageTarget = memo(function ImageTarget() {
               <motion.div className="mb-[3%] text-21lg font-black">
                 ここに画像をアップロードする
               </motion.div>
-              <motion.button className="w-full">
+              <ButtonLabel bgColor="#fff" fontColor="#000">
+                アップロードする
+              </ButtonLabel>
+              {/* <motion.button className="w-full">
                 <Label bgColor="bg-white" fontColor="text-black">
                   アップロードする
                 </Label>
-              </motion.button>
+              </motion.button> */}
             </>
           )}
           {imageURL && (

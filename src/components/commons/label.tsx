@@ -82,8 +82,12 @@ export const ButtonLabel = ({
   leftIcon,
   rightIcon = <Empty />,
   onClick,
+  type = "button",
+  disabled = false,
 }: ILabel & {
   onClick?: () => void;
+  type?: "button" | "submit" | "reset";
+  disabled?: boolean;
 }) => {
   return (
     <motion.button
@@ -92,6 +96,8 @@ export const ButtonLabel = ({
       }`}
       style={{ backgroundColor: bgColor, color: fontColor }}
       onClick={onClick}
+      type={type}
+      disabled={disabled}
     >
       <div className="basis-[10%]">{leftIcon}</div>
       <div className="grow whitespace-nowrap">{children}</div>

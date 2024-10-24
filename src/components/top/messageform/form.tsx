@@ -238,7 +238,13 @@ const GeneratorForm = memo(function GeneratorForm({
         </motion.div>
 
         <motion.div className="mt-[30px] flex justify-center">
-          <ButtonLabel>画像生成</ButtonLabel>
+          <ButtonLabel
+            type="submit"
+            disabled={!agree}
+            className={`${agree ? "" : "opacity-30"}`}
+          >
+            画像生成
+          </ButtonLabel>
           {/* <motion.button
             type="submit"
             onClick={() => {

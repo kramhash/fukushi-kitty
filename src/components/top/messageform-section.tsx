@@ -15,7 +15,6 @@ export const MessageForm = () => {
             bgColor="bg-white"
             fontColor="text-kitty_red"
             borderWidth={0}
-            fontSize="1rem"
             px={60}
             py={15}
           >

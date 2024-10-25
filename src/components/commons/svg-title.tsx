@@ -24,13 +24,15 @@ export const SVGTitle = ({
     return true;
   }, [breakPoint1]);
 
+  console.log(breakPoint1, minScale);
+
   return (
     <motion.h3
       className={`flex mx-auto ${className ?? ""}`}
       style={{
-        width: `clamp(${width * minScale}px, ${
-          width * (check ? 1 : 0.75)
-        }px, 100vw * ${width} / ${check ? 1024 : 375})`,
+        width: `clamp(${width * minScale}px, 100vw * ${width} / 1024, ${
+          width * (breakPoint1 ? 1 : 0.75)
+        }px)`,
       }}
     >
       <motion.img src={prefix(src)} width={width} className="w-full" />

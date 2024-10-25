@@ -18,7 +18,11 @@ export const Info = () => {
           <motion.img src={prefix("assets/commons/kitty3.png")} alt="" />
         </motion.div>
         <motion.div style={{ x: "3%" }}>
-          <SVGTitle src={"assets/top/info/title-info.png"} width={578} />
+          <SVGTitle
+            src={"assets/top/info/title-info.png"}
+            width={578}
+            minScale={0.2}
+          />
           <motion.p className="whitespace-pre-wrap font-black font-mplus1c text-16lg text-center mt-[5%]">{`福祉の仕事には、さまざまな活躍の仕方があります。
 あなたにあった働き方を選べます。`}</motion.p>
         </motion.div>

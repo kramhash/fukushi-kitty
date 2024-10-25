@@ -23,7 +23,7 @@ import {
 const schema = yup.object().shape({
   name: yup.string().required("名前を入力してください"),
   job: yup.string().required("職種を入力してください"),
-  trigger: yup.string().required("働くきっかけを入力してください"),
+  trigger: yup.string().max(22).required("働くきっかけを入力してください"),
   email: yup
     .string()
     .email("メールアドレスの形式が正しくありません")
@@ -62,7 +62,7 @@ export const Form = () => {
       >
         <SVGTitle src="assets/top/messageform/generator.svg" width={558} />
         <motion.section
-          className="rounded-[50px] bg-white w-full text-black px-[5%] py-[40px] min-h-[500px] relative overflow-hidden border-[5px] border-black mt-[20px]"
+          className="rounded-[30px] md:rounded-[50px] bg-white w-full text-black px-[5%] py-[40px] min-h-[500px] relative overflow-hidden border-[5px] border-black mt-[20px]"
           layout
           transition={{ duration: 0.3 }}
         >
@@ -129,7 +129,7 @@ const GeneratorForm = memo(function GeneratorForm({
               n={1}
               name="name"
               register={register("name")}
-              maxLength={10}
+              maxLength={20}
               errors={errors.name}
               placeholder={"名前"}
               defaultValue={formData.name}
@@ -138,6 +138,7 @@ const GeneratorForm = memo(function GeneratorForm({
             </Input>
             <Input
               n={2}
+              maxLength={100}
               name="job"
               errors={errors.job}
               placeholder={"職種"}
@@ -149,6 +150,7 @@ const GeneratorForm = memo(function GeneratorForm({
             <Input
               n={3}
               name="trigger"
+              maxLength={22}
               register={register("trigger")}
               errors={errors.trigger}
               placeholder={"働くきっかけ"}
@@ -167,6 +169,7 @@ const GeneratorForm = memo(function GeneratorForm({
             <Input
               n={6}
               name="email"
+              maxLength={50}
               className=" w-full"
               hasNumber={false}
               labelJustify="center"

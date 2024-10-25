@@ -9,7 +9,7 @@ import type { FieldError } from "react-hook-form";
 export const Input = ({
   n,
   children,
-  maxLength = 22,
+  maxLength,
   className,
   name,
   onChange,

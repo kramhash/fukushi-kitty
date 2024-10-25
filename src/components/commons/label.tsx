@@ -51,11 +51,14 @@ export const AnchorLabel = ({
   href,
   children,
   bgColor = "--var(--kitty_red)",
+  fontColor,
   className,
-  leftIcon,
+  leftIcon = <Empty />,
   rightIcon = <Empty />,
+  target,
 }: ILabel & {
   href: string;
+  target?: string;
 }) => {
   return (
     <Link
@@ -63,13 +66,12 @@ export const AnchorLabel = ({
       className={`rounded-full flex items-center justify-between gap-[2vw] w-fit mx-auto font-black font-mplus1c label ${
         className ?? ""
       }`}
-      style={{ backgroundColor: bgColor }}
+      target={target}
+      style={{ backgroundColor: bgColor, color: fontColor }}
     >
       <div className="basis-[10%]">{leftIcon}</div>
-      <div className="grow whitespace-nowrap">{children}</div>
-      <div className="basis-[10%] min-w-[2vw] h-[5px]bg-kitty_red">
-        {rightIcon}
-      </div>
+      <div className="grow whitespace-nowrap text-center">{children}</div>
+      <div className="basis-[10%]">{rightIcon}</div>
     </Link>
   );
 };
@@ -79,7 +81,7 @@ export const ButtonLabel = ({
   bgColor = "var(--kittyred)",
   fontColor = "#ffffff",
   className,
-  leftIcon,
+  leftIcon = <Empty />,
   rightIcon = <Empty />,
   onClick,
   type = "button",
@@ -100,10 +102,8 @@ export const ButtonLabel = ({
       disabled={disabled}
     >
       <div className="basis-[10%]">{leftIcon}</div>
-      <div className="grow whitespace-nowrap">{children}</div>
-      <div className="basis-[10%] min-w-[2vw] h-[5px]bg-kitty_red">
-        {rightIcon}
-      </div>
+      <div className="grow whitespace-nowrap text-center">{children}</div>
+      <div className="basis-[10%]">{rightIcon}</div>
     </motion.button>
   );
 };

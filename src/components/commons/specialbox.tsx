@@ -53,7 +53,7 @@ export const SpecialBox = ({
       suppressHydrationWarning
     >
       <motion.div
-        className={`border-[3px] md:border-[5px] border-black rounded-[80px] w-full ${bgColor} relative`}
+        className={`border-[3px] md:border-[5px] border-black rounded-[42px] md:rounded-[80px] w-full ${bgColor} relative`}
       >
         <motion.div className=" font-bold pt-[20px] px-[min(30px,2vw)] ">
           {children}

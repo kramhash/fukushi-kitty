@@ -1,13 +1,13 @@
 import { Header, JotaiProvider, Marquee } from "@/components/commons";
 
-import { Top, Interview, Info, MessageForm, Gallery } from "@/components/top";
+import { Top, Interview, Info, MessageForm } from "@/components/top";
 import { Footer } from "@/components/commons";
 
-import { getInterviewList, getGallery } from "@/lib/newt";
+import { getInterviewList } from "@/lib/newt";
 
 export default async function Home() {
   const items = await getInterviewList();
-  const galleries = await getGallery();
+  // const galleries = await getGallery();
 
   return (
     <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
@@ -17,7 +17,7 @@ export default async function Home() {
         <Interview interviews={items} />
         <Info />
         <MessageForm />
-        <Gallery data={galleries} />
+        {/* <Gallery data={galleries} /> */}
         <Header />
         <Footer />
       </JotaiProvider>

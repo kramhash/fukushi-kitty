@@ -45,7 +45,7 @@ export const InfoInterviewBox = ({}: { intId: number }) => {
 
       <hr />
 
-      <motion.div className="flex justify-end mt-[5%] pr-[5%]">
+      <motion.div className="flex justify-end mt-[5%] pr-[5%] text-black">
         <Link
           href="/interview/1/"
           className="text-20md lg:text-26lg font-mplus1c font-black flex items-center gap-[2vw]"

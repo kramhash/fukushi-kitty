@@ -58,6 +58,7 @@ export const Info = () => {
 
       <motion.div className="flex flex-col md:flex-row gap-[10px]">
         <InfoBox
+          className="text-black"
           title="professional"
           description={`福祉の現場では、さまざまな専門職が活躍しています。専門性を高めるほど、気づきが増え、面白い仕事です。`}
           recommendTexts={[
@@ -105,7 +106,7 @@ export const Info = () => {
           title="coordinator"
           description={`チームで支えていく福祉の仕事は、リーダーの存在が必要不可欠です。福祉の仕事は若くしてリーダーポジションにつきやすいのが特徴の1つ。リーダーになると給与アップも目指せます。`}
           recommendTexts={["人と繋がるのが好き", "地域づくりに関心がある"]}
-          className=""
+          className="text-black"
           titleWidth={336}
           iconWidth={187}
           iconHeight={168}

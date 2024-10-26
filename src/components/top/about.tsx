@@ -31,7 +31,7 @@ export const About = () => {
           />
         </motion.div>
 
-        <motion.div className=" whitespace-pre-wrap text-center font-bold leading-[200%] pt-[20px] pb-[50px] text-24lg">
+        <motion.div className=" whitespace-pre-wrap text-center font-bold leading-[200%] pt-[20px] pb-[50px] text-24lg text-black">
           {`福祉の仕事は、
 「誰かの役に立つ大切な仕事」
 「日本では将来性のある仕事」

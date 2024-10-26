@@ -28,7 +28,10 @@ const schema = yup.object().shape({
     .string()
     .email("メールアドレスの形式が正しくありません")
     .required("メールアドレスを入力してください"),
-  xaccount: yup.string().required("SNSアカウント名を入力してください"),
+  xaccount: yup
+    .string()
+    .required("SNSアカウント名を入力してください")
+    .matches(/^[0-9a-zA-Z_]+$/, "入力できるのは半角英数字のみです"),
   googleReCaptchaToken: yup.string(),
 });
 
@@ -107,7 +110,7 @@ const GeneratorForm = memo(function GeneratorForm({
   });
 
   const onSubmit = handleSubmit(async (data) => {
-    console.log("on submit", data);
+    // console.log("on submit", data);
     if (!executeRecaptcha) return;
     const token = await executeRecaptcha("submit");
     // console.log("token", token);
@@ -189,11 +192,13 @@ const GeneratorForm = memo(function GeneratorForm({
             <Input
               n={5}
               name="xaccount"
+              maxLength={15}
               className="w-full"
               hasNumber={false}
               labelJustify="center"
               errors={errors.xaccount}
               register={register("xaccount")}
+              defaultValue={formData.xaccount}
             >
               SNSアカウント名(XorInstagram)
             </Input>

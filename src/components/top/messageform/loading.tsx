@@ -6,9 +6,9 @@ import { motion } from "framer-motion";
 export const Loading = () => {
   return (
     <motion.div
-      className="w-full h-full bg-[rgba(255,255,255,0.9)] absolute top-0 left-0"
+      className="w-full h-full bg-[rgba(255,255,255,0.9)] absolute top-0 left-0 overflow-hidden rounded-[30px] md:rounded-[50px]"
       layout
-      exit={{ opacity: 0, transition: { delay: 0.2 } }}
+      exit={{ opacity: 0, transition: { duration: 0.5 } }}
     >
       <motion.div className="flex items-center flex-col h-[70svh] justify-center">
         <motion.img

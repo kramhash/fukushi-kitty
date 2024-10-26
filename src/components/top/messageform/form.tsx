@@ -250,7 +250,7 @@ const GeneratorForm = memo(function GeneratorForm({
             type="submit"
             disabled={!agree}
             className={`${agree ? "" : "opacity-30"}`}
-            width={"100%"}
+            width={"min(350px, 100%)"}
             fontSize={"var(--font-20-static)"}
           >
             画像生成

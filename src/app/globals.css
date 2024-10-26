@@ -70,7 +70,7 @@ hr {
 }
 
 .label {
-  @apply border-[2px] md:border-[3px] border-black px-[5%] md:px-[2%] min-w-[130px] md:min-w-[264px] py-[10px] md:py-[19px] text-20lg;
+  @apply border-[2px] md:border-[3px] border-black px-[5%] md:px-[2%] min-w-[130px] md:min-w-[264px] md:max-w-[264px] py-[15px] md:py-[19px] text-20lg;
 }
 
 .label.l {
@@ -82,7 +82,7 @@ hr {
 }
 
 .label.s {
-  @apply border-[2px] md:border-[3px] py-[4px] md:py-[9px] md:min-w-[130px] text-16lg;
+  @apply border-[2px] md:border-[3px] py-[8px] md:py-[12px] md:min-w-[130px] text-16lg px-[15px] md:px-[30px];
 }
 
 .label.noborder {

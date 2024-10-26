@@ -115,7 +115,10 @@ export const ButtonLabel = ({
       disabled={disabled}
     >
       {leftIcon && <div className="basis-[10%]">{leftIcon}</div>}
-      <div className="grow whitespace-nowrap text-center" style={{ fontSize }}>
+      <div
+        className="grow whitespace-nowrap text-center leading-none"
+        style={{ fontSize }}
+      >
         {children}
       </div>
       {rightIcon && <div className="basis-[10%]">{rightIcon}</div>}

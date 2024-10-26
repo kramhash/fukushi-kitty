@@ -10,7 +10,7 @@ export const Loading = () => {
       layout
       exit={{ opacity: 0, transition: { delay: 0.2 } }}
     >
-      <motion.div className="flex items-center flex-col h-full justify-center">
+      <motion.div className="flex items-center flex-col h-[70svh] justify-center">
         <motion.img
           src={prefix("assets/top/messageform/loading/kitty.png")}
           initial={{ scale: 0 }}

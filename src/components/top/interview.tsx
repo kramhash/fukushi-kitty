@@ -32,7 +32,7 @@ export const Interview = memo(function Interview({
         <SVGTitle src="assets/top/title-interview.svg" width={477}></SVGTitle>
       </motion.div>
 
-      <motion.div className="grid grid-cols-2 md:grid-cols-3 gap-x-[0.7%] gap-y-[70px] max-w-[1280px] mx-auto w-full">
+      <motion.div className="grid grid-cols-2 md:grid-cols-3 gap-x-[0.7%] gap-y-[70px] max-w-[1280px] mx-auto w-[90%]">
         {interviews.map((data, i) => (
           <InterviewCard key={`interview-${data._id}`} index={i} data={data} />
         ))}

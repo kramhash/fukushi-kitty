@@ -10,3 +10,4 @@ export * from "./footer";
 export * from "./provider";
 export * from "./header";
 export * from "./icon";
+export * from "./constants";

@@ -9,10 +9,12 @@ export const SpecialBox = ({
   bgColor = "bg-white",
   fontColor,
   children,
+  className,
 }: {
   bgColor?: string;
   fontColor?: string;
   children?: ReactNode;
+  className?: string;
 }) => {
   const { width = 1024 } = useAtomValue(windowSizeAtom);
 
@@ -48,7 +50,9 @@ export const SpecialBox = ({
 
   return (
     <motion.section
-      className={` relative w-[95%] mx-auto mt-[133px] max-w-[1024px]  ${fontColor}`}
+      className={` relative w-[95%] mx-auto  max-w-[1024px]  ${fontColor} ${
+        className ?? ""
+      }`}
       style={{ paddingTop }}
       suppressHydrationWarning
     >

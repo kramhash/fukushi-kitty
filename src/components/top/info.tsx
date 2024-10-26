@@ -1,6 +1,6 @@
 "use client";
 import { motion } from "framer-motion";
-import { Box, Label, SmallBox, SVGTitle } from "../commons";
+import { Box, kittyVariants, Label, SmallBox, SVGTitle } from "../commons";
 import { ReactNode } from "react";
 import { prefix } from "@/utils";
 import { InfoInterview } from "../info/info-interview";
@@ -11,8 +11,7 @@ export const Info = () => {
   return (
     <motion.section
       id="casestudy"
-      className="rounded-t-[42px] md:rounded-t-[80px] bg-kitty_gray relative  w-full flex flex-col max-w-[1024px] mx-auto px-[2%] has-anchor"
-      style={{ y: -105 }}
+      className="rounded-t-[42px] md:rounded-t-[80px] mt-[-105px] bg-kitty_gray relative  w-full flex flex-col max-w-[1024px] mx-auto px-[2%] has-anchor mb-[50px] md:mb-[88px]"
     >
       <Label className="mt-[6%] mx-auto mb-[2vw]" size="m">
         CASESTUDY
@@ -33,6 +32,9 @@ export const Info = () => {
               loading="lazy"
               width={148}
               height={208}
+              variants={kittyVariants}
+              initial="initial"
+              whileInView="enter"
             />
           </motion.div>
           <motion.p
@@ -51,6 +53,9 @@ export const Info = () => {
               width={179}
               height={217}
               loading="lazy"
+              variants={kittyVariants}
+              initial="initial"
+              whileInView="enter"
             />
           </motion.div>
         </motion.div>
@@ -164,6 +169,9 @@ const InfoBox = ({
             loading="lazy"
             width={iconWidth}
             height={iconHeight}
+            variants={kittyVariants}
+            initial="initial"
+            whileInView="enter"
           />
         </motion.div>
 

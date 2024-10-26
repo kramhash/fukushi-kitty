@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, Variants } from "framer-motion";
 import { Label, SpecialBox, SVGTitle } from "../commons";
 import { ReactNode } from "react";
 import { prefix } from "@/utils";
@@ -91,7 +91,12 @@ export const MessageForm = () => {
           />
         </motion.div>
 
-        <motion.section className="flex flex-col md:flex-row mx-auto justify-center mt-[60px] items-center md:items-stretch gap-12 md:gap-0 mb-[92px]">
+        <motion.section
+          className="flex flex-col md:flex-row mx-auto justify-center mt-[60px] items-center md:items-stretch gap-12 md:gap-0 mb-[92px]"
+          transition={{ staggerChildren: 0.2 }}
+          initial={"initial"}
+          whileInView={"enter"}
+        >
           <Step
             step={1}
             text="東京都福祉局のアカウント（@tocho_fukuho）をフォロー＆リツイート"
@@ -105,7 +110,10 @@ export const MessageForm = () => {
             />
           </Step>
 
-          <motion.div className="pt-[6px] hidden md:block shrink basis-[5%]">
+          <motion.div
+            className="pt-[6px] hidden md:block shrink basis-[5%]"
+            variants={arrowVariants}
+          >
             <Arrow />
           </motion.div>
 
@@ -119,7 +127,10 @@ export const MessageForm = () => {
             />
           </Step>
 
-          <motion.div className="pt-[6px] hidden md:block shrink basis-[5%]">
+          <motion.div
+            className="pt-[6px] hidden md:block shrink basis-[5%]"
+            variants={arrowVariants}
+          >
             <Arrow />
           </motion.div>
 
@@ -160,6 +171,15 @@ export const MessageForm = () => {
   );
 };
 
+const stepVariants: Variants = {
+  initial: { y: 20, opacity: 0 },
+  enter: { y: 0, opacity: 1, transition: { duration: 0.5 } },
+};
+const arrowVariants: Variants = {
+  initial: { x: -10, opacity: 0 },
+  enter: { x: 0, opacity: 1, transition: { duration: 0.3 } },
+};
+
 const Step = ({
   step,
   text,
@@ -172,9 +192,7 @@ const Step = ({
   return (
     <motion.div
       className="flex flex-col max-w-[234px] basis-[30%]"
-      initial={{ y: 20, opacity: 0 }}
-      whileInView={{ y: 0, opacity: 1, transition: { duration: 0.5 } }}
-      viewport={{ margin: "0px 0px -200px 0px" }}
+      variants={stepVariants}
     >
       <Label
         px={20}

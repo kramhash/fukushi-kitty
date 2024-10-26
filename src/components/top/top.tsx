@@ -31,7 +31,21 @@ const LogoCover = memo(function LogoCover() {
     return { width: 1039 * scale, scale };
   }, [width]);
 
-  return <Logo y={-60} width={size.width} iconPadding={size.scale * 130} />;
+  return (
+    <Logo
+      y={-60}
+      width={size.width}
+      iconPadding={size.scale * 130}
+      imgVariants={{
+        initial: { scaleY: 0 },
+        enter: { scaleY: 1, transition: { delay: 1 } },
+      }}
+      iconVariants={{
+        initial: { scale: 0 },
+        enter: { scale: 1, transition: { delay: 1.2 } },
+      }}
+    />
+  );
 });
 
 const Resize = memo(function Resize() {
@@ -88,6 +102,8 @@ const Background = () => {
       style={{ backgroundImage, height: width * 0.5 }}
       suppressHydrationWarning
       ref={ref}
+      initial={{ opacity: 0, y: 50 }}
+      animate={{ opacity: 1, y: 0, transition: { delay: 0.5 } }}
     ></motion.div>
   );
 };

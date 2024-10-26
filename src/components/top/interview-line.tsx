@@ -85,7 +85,7 @@ export const InterviewLine = ({
 
   return (
     <motion.section
-      className={`w-full overflow-hidden ${className ?? ""}`}
+      className={`w-full overflow-hidden pb-[1px] ${className ?? ""}`}
       style={{ y: y * scale }}
       initial={{ opacity: 0 }}
       animate={{ opacity: 1, transition: { duration: 0.5 } }}

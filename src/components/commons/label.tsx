@@ -61,6 +61,7 @@ export const AnchorLabel = ({
   rightIcon = <Empty />,
   target,
   fontSize,
+  width,
 }: ILabel & {
   href: string;
   target?: string;
@@ -72,7 +73,7 @@ export const AnchorLabel = ({
         className ?? ""
       }`}
       target={target}
-      style={{ backgroundColor: bgColor, color: fontColor }}
+      style={{ backgroundColor: bgColor, color: fontColor, width }}
     >
       <div className="basis-[10%] max-w-[12px]">{leftIcon}</div>
       <div

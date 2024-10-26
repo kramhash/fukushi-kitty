@@ -34,9 +34,9 @@ export const Header = () => {
   }, [state]);
 
   return (
-    <motion.header className="fixed  w-full pt-[20px] z-10 top-0 left-0">
+    <motion.header className="fixed  w-full mt-[27px] z-10 top-0 left-0">
       <motion.div
-        className="bg-white max-w-[90%] py-[16px] px-[24px] mx-auto relative header overflow-hidden"
+        className="bg-white max-w-[90%] py-[11px] px-[24px] mx-auto relative header overflow-hidden"
         initial={{ borderRadius: 50 }}
         animate={{
           // borderRadius: state == "init" ? 50 : 25,
@@ -44,9 +44,9 @@ export const Header = () => {
         }}
       >
         <motion.div className="flex justify-between items-center">
-          <motion.div className="shrink grow-0 w-[11vw] min-w-[70px] max-w-[118px]">
+          <motion.div className="shrink grow-0 w-[11vw] min-w-[118px] max-w-[118px]">
             <motion.img
-              src={prefix("assets/commons/tokyo.png")}
+              src={prefix("assets/commons/tokyo.svg")}
               width={118}
               className="w-full"
             />

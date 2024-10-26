@@ -1,22 +1,26 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ReactNode, useMemo } from "react";
+import { ReactNode } from "react";
 import { prefix } from "@/utils";
 import { useMediaQuery } from "usehooks-ts";
 
 export const SVGTitle = ({
   src,
   width,
+  height,
   className,
   minScale = 0.5,
+  alt,
 }: {
   src: string;
   width: number;
+  height?: number;
   children?: ReactNode;
   className?: string;
   useBreakPoint?: boolean;
   minScale?: number;
+  alt?: string;
 }) => {
   const breakPoint1 = useMediaQuery("(min-width: 768px)");
 
@@ -30,7 +34,14 @@ export const SVGTitle = ({
       }}
       suppressHydrationWarning
     >
-      <motion.img src={prefix(src)} width={width} className="w-full" />
+      <motion.img
+        src={prefix(src)}
+        width={width}
+        height={height}
+        className="w-full"
+        loading="lazy"
+        alt={alt}
+      />
     </motion.h3>
   );
 };

@@ -25,8 +25,10 @@ export const People = ({
       <motion.img
         src={prefix(`assets/top/interview-${pid}.png`)}
         className="relative"
-        width={width}
+        width={359}
+        height={359}
         suppressHydrationWarning
+        style={{ width }}
       />
       <motion.img
         src={prefix("assets/commons/ribbon_master.svg")}

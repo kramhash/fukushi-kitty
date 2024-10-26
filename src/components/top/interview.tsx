@@ -90,7 +90,9 @@ const InterviewCard = ({
           >
             <motion.img
               src={prefix(`assets/commons/beforeafter.png`)}
+              loading="lazy"
               width={209}
+              height={46}
               className=" "
             />
           </motion.div>

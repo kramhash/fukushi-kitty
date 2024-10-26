@@ -56,6 +56,7 @@ export const AnchorLabel = ({
   leftIcon = <Empty />,
   rightIcon = <Empty />,
   target,
+  fontSize,
 }: ILabel & {
   href: string;
   target?: string;
@@ -69,9 +70,11 @@ export const AnchorLabel = ({
       target={target}
       style={{ backgroundColor: bgColor, color: fontColor }}
     >
-      <div className="basis-[10%]">{leftIcon}</div>
-      <div className="grow whitespace-nowrap text-center">{children}</div>
-      <div className="basis-[10%]">{rightIcon}</div>
+      <div className="basis-[10%] max-w-[12px]">{leftIcon}</div>
+      <div className="grow whitespace-nowrap text-center" style={{ fontSize }}>
+        {children}
+      </div>
+      {rightIcon && <div className="basis-[10%]">{rightIcon}</div>}
     </Link>
   );
 };
@@ -81,8 +84,8 @@ export const ButtonLabel = ({
   bgColor = "var(--kittyred)",
   fontColor = "#ffffff",
   className,
-  leftIcon = <Empty />,
-  rightIcon = <Empty />,
+  leftIcon,
+  rightIcon,
   onClick,
   type = "button",
   disabled = false,
@@ -101,9 +104,9 @@ export const ButtonLabel = ({
       type={type}
       disabled={disabled}
     >
-      <div className="basis-[10%]">{leftIcon}</div>
+      {leftIcon && <div className="basis-[10%]">{leftIcon}</div>}
       <div className="grow whitespace-nowrap text-center">{children}</div>
-      <div className="basis-[10%]">{rightIcon}</div>
+      {rightIcon && <div className="basis-[10%]">{rightIcon}</div>}
     </motion.button>
   );
 };

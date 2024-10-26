@@ -129,7 +129,7 @@ const GeneratorForm = memo(function GeneratorForm({
               n={1}
               name="name"
               register={register("name")}
-              maxLength={20}
+              maxLength={25}
               errors={errors.name}
               placeholder={"名前"}
               defaultValue={formData.name}
@@ -138,7 +138,7 @@ const GeneratorForm = memo(function GeneratorForm({
             </Input>
             <Input
               n={2}
-              maxLength={100}
+              maxLength={25}
               name="job"
               errors={errors.job}
               placeholder={"職種"}

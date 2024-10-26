@@ -13,11 +13,11 @@ export const Cover = memo(function Cover({ data }: { data: IArticle }) {
   return (
     <motion.div className="relative">
       <motion.div className="overflow-hidden aspect-[1.615/1.35] relative">
-        <motion.div className="p-[1.5%] w-full absolute">
+        <motion.div className="p-[3%] md:p-[1.5%] w-full absolute">
           <motion.img
             src={img}
             alt=""
-            className="rounded-t-[60px] top-0 w-full"
+            className="rounded-t-[20px] md:rounded-t-[60px] top-0 w-full"
           />
           <motion.div
             className="absolute top-1/2 left-1/2 w-[25%]"
@@ -26,6 +26,9 @@ export const Cover = memo(function Cover({ data }: { data: IArticle }) {
             <motion.img
               src={prefix(`assets/commons/beforeafter.png`)}
               className="w-full"
+              loading="lazy"
+              width={209}
+              height={46}
             />
           </motion.div>
         </motion.div>

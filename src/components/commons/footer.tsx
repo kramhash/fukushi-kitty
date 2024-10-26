@@ -2,10 +2,9 @@
 
 import { prefix } from "@/utils";
 import { motion } from "framer-motion";
-import { Logo } from "./logo";
-import { memo, useMemo } from "react";
-import { useAtomValue } from "jotai";
-import { windowSizeAtom } from "../states";
+import { memo } from "react";
+// import { useAtomValue } from "jotai";
+// import { windowSizeAtom } from "../states";
 
 export const Footer = () => {
   return (
@@ -42,14 +41,20 @@ Tokyo Metropolitan Government. All Rights Reserved.`}</motion.p>
 };
 
 const FooterLogo = memo(function FooterLogo() {
-  const { width } = useAtomValue(windowSizeAtom);
-  const size = useMemo(() => {
-    const scale = Math.min(1, width / 1280);
-    return { width: 1098 * scale, scale };
-  }, [width]);
+  // const { width } = useAtomValue(windowSizeAtom);
+  // const size = useMemo(() => {
+  //   const scale = Math.min(1, width / 1280);
+  //   return { width: 1098 * scale, scale };
+  // }, [width]);
 
   return (
-    <motion.img src={prefix("assets/footer/logo.png")} alt="" width={1372} />
+    <motion.img
+      src={prefix("assets/footer/logo.png")}
+      alt=""
+      width={1372}
+      height={293}
+      loading="lazy"
+    />
   );
 });
 
@@ -57,7 +62,12 @@ const Banner = ({ n }: { n: number }) => {
   return (
     <motion.div className="">
       <motion.a>
-        <motion.img src={prefix(`assets/footer/banner${n}.png`)} />
+        <motion.img
+          src={prefix(`assets/footer/banner${n}.png`)}
+          loading="lazy"
+          width={440}
+          height={140}
+        />
       </motion.a>
     </motion.div>
   );

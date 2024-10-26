@@ -14,10 +14,10 @@ export const PresentSection = () => {
       </motion.p>
 
       <motion.div className="flex flex-col gap-[30px]">
-        <Present img="present1" width={617}>
+        <Present img="present1" width={617} height={399}>
           ヘラルボニーサブバッグ（M）
         </Present>
-        <Present img="present2" width={623}>
+        <Present img="present2" width={623} height={404}>
           ヘラルボニーマスク
         </Present>
       </motion.div>
@@ -29,10 +29,12 @@ const Present = ({
   img,
   children,
   width,
+  height,
 }: {
   img: string;
   children?: ReactNode;
   width?: number;
+  height?: number;
 }) => {
   return (
     <motion.div className="flex flex-col items-center">
@@ -41,7 +43,9 @@ const Present = ({
       </motion.h4>
       <motion.img
         src={prefix(`assets/top/messageform/${img}.png`)}
+        loading="lazy"
         width={width}
+        height={height}
       />
     </motion.div>
   );

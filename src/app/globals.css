@@ -10,6 +10,7 @@
   --grey: #ebebeb;
   --font-mplus: "M PLUS Rounded 1c", sans-serif;
   --border: rgba(0, 0, 0, 0.5);
+  --font-16-static: 16px;
   --font-16md: clamp(10px, 100vw * 16 / 768, 16px);
   --font-18md: clamp(12px, 100vw * 18 / 768, 18px);
   --font-14lg: clamp(10px, 100vw * 14 / 1024, 14px);

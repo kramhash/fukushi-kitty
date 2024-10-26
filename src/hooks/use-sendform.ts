@@ -20,6 +20,9 @@ const decode = (data: string) => {
 };
 
 const send = async (formData: FormData) => {
+  if (process.env.NEXT_PUBLIC_DEV_ENV === "local") {
+    return;
+  }
   await fetch(endPoint!, { method: "POST", body: formData });
   // console.log(res);
 };
@@ -54,6 +57,7 @@ export const useSendForm = ({
         send(formData);
       }
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   return blobRef;
 };

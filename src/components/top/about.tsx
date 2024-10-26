@@ -14,11 +14,21 @@ export const About = () => {
           minScale={0.3}
         />
         <motion.div className="absolute w-[22%] top-[19%] sm:top-[30%] left-[5%] translate-x-[-40%] md:translate-x-0">
-          <motion.img src={prefix("assets/commons/kitty.png")} />
+          <motion.img
+            src={prefix("assets/commons/kitty.png")}
+            loading="lazy"
+            width={228}
+            height={266}
+          />
         </motion.div>
 
         <motion.div className="absolute w-[22%] bottom-[19%] sm:bottom-[10%] right-[0%] translate-x-[20%] md:translate-x-[-5%]">
-          <motion.img src={prefix("assets/commons/kitty2.png")} />
+          <motion.img
+            src={prefix("assets/commons/kitty2.png")}
+            loading="lazy"
+            width={216}
+            height={266}
+          />
         </motion.div>
 
         <motion.div className=" whitespace-pre-wrap text-center font-bold leading-[200%] pt-[20px] pb-[50px] text-24lg">

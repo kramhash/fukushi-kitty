@@ -9,14 +9,16 @@ import { Cover, TOC, Career } from "./";
 
 export const Interview = memo(function Interview({ data }: { data: IArticle }) {
   return (
-    <motion.section className="pt-[15%] w-full">
+    <motion.section className="pt-[100px] w-full">
       <div className="w-full inline-block">
         <AnchorLabel
           leftIcon={<BackArrow />}
+          rightIcon={null}
           fontColor="text-black"
           bgColor="#ffffff"
           className="mx-auto"
           href="/"
+          fontSize={"var(--font-16-static)"}
         >
           Back to Top
         </AnchorLabel>

@@ -34,6 +34,7 @@ export const Logo = ({
         className="absolute bottom-0 right-0"
         style={{ y: 5 }}
         width={width * iconScale}
+        loading="lazy"
       />
     </motion.div>
   );

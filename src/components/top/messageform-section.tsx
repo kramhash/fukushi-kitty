@@ -10,26 +10,27 @@ export const MessageForm = () => {
   return (
     <motion.section className="w-full ">
       <SpecialBox bgColor="bg-kitty_blue" fontColor="text-white">
-        <motion.div className="flex justify-center mb-[73px]">
+        <motion.div className="flex justify-center mb-[5%]">
           <Label
             bgColor="bg-white"
             fontColor="text-kitty_red"
             borderWidth={0}
             px={60}
             py={15}
+            className="noborder"
           >
             画像生成
           </Label>
         </motion.div>
 
-        <motion.div className="max-w-[744px] mx-auto w-[72.5%] mb-[50px]">
-          <motion.h2>
-            <motion.img
-              src={prefix("assets/top/messageform/message-title.svg")}
-              title="なにゆえ私が福祉職？メッセージを投稿しよう！"
-              width={"100%"}
-            />
-          </motion.h2>
+        <motion.div className="max-w-[744px] mx-auto w-[80%] mb-[50px]">
+          <SVGTitle
+            src={"assets/top/messageform/message-title.svg"}
+            alt="なにゆえ私が福祉職？メッセージを投稿しよう！"
+            width={712}
+            height={150}
+            minScale={0.3}
+          />
         </motion.div>
 
         <motion.p className=" whitespace-pre-wrap text-left w-[80%] mx-auto leading-[160%] max-w-[620px]">{`#なにゆえ私が福祉職 ジェネレーターは、福祉職で働く「理由」や「きっかけ」を画像にできる装置です。日頃の想いを発信してみませんか？なおハッシュタグ「#なにゆえ私が福祉職 」をつけて、生成した画像をXに投稿すると、抽選で特別なグッズがGETできるチャンス！ぜひ、皆さんの話を聞かせてくださいね。`}</motion.p>
@@ -38,6 +39,8 @@ export const MessageForm = () => {
           <motion.img
             src={prefix("assets/top/messageform/img1.png")}
             className="absolute top-1/2 left-1/2"
+            width={354}
+            height={354}
             style={{
               width: "min(30vw, 354px)",
               // rotate: -12.34,
@@ -57,6 +60,7 @@ export const MessageForm = () => {
             }}
             // transition={{ stiffness: 100 }}
             viewport={{ margin: "0px 0px -300px 0px", once: true }}
+            loading="lazy"
           />
           <motion.img
             src={prefix("assets/top/messageform/img3.png")}
@@ -64,9 +68,12 @@ export const MessageForm = () => {
             style={{
               width: "min(30vw, 354px)",
             }}
+            width={354}
+            height={354}
             initial={{ rotate: 0, x: "-50%", y: "-50%" }}
             whileInView={{ rotate: 12.9, x: "-100%", y: "-60%" }}
             viewport={{ margin: "0px 0px -300px 0px", once: true }}
+            loading="lazy"
           />
 
           <motion.img
@@ -75,9 +82,12 @@ export const MessageForm = () => {
             style={{
               width: "min(30vw, 354px)",
             }}
+            width={354}
+            height={354}
             initial={{ rotate: 0, x: "-50%", y: "-50%" }}
             whileInView={{ rotate: -5.8, x: "-50%", y: "-35%" }}
             viewport={{ margin: "0px 0px -300px 0px", once: true }}
+            loading="lazy"
           />
         </motion.div>
 
@@ -89,6 +99,9 @@ export const MessageForm = () => {
             <motion.img
               src={prefix("assets/top/messageform/step1-img.png")}
               className="w-full"
+              loading="lazy"
+              width={237}
+              height={237}
             />
           </Step>
 
@@ -100,6 +113,9 @@ export const MessageForm = () => {
             <motion.img
               src={prefix("assets/top/messageform/step2-img.png")}
               className="w-full"
+              loading="lazy"
+              width={234}
+              height={357}
             />
           </Step>
 
@@ -114,6 +130,9 @@ export const MessageForm = () => {
             <motion.img
               src={prefix("assets/top/messageform/step3-img.png")}
               className="w-full"
+              loading="lazy"
+              width={218}
+              height={172}
             />
           </Step>
         </motion.section>

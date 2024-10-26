@@ -15,7 +15,13 @@ export const Info = () => {
       <Label className="mt-[6%] mx-auto mb-[2vw]">CASESTUDY</Label>
       <motion.div className="relative flex justify-between items-end px-[3vw] w-full mb-[5%]">
         <motion.div style={{ width: "13.7%" }}>
-          <motion.img src={prefix("assets/commons/kitty3.png")} alt="" />
+          <motion.img
+            src={prefix("assets/commons/kitty3.png")}
+            alt=""
+            loading="lazy"
+            width={148}
+            height={208}
+          />
         </motion.div>
         <motion.div style={{ x: "3%" }}>
           <SVGTitle
@@ -27,7 +33,13 @@ export const Info = () => {
 あなたにあった働き方を選べます。`}</motion.p>
         </motion.div>
         <motion.div style={{ width: "17.3%", x: "2vw" }}>
-          <motion.img src={prefix("assets/commons/kitty4.png")} alt="" />
+          <motion.img
+            src={prefix("assets/commons/kitty4.png")}
+            alt=""
+            width={179}
+            height={217}
+            loading="lazy"
+          />
         </motion.div>
       </motion.div>
 
@@ -41,6 +53,7 @@ export const Info = () => {
             "手に職をつけたい",
           ]}
           iconWidth={149}
+          iconHeight={152}
           titleWidth={350}
           jobTarget="介護福祉士、精神保健福祉士、保育士、ガイドヘルパーなど"
         ></InfoBox>
@@ -56,6 +69,7 @@ export const Info = () => {
           titleWidth={252}
           bgColor="bg-kitty_blue"
           iconWidth={223}
+          iconHeight={120}
           jobTarget="施設長、園長、エリアマネージャーなど"
         ></InfoBox>
       </motion.div>
@@ -71,6 +85,7 @@ export const Info = () => {
           titleWidth={210}
           bgColor="bg-kitty_red"
           iconWidth={127}
+          iconHeight={138}
           jobTarget="ケアマネジャー、生活相談員など"
         ></InfoBox>
         <InfoBox
@@ -80,6 +95,7 @@ export const Info = () => {
           className=""
           titleWidth={336}
           iconWidth={187}
+          iconHeight={168}
           jobTarget="コミュニティソーシャルワーカーなど"
         ></InfoBox>
       </motion.div>
@@ -97,6 +113,7 @@ const InfoBox = ({
   titleWidth,
   bgColor,
   iconWidth,
+  iconHeight,
   jobTarget,
 }: // color = "",
 {
@@ -109,6 +126,7 @@ const InfoBox = ({
   titleWidth: number;
   bgColor?: string;
   iconWidth: number;
+  iconHeight: number;
   jobTarget: string;
 }) => {
   return (
@@ -129,6 +147,9 @@ const InfoBox = ({
           <motion.img
             src={prefix(`assets/top/info/icon/${title}.png`)}
             className="w-full h-auto"
+            loading="lazy"
+            width={iconWidth}
+            height={iconHeight}
           />
         </motion.div>
 

@@ -9,10 +9,10 @@ export const Info = () => {
   return (
     <motion.section
       id="casestudy"
-      className="rounded-t-[80px] bg-kitty_gray relative  w-full flex flex-col max-w-[1024px] mx-auto px-[2%] has-anchor"
+      className="rounded-t-[42px] md:rounded-t-[80px] bg-kitty_gray relative  w-full flex flex-col max-w-[1024px] mx-auto px-[2%] has-anchor"
       style={{ y: -105 }}
     >
-      <Label className="mt-[96px] mx-auto mb-[2vw]">CASESTUDY</Label>
+      <Label className="mt-[6%] mx-auto mb-[2vw]">CASESTUDY</Label>
       <motion.div className="relative flex justify-between items-end px-[3vw] w-full mb-[5%]">
         <motion.div style={{ width: "13.7%" }}>
           <motion.img src={prefix("assets/commons/kitty3.png")} alt="" />

@@ -20,12 +20,6 @@ export const SVGTitle = ({
 }) => {
   const breakPoint1 = useMediaQuery("(min-width: 768px)");
 
-  const check = useMemo(() => {
-    return true;
-  }, [breakPoint1]);
-
-  console.log(breakPoint1, minScale);
-
   return (
     <motion.h3
       className={`flex mx-auto ${className ?? ""}`}
@@ -34,6 +28,7 @@ export const SVGTitle = ({
           width * (breakPoint1 ? 1 : 0.75)
         }px)`,
       }}
+      suppressHydrationWarning
     >
       <motion.img src={prefix(src)} width={width} className="w-full" />
     </motion.h3>

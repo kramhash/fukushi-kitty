@@ -182,6 +182,7 @@ const Step = ({
         borderWidth={3}
         className="mx-auto"
         size="s"
+        minWidth={"auto"}
         fontSize={"--var(--font-26lg)"}
       >{`Step${step}`}</Label>
       <motion.div className=" text-[1.125rem]  leading-[150%] text-left  my-4 grow">

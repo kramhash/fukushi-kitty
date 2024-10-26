@@ -9,7 +9,7 @@ import { memo } from "react";
 export const Footer = () => {
   return (
     <motion.footer className="rounded-t-[40px] md:rounded-t-[80px] bg-white w-full overflow-hidden px-[20px] md:px-[40px] mt-[7%]">
-      <motion.div className="grid s:grid-cols-2 md:grid-cols-3 mt-[70px] gap-4 max-w-[1024px] mx-auto">
+      <motion.div className="grid s:grid-cols-2 md:grid-cols-3 mt-[70px] gap-4 max-w-[550px] md:max-w-[700px] mx-auto">
         {[...Array(7)].map((_, i) => (
           <Banner n={i + 1} key={i} />
         ))}
@@ -25,7 +25,9 @@ Tokyo Metropolitan Government. All Rights Reserved.`}</motion.p>
           <motion.p className="flex items-center whitespace-nowrap">
             <motion.img
               src={prefix("assets/footer/hellokitty.svg")}
+              loading="lazy"
               className="mr-1"
+              alt="hello kitty"
             />
             <motion.span>
               © 2024 SANRIO CO., LTD. APPROVAL NO. L654027
@@ -67,6 +69,7 @@ const Banner = ({ n }: { n: number }) => {
           loading="lazy"
           width={440}
           height={140}
+          className="max-w-[220px] mx-auto w-full"
         />
       </motion.a>
     </motion.div>

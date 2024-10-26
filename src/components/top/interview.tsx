@@ -25,6 +25,7 @@ export const Interview = memo(function Interview({
           bgColor="bg-white"
           fontColor="text-kitty_red"
           className="noborder"
+          size="m"
         >
           INTERVIEW
         </Label>

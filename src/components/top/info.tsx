@@ -4,42 +4,55 @@ import { Box, Label, SmallBox, SVGTitle } from "../commons";
 import { ReactNode } from "react";
 import { prefix } from "@/utils";
 import { InfoInterview } from "../info/info-interview";
+import { useMediaQuery } from "usehooks-ts";
 
 export const Info = () => {
+  const breakpoint = useMediaQuery("(min-width: 640px)");
   return (
     <motion.section
       id="casestudy"
       className="rounded-t-[42px] md:rounded-t-[80px] bg-kitty_gray relative  w-full flex flex-col max-w-[1024px] mx-auto px-[2%] has-anchor"
       style={{ y: -105 }}
     >
-      <Label className="mt-[6%] mx-auto mb-[2vw]">CASESTUDY</Label>
-      <motion.div className="relative flex justify-between items-end px-[3vw] w-full mb-[5%]">
-        <motion.div style={{ width: "13.7%" }}>
-          <motion.img
-            src={prefix("assets/commons/kitty3.png")}
-            alt=""
-            loading="lazy"
-            width={148}
-            height={208}
-          />
-        </motion.div>
-        <motion.div style={{ x: "3%" }}>
-          <SVGTitle
-            src={"assets/top/info/title-info.png"}
-            width={578}
-            minScale={0.2}
-          />
-          <motion.p className="whitespace-pre-wrap font-black font-mplus1c text-16lg text-center mt-[5%]">{`福祉の仕事には、さまざまな活躍の仕方があります。
+      <Label className="mt-[6%] mx-auto mb-[2vw]" size="m">
+        CASESTUDY
+      </Label>
+      <motion.div className="relative flex flex-col justify-center items-center px-[3vw] w-full mb-[10%] md:mb-[5%]">
+        <SVGTitle
+          src={"assets/top/info/title-info.png"}
+          width={578}
+          minScale={0.2}
+        />
+
+        <motion.div className="flex justify-between items-center  mt-[-2%] md:mt-0">
+          <motion.div style={{ width: "17%" }} className="grow-0">
+            <motion.img
+              className="w-full"
+              src={prefix("assets/commons/kitty3.png")}
+              alt=""
+              loading="lazy"
+              width={148}
+              height={208}
+            />
+          </motion.div>
+          <motion.p
+            className="whitespace-pre-wrap font-black font-mplus1c text-16lg text-center leading-[200%]"
+            style={{ x: "5%" }}
+            suppressHydrationWarning
+          >{`福祉の仕事には、${
+            breakpoint ? "" : "\n"
+          }さまざまな活躍の仕方があります。
 あなたにあった働き方を選べます。`}</motion.p>
-        </motion.div>
-        <motion.div style={{ width: "17.3%", x: "2vw" }}>
-          <motion.img
-            src={prefix("assets/commons/kitty4.png")}
-            alt=""
-            width={179}
-            height={217}
-            loading="lazy"
-          />
+          <motion.div style={{ width: "21%" }}>
+            <motion.img
+              className="w-full"
+              src={prefix("assets/commons/kitty4.png")}
+              alt=""
+              width={179}
+              height={217}
+              loading="lazy"
+            />
+          </motion.div>
         </motion.div>
       </motion.div>
 

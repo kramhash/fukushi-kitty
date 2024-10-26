@@ -11,6 +11,7 @@
   --font-mplus: "M PLUS Rounded 1c", sans-serif;
   --border: rgba(0, 0, 0, 0.5);
   --font-16-static: 16px;
+  --font-20-static: 20px;
   --font-16md: clamp(10px, 100vw * 16 / 768, 16px);
   --font-18md: clamp(12px, 100vw * 18 / 768, 18px);
   --font-14lg: clamp(10px, 100vw * 14 / 1024, 14px);
@@ -69,16 +70,21 @@ hr {
 }
 
 .label {
-  @apply border-[2px] md:border-[4px] border-black px-[5%] md:px-[2%] min-w-[130px] md:min-w-[264px] py-[1.5vw] text-20lg;
+  @apply border-[2px] md:border-[3px] border-black px-[5%] md:px-[2%] min-w-[130px] md:min-w-[264px] py-[10px] md:py-[19px] text-20lg;
 }
 
 .label.l {
   @apply border-[3px] md:border-[5px] py-[5%] text-25lg;
 }
 
-.label.s {
-  @apply border-[2px] md:border-[3px] py-[1vw] md:min-w-[130px] text-16lg;
+.label.m {
+  @apply border-[2px] md:border-[4px] py-[9px] md:py-[19px] text-20lg;
 }
+
+.label.s {
+  @apply border-[2px] md:border-[3px] py-[4px] md:py-[9px] md:min-w-[130px] text-16lg;
+}
+
 .label.noborder {
   @apply border-none;
 }

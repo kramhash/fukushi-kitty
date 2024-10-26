@@ -19,6 +19,8 @@ export interface ILabel {
   size?: "s" | "m" | "l";
   leftIcon?: ReactNode;
   rightIcon?: ReactNode;
+  minWidth?: number | string;
+  width?: number | string;
 }
 
 export const Label = ({
@@ -30,6 +32,7 @@ export const Label = ({
   fontSize,
   size,
   leftIcon,
+  minWidth,
 }: ILabel) => {
   return (
     <motion.h3
@@ -39,6 +42,7 @@ export const Label = ({
       style={{
         lineHeight,
         fontSize,
+        minWidth,
       }}
     >
       {leftIcon && <div className="mt-[1.5%]">{leftIcon}</div>}
@@ -71,7 +75,10 @@ export const AnchorLabel = ({
       style={{ backgroundColor: bgColor, color: fontColor }}
     >
       <div className="basis-[10%] max-w-[12px]">{leftIcon}</div>
-      <div className="grow whitespace-nowrap text-center" style={{ fontSize }}>
+      <div
+        className="grow whitespace-nowrap text-center leading-none"
+        style={{ fontSize }}
+      >
         {children}
       </div>
       {rightIcon && <div className="basis-[10%]">{rightIcon}</div>}
@@ -89,6 +96,8 @@ export const ButtonLabel = ({
   onClick,
   type = "button",
   disabled = false,
+  fontSize,
+  width,
 }: ILabel & {
   onClick?: () => void;
   type?: "button" | "submit" | "reset";
@@ -99,13 +108,15 @@ export const ButtonLabel = ({
       className={`rounded-full flex items-center justify-between gap-[2vw] w-fit mx-auto font-black font-mplus1c label ${
         className ?? ""
       }`}
-      style={{ backgroundColor: bgColor, color: fontColor }}
+      style={{ backgroundColor: bgColor, color: fontColor, width }}
       onClick={onClick}
       type={type}
       disabled={disabled}
     >
       {leftIcon && <div className="basis-[10%]">{leftIcon}</div>}
-      <div className="grow whitespace-nowrap text-center">{children}</div>
+      <div className="grow whitespace-nowrap text-center" style={{ fontSize }}>
+        {children}
+      </div>
       {rightIcon && <div className="basis-[10%]">{rightIcon}</div>}
     </motion.button>
   );

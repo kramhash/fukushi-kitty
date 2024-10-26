@@ -7,21 +7,16 @@ import { IArticle } from "@/types/newt";
 import { AnchorLabel, BackArrow, DisplayNumber } from "../commons";
 import { Cover, TOC, Career } from "./";
 
-export const Interview = memo(function Interview({ data }: { data: IArticle }) {
+export const Interview = memo(function Interview({
+  data,
+}: {
+  data: IArticle;
+  nextItem: IArticle;
+}) {
   return (
     <motion.section className="pt-[100px] w-full">
       <div className="w-full inline-block">
-        <AnchorLabel
-          leftIcon={<BackArrow />}
-          rightIcon={null}
-          fontColor="text-black"
-          bgColor="#ffffff"
-          className="mx-auto"
-          href="/"
-          fontSize={"var(--font-16-static)"}
-        >
-          Back to Top
-        </AnchorLabel>
+        <BackButton />
       </div>
 
       <motion.div className="rounded-[23px] mt-[5%] md:rounded-[72px] bg-white max-w-[878px] mx-auto pb-[4%] border-black border-[3px] md:border-[5px]">
@@ -51,6 +46,33 @@ export const Interview = memo(function Interview({ data }: { data: IArticle }) {
           </motion.section>
         ))}
       </motion.div>
+
+      <motion.div className="my-[10%]">
+        <BackButton />
+      </motion.div>
     </motion.section>
   );
 });
+
+const BackButton = ({
+  fontSize = "var(--font-16-static)",
+  size,
+}: {
+  fontSize?: string;
+  size?: "s" | "m" | "l";
+}) => {
+  return (
+    <AnchorLabel
+      leftIcon={<BackArrow />}
+      rightIcon={null}
+      fontColor="text-black"
+      bgColor="#ffffff"
+      className="mx-auto"
+      href="/"
+      fontSize={fontSize}
+      size={size}
+    >
+      Back to Top
+    </AnchorLabel>
+  );
+};

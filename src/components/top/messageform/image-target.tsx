@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 import { useAtom } from "jotai";
 import { useDropzone } from "react-dropzone";
 import { uploadImageAtom } from "@/components/states";
-import { ButtonLabel, Label } from "@/components/commons";
+import { ButtonLabel } from "@/components/commons";
 import { InputTitle } from "./input-title";
 import { prefix } from "@/utils";
 
@@ -46,6 +46,7 @@ export const ImageTarget = memo(function ImageTarget() {
           className="w-full "
           width={452}
           height={462}
+          loading="lazy"
         />
         <input {...getInputProps()} className="relative" />
 
@@ -56,6 +57,7 @@ export const ImageTarget = memo(function ImageTarget() {
                 <motion.img
                   src={prefix("assets/top/messageform/file.svg")}
                   width={109}
+                  loading="lazy"
                 />
               </motion.div>
               <motion.div className="mb-[3%] text-21lg font-black">

@@ -20,7 +20,7 @@ const decode = (data: string) => {
 };
 
 const send = async (formData: FormData) => {
-  // const res = await fetch(endPoint!, { method: "POST", body: formData });
+  await fetch(endPoint!, { method: "POST", body: formData });
   // console.log(res);
 };
 

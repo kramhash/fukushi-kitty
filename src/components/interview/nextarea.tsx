@@ -6,7 +6,7 @@ import { prefix } from "@/utils";
 
 export const NextArea = ({ data }: { data: IArticle }) => {
   return (
-    <motion.div className="rounded-[24px] bg-white aspect-[1/0.795] relative overflow-hidden border-[2px] border-black">
+    <motion.div className="rounded-[24px] bg-white aspect-[1/0.795] relative overflow-hidden border-[2px] border-black max-w-[878px] mx-auto">
       <motion.div className="p-[14px] relative">
         <motion.img
           src={data.mainImage.src}

@@ -30,6 +30,8 @@ export const InfoInterviewBox = ({}: { intId: number }) => {
           <source
             media="(min-width: 640px)"
             srcSet={prefix(`assets/top/info/int-1-img.png`)}
+            width={912}
+            height={303}
           />
           <source
             srcSet={prefix(`assets/top/info/int-1-img-sp.png`)}
@@ -37,7 +39,8 @@ export const InfoInterviewBox = ({}: { intId: number }) => {
           />
           <motion.img
             src={prefix(`assets/top/info/int-1-img.png`)}
-            width={904}
+            width={912}
+            height={303}
             className="max-w-full"
           />
         </motion.picture>

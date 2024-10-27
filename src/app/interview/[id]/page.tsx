@@ -18,6 +18,8 @@ export default async function Page({ params }: { params: { id: string } }) {
     }
   }
 
+  console.log(nextId);
+
   const item = await getInterview(params.id);
   if (item === null) {
     return notFound();
@@ -32,7 +34,7 @@ export default async function Page({ params }: { params: { id: string } }) {
   return (
     <main>
       <JotaiProvider>
-        <Interview data={item} nextItem={item} />
+        <Interview data={item} nextItem={nextItem} />
         <Header />
         <Footer />
       </JotaiProvider>

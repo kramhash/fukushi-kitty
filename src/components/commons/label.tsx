@@ -46,7 +46,7 @@ export const Label = ({
       }}
     >
       {leftIcon && <div className="mt-[1.5%]">{leftIcon}</div>}
-      <div className="grow">{children}</div>
+      <div className="grow whitespace-nowrap">{children}</div>
     </motion.h3>
   );
 };

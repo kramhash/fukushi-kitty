@@ -45,12 +45,14 @@ export const Cover = memo(function Cover({ data }: { data: IArticle }) {
           style={{ y: "27%" }}
         />
       </motion.div>
-      <motion.div className="absolute top-0 text-white mt-[42%] ml-[5%] font-mplus1c font-extrabold">
+      <motion.div className="absolute top-0 text-white mt-[42%] ml-[3%] font-mplus1c font-extrabold">
         <motion.img
           src={prefix(`assets/interview/copy.svg`)}
-          className="w-[40%]"
+          className="w-[40%] max-w-[228px]"
         />
-        <motion.p className=" text-36lg pr-[10%]">{data.motivation}</motion.p>
+        <motion.p className=" text-36lg pr-[35%] leading-[130%] mb-[2%]">
+          {data.motivation}
+        </motion.p>
         <motion.p className="text-18lg whitespace-pre-wrap">{`${data.belong}\n${data.job}`}</motion.p>
         <motion.p className="text-23lg">{data.name}</motion.p>
       </motion.div>

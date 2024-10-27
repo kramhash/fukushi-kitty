@@ -29,7 +29,7 @@ export const Marquee = memo(function Marquee() {
   });
 
   return (
-    <motion.section className="border-t-[5px] border-black bg-white w-full py-[20px] overflow-hidden pt-[3%]">
+    <motion.section className="border-t-[5px] border-black bg-white w-full py-[20px] overflow-hidden pt-[3%] mt-[10%]">
       <motion.div className="flex flex-nowrap" style={{ x }}>
         <Logo
           width={size.width}

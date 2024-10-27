@@ -19,7 +19,7 @@ export default async function Home() {
   preload(prefix("assets/top/messageform/loading/l5.png"), { as: "image" });
 
   return (
-    <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
+    <main className="flex flex-col items-center sm:items-start">
       <JotaiProvider>
         <Top />
         <Marquee />

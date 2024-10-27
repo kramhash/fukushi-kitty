@@ -11,114 +11,116 @@ export const Info = () => {
   return (
     <motion.section
       id="casestudy"
-      className="rounded-t-[42px] md:rounded-t-[80px] mt-[-105px] bg-kitty_gray relative  w-full flex flex-col max-w-[1024px] mx-auto px-[2%] has-anchor mb-[50px] md:mb-[88px]"
+      className="rounded-t-[42px] md:rounded-t-[80px] mt-[-105px] bg-kitty_gray relative  w-full flex flex-col mx-auto px-[2%] has-anchor mb-[50px] md:mb-[88px]"
     >
-      <Label className="mt-[6%] mx-auto mb-[2vw]" size="m">
-        CASESTUDY
-      </Label>
-      <motion.div className="relative flex flex-col justify-center items-center px-[3vw] w-full mb-[10%] md:mb-[5%]">
-        <SVGTitle
-          src={"assets/top/info/title-info.png"}
-          width={578}
-          minScale={0.2}
-        />
+      <motion.div className="max-w-[1024px] w-full mx-auto">
+        <Label className="mt-[6%] mx-auto mb-[2vw]" size="m">
+          CASESTUDY
+        </Label>
+        <motion.div className="relative flex flex-col justify-center items-center px-[3vw] w-full mb-[10%] md:mb-[5%]">
+          <SVGTitle
+            src={"assets/top/info/title-info.png"}
+            width={578}
+            minScale={0.2}
+          />
 
-        <motion.div className="flex justify-between items-center  mt-[-2%] md:mt-0">
-          <motion.div style={{ width: "17%" }} className="grow-0">
-            <motion.img
-              className="w-full"
-              src={prefix("assets/commons/kitty3.png")}
-              alt=""
-              loading="lazy"
-              width={148}
-              height={208}
-              variants={kittyVariants}
-              initial="initial"
-              whileInView="enter"
-            />
-          </motion.div>
-          <motion.p
-            className="whitespace-pre-wrap font-black font-mplus1c text-16lg text-center leading-[200%]"
-            style={{ x: "5%" }}
-            suppressHydrationWarning
-          >{`福祉の仕事には、${
-            breakpoint ? "" : "\n"
-          }さまざまな活躍の仕方があります。
+          <motion.div className="flex justify-between items-center  mt-[-2%] md:mt-0">
+            <motion.div style={{ width: "17%" }} className="grow-0">
+              <motion.img
+                className="w-full"
+                src={prefix("assets/commons/kitty3.png")}
+                alt=""
+                loading="lazy"
+                width={148}
+                height={208}
+                variants={kittyVariants}
+                initial="initial"
+                whileInView="enter"
+              />
+            </motion.div>
+            <motion.p
+              className="whitespace-pre-wrap font-black font-mplus1c text-16lg text-center leading-[200%]"
+              style={{ x: "5%" }}
+              suppressHydrationWarning
+            >{`福祉の仕事には、${
+              breakpoint ? "" : "\n"
+            }さまざまな活躍の仕方があります。
 あなたにあった働き方を選べます。`}</motion.p>
-          <motion.div style={{ width: "21%" }}>
-            <motion.img
-              className="w-full"
-              src={prefix("assets/commons/kitty4.png")}
-              alt=""
-              width={179}
-              height={217}
-              loading="lazy"
-              variants={kittyVariants}
-              initial="initial"
-              whileInView="enter"
-            />
+            <motion.div style={{ width: "21%" }}>
+              <motion.img
+                className="w-full"
+                src={prefix("assets/commons/kitty4.png")}
+                alt=""
+                width={179}
+                height={217}
+                loading="lazy"
+                variants={kittyVariants}
+                initial="initial"
+                whileInView="enter"
+              />
+            </motion.div>
           </motion.div>
         </motion.div>
-      </motion.div>
 
-      <motion.div className="flex flex-col md:flex-row gap-[10px]">
-        <InfoBox
-          className="text-black"
-          title="professional"
-          description={`福祉の現場では、さまざまな専門職が活躍しています。専門性を高めるほど、気づきが増え、面白い仕事です。`}
-          recommendTexts={[
-            "専門性を磨いていきたい",
-            "目の前の人に貢献したい人",
-            "手に職をつけたい",
-          ]}
-          iconWidth={149}
-          iconHeight={152}
-          titleWidth={350}
-          jobTarget="介護福祉士、精神保健福祉士、保育士、ガイドヘルパーなど"
-        ></InfoBox>
-        <InfoBox
-          title="management"
-          description={`チームで支えていく福祉の仕事は、リーダーの存在が必要不可欠です。福祉の仕事は若くしてリーダーポジションにつきやすいのが特徴の1つ。リーダーになると給与アップも目指せます。`}
-          recommendTexts={[
-            "リーダーになって良い現場を作りたい",
-            "責任ある立場で働きたい",
-            "キャリアアップを目指したい",
-          ]}
-          className="text-white"
-          titleWidth={252}
-          bgColor="bg-kitty_blue"
-          iconWidth={223}
-          iconHeight={120}
-          jobTarget="施設長、園長、エリアマネージャーなど"
-        ></InfoBox>
+        <motion.div className="flex flex-col md:flex-row gap-[10px]">
+          <InfoBox
+            className="text-black"
+            title="professional"
+            description={`福祉の現場では、さまざまな専門職が活躍しています。専門性を高めるほど、気づきが増え、面白い仕事です。`}
+            recommendTexts={[
+              "専門性を磨いていきたい",
+              "目の前の人に貢献したい人",
+              "手に職をつけたい",
+            ]}
+            iconWidth={149}
+            iconHeight={152}
+            titleWidth={350}
+            jobTarget="介護福祉士、精神保健福祉士、保育士、ガイドヘルパーなど"
+          ></InfoBox>
+          <InfoBox
+            title="management"
+            description={`チームで支えていく福祉の仕事は、リーダーの存在が必要不可欠です。福祉の仕事は若くしてリーダーポジションにつきやすいのが特徴の1つ。リーダーになると給与アップも目指せます。`}
+            recommendTexts={[
+              "リーダーになって良い現場を作りたい",
+              "責任ある立場で働きたい",
+              "キャリアアップを目指したい",
+            ]}
+            className="text-white"
+            titleWidth={252}
+            bgColor="bg-kitty_blue"
+            iconWidth={223}
+            iconHeight={120}
+            jobTarget="施設長、園長、エリアマネージャーなど"
+          ></InfoBox>
+        </motion.div>
+        <motion.div className=" flex flex-col md:flex-row gap-[10px]">
+          <InfoBox
+            title="planner"
+            description={`チームで支えていく福祉の仕事は、リーダーの存在が必要不可欠です。福祉の仕事は若くしてリーダーポジションにつきやすいのが特徴の1つ。リーダーになると給与アップも目指せます。`}
+            recommendTexts={[
+              "人の相談に乗るのが好きだ",
+              "思いを尊重した支援をしたい",
+            ]}
+            className="text-white"
+            titleWidth={210}
+            bgColor="bg-kitty_red"
+            iconWidth={127}
+            iconHeight={138}
+            jobTarget="ケアマネジャー、生活相談員など"
+          ></InfoBox>
+          <InfoBox
+            title="coordinator"
+            description={`チームで支えていく福祉の仕事は、リーダーの存在が必要不可欠です。福祉の仕事は若くしてリーダーポジションにつきやすいのが特徴の1つ。リーダーになると給与アップも目指せます。`}
+            recommendTexts={["人と繋がるのが好き", "地域づくりに関心がある"]}
+            className="text-black"
+            titleWidth={336}
+            iconWidth={187}
+            iconHeight={168}
+            jobTarget="コミュニティソーシャルワーカーなど"
+          ></InfoBox>
+        </motion.div>
+        <InfoInterview />
       </motion.div>
-      <motion.div className=" flex flex-col md:flex-row gap-[10px]">
-        <InfoBox
-          title="planner"
-          description={`チームで支えていく福祉の仕事は、リーダーの存在が必要不可欠です。福祉の仕事は若くしてリーダーポジションにつきやすいのが特徴の1つ。リーダーになると給与アップも目指せます。`}
-          recommendTexts={[
-            "人の相談に乗るのが好きだ",
-            "思いを尊重した支援をしたい",
-          ]}
-          className="text-white"
-          titleWidth={210}
-          bgColor="bg-kitty_red"
-          iconWidth={127}
-          iconHeight={138}
-          jobTarget="ケアマネジャー、生活相談員など"
-        ></InfoBox>
-        <InfoBox
-          title="coordinator"
-          description={`チームで支えていく福祉の仕事は、リーダーの存在が必要不可欠です。福祉の仕事は若くしてリーダーポジションにつきやすいのが特徴の1つ。リーダーになると給与アップも目指せます。`}
-          recommendTexts={["人と繋がるのが好き", "地域づくりに関心がある"]}
-          className="text-black"
-          titleWidth={336}
-          iconWidth={187}
-          iconHeight={168}
-          jobTarget="コミュニティソーシャルワーカーなど"
-        ></InfoBox>
-      </motion.div>
-      <InfoInterview />
     </motion.section>
   );
 };

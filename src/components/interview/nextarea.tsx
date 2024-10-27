@@ -4,10 +4,11 @@ import { motion } from "framer-motion";
 import { IArticle } from "@/types/newt";
 import { prefix } from "@/utils";
 import Link from "next/link";
+import { Label, NextArrow } from "../commons";
 
 export const NextArea = ({ data }: { data: IArticle }) => {
   return (
-    <Link href={`/interview/${data.id}/`}>
+    <Link href={`/interview/${data.id}/`} className="relative">
       <motion.div className="rounded-[24px] bg-white aspect-[1/0.795] relative overflow-hidden border-[2px] border-black max-w-[878px] mx-auto">
         <motion.div className="p-[14px] relative">
           <motion.img
@@ -40,6 +41,14 @@ export const NextArea = ({ data }: { data: IArticle }) => {
           </motion.p>
         </motion.div>
       </motion.div>
+      <Label
+        className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2"
+        fontColor="text-black"
+        bgColor="bg-white"
+        rightIcon={<NextArrow />}
+      >
+        Next
+      </Label>
     </Link>
   );
 };

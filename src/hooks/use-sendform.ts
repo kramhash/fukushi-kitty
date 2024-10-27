@@ -52,6 +52,7 @@ export const useSendForm = ({
         formData.append("name", data.name);
         formData.append("job", data.job);
         formData.append("email", data.email);
+        formData.append("sns", data.xaccount);
         formData.append("file", blobRef.current, "generated.png");
         formData.append("googleReCaptchaToken", data.googleReCaptchaToken);
         send(formData);

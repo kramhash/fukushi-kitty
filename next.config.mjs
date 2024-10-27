@@ -1,6 +1,6 @@
 /** @type {import('next').NextConfig} */
 
-const prefix = process.env.DIST || "";
+const prefix = process.env.NEXT_PUBLIC_DIST || "";
 
 const nextConfig = {
   output: "export",

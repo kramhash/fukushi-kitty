@@ -1,14 +1,17 @@
 "use client";
 
-export const BackArrow = () => {
+import { motion } from "framer-motion";
+
+export const BackArrow = ({ rotation }: { rotation?: number }) => {
   return (
-    <svg
+    <motion.svg
       width="13"
       height="16"
       viewBox="0 0 13 16"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
       className="pb-[11%]"
+      style={{ rotate: rotation }}
     >
       <path
         d="M11 2L2 8L11 14"
@@ -17,8 +20,12 @@ export const BackArrow = () => {
         strokeLinecap="round"
         strokeLinejoin="round"
       />
-    </svg>
+    </motion.svg>
   );
+};
+
+export const NextArrow = () => {
+  return <BackArrow rotation={180} />;
 };
 
 export const Empty = () => {

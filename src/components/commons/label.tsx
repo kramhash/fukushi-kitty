@@ -33,12 +33,13 @@ export const Label = ({
   fontSize,
   size,
   leftIcon,
+  rightIcon,
   minWidth,
   textClass,
 }: ILabel) => {
   return (
     <motion.h3
-      className={` flex ${bgColor} ${fontColor} rounded-full w-fit text-center font-mplus1c font-black  label ${
+      className={` flex items-center ${bgColor} ${fontColor} rounded-full w-fit text-center font-mplus1c font-black  label ${
         className ?? ""
       } ${size ?? ""}`}
       style={{
@@ -47,7 +48,7 @@ export const Label = ({
         minWidth,
       }}
     >
-      {leftIcon && <div className="mt-[1.5%]">{leftIcon}</div>}
+      {leftIcon && <div className="">{leftIcon}</div>}
       <div
         className={`grow whitespace-pre-wrap md:whitespace-normal ${
           textClass ?? ""
@@ -56,6 +57,7 @@ export const Label = ({
       >
         {children}
       </div>
+      {rightIcon && <div className="">{rightIcon}</div>}
     </motion.h3>
   );
 };

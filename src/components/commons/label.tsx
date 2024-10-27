@@ -21,6 +21,7 @@ export interface ILabel {
   rightIcon?: ReactNode;
   minWidth?: number | string;
   width?: number | string;
+  textClass?: string;
 }
 
 export const Label = ({
@@ -33,6 +34,7 @@ export const Label = ({
   size,
   leftIcon,
   minWidth,
+  textClass,
 }: ILabel) => {
   return (
     <motion.h3
@@ -46,7 +48,13 @@ export const Label = ({
       }}
     >
       {leftIcon && <div className="mt-[1.5%]">{leftIcon}</div>}
-      <div className="grow whitespace-nowrap">{children}</div>
+      <div
+        className={`grow whitespace-pre-wrap md:whitespace-normal ${
+          textClass ?? ""
+        }`}
+      >
+        {children}
+      </div>
     </motion.h3>
   );
 };

@@ -13,7 +13,8 @@ export const InfoInterview = () => {
       ></InfoInterviewBox>
       <InfoInterviewBox
         intId={10}
-        name="星三記生さんの場合｜サービス管理責任者(障害者支援)"
+        name={`星三記生さんの場合｜
+サービス管理責任者(障害者支援)`}
         link="星さん"
       ></InfoInterviewBox>
     </motion.div>

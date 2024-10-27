@@ -4,6 +4,8 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import { Box, Label } from "../commons";
 import { prefix } from "@/utils";
+import { useMediaQuery } from "usehooks-ts";
+import { useMemo } from "react";
 
 export const InfoInterviewBox = ({
   name,
@@ -14,6 +16,15 @@ export const InfoInterviewBox = ({
   name: string;
   link: string;
 }) => {
+  const sm = useMediaQuery("(min-width: 640px)");
+
+  const title = useMemo(() => {
+    console.log("sm", sm);
+    if (sm) return name;
+
+    return name.replace("｜", "");
+  }, [sm, name]);
+
   return (
     <Box
       px={0}
@@ -29,8 +40,13 @@ export const InfoInterviewBox = ({
           />
         </motion.div>
         <motion.div className="flex flex-col gap-[20px] sm:gap-[10%]  items-start">
-          <Label borderWidth={3} className="mx-auto sm:mx-0 px-[20px]" size="s">
-            {name}
+          <Label
+            borderWidth={3}
+            className="mx-auto sm:mx-0 px-[20px]"
+            size="s"
+            textClass="leading-[130%] md:leading-none"
+          >
+            {title}
           </Label>
           <motion.img src={`assets/top/info/int-${intId}-title.png`} />
         </motion.div>

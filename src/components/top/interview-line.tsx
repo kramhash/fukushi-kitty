@@ -21,7 +21,7 @@ const DefaultRibbonWidth = 265;
 const DefaultTop = 100;
 
 export const InterviewLine = ({
-  targets = [1, "", 2, "", 3, "", 2, ""],
+  targets = [1, "", 2, "", 3, "", 4, "", 5, "", 6, "", 7, "", 8, "", 9, "", 10],
   className,
   y = 0,
   direction = 1,

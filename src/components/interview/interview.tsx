@@ -6,9 +6,11 @@ import { IArticle } from "@/types/newt";
 
 import { AnchorLabel, BackArrow, DisplayNumber } from "../commons";
 import { Cover, TOC, Career } from "./";
+import { NextArea } from "./nextarea";
 
 export const Interview = memo(function Interview({
   data,
+  nextItem,
 }: {
   data: IArticle;
   nextItem: IArticle;
@@ -50,6 +52,8 @@ export const Interview = memo(function Interview({
       <motion.div className="my-[10%]">
         <BackButton />
       </motion.div>
+
+      <NextArea data={nextItem} />
     </motion.section>
   );
 });

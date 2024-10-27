@@ -96,6 +96,7 @@ export const MessageForm = () => {
           transition={{ staggerChildren: 0.2 }}
           initial={"initial"}
           whileInView={"enter"}
+          viewport={{ once: true }}
         >
           <Step
             step={1}

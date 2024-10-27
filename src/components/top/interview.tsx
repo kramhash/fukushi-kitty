@@ -68,7 +68,7 @@ const InterviewCard = ({
       }}
     >
       <motion.div
-        className="max-w-[414px] relative"
+        className="max-w-[414px] relative "
         initial="init"
         animate={state}
       >
@@ -79,7 +79,12 @@ const InterviewCard = ({
             hover: { rotate: 0, scale: 1.2, zIndex: 1 },
           }}
         >
-          <motion.img src={prefix(`assets/top/interview/${data.id}.webp`)} />
+          <motion.img
+            src={prefix(`assets/interview-section/card-${data.id}.webp`)}
+            loading="lazy"
+            width={414}
+            height={536}
+          />
           {/* <motion.img
             src={prefix(`assets/interview-section/interview-${pid}.png`)}
             className="w-full"

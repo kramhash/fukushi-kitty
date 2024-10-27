@@ -23,7 +23,7 @@ export const People = ({
       suppressHydrationWarning
     >
       <motion.img
-        src={prefix(`assets/top/interview-${pid}.png`)}
+        src={prefix(`assets/top/interview-${pid}.webp`)}
         className="relative"
         width={359}
         height={359}

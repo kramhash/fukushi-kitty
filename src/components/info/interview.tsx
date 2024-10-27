@@ -35,7 +35,7 @@ export const InfoInterviewBox = ({
       <motion.div className="flex-col sm:flex-row flex justify-center items-center sm:items-stretch gap-[20px] sm:gap-[4%] px-[5%] mb-[12%] sm:mb-0">
         <motion.div className="max-w-[108px] sm:max-w-[210px] rounded-full border-[2px] md:border-[4px] border-black">
           <motion.img
-            src={`assets/interview/icon/icon-${intId}.png`}
+            src={prefix(`assets/interview/icon/icon-${intId}.png`)}
             width={210}
           />
         </motion.div>
@@ -48,7 +48,7 @@ export const InfoInterviewBox = ({
           >
             {title}
           </Label>
-          <motion.img src={`assets/top/info/int-${intId}-title.png`} />
+          <motion.img src={prefix(`assets/top/info/int-${intId}-title.png`)} />
         </motion.div>
       </motion.div>
 

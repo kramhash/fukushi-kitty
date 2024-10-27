@@ -52,6 +52,7 @@ export const Label = ({
         className={`grow whitespace-pre-wrap md:whitespace-normal ${
           textClass ?? ""
         }`}
+        suppressHydrationWarning
       >
         {children}
       </div>

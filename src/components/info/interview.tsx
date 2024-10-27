@@ -19,7 +19,7 @@ export const InfoInterviewBox = ({
   const sm = useMediaQuery("(min-width: 640px)");
 
   const title = useMemo(() => {
-    console.log("sm", sm);
+    // console.log("sm", sm);
     if (sm) return name;
 
     return name.replace("｜", "");

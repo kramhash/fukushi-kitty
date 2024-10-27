@@ -71,14 +71,12 @@ const InterviewCard = ({
         className="max-w-[414px] relative "
         initial="init"
         animate={state}
+        variants={{
+          init: { rotate: rotation },
+          hover: { rotate: 0, scale: 1.2, zIndex: 1 },
+        }}
       >
-        <motion.div
-          className=" origin-center relative rounded-[1.5rem]  lg:rounded-[3rem] overflow-hidden border-[3px] border-black"
-          variants={{
-            init: { rotate: rotation },
-            hover: { rotate: 0, scale: 1.2, zIndex: 1 },
-          }}
-        >
+        <motion.div className=" origin-center relative rounded-[1.5rem]  lg:rounded-[3rem] overflow-hidden border-[3px] border-black">
           <motion.img
             src={prefix(`assets/interview-section/card-${data.id}.webp`)}
             loading="lazy"
@@ -121,6 +119,13 @@ const InterviewCard = ({
             </motion.div>
           </motion.div>
         </motion.div>
+        <motion.img
+          src={prefix(`assets/interview-section/name/${data.id}.png`)}
+          loading="lazy"
+          className="absolute top-0 left-0 max-w-[183px] w-[44%]"
+          style={{ x: "-15%", y: "-30%" }}
+          width={183}
+        />
       </motion.div>
     </Link>
   );

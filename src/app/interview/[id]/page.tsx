@@ -11,14 +11,11 @@ export default async function Page({ params }: { params: { id: string } }) {
   for (let i = 0; i < list.length; i++) {
     if (list[i].id === params.id) {
       if (i === list.length - 1) {
-        console.log("last item");
         nextId = 1;
         break;
       }
     }
   }
-
-  console.log(nextId);
 
   const item = await getInterview(params.id);
   if (item === null) {

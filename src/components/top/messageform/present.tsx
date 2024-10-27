@@ -18,7 +18,7 @@ export const PresentSection = () => {
           ヘラルボニーサブバッグ（M）
         </Present>
         <Present img="present2" width={623} height={404}>
-          ヘラルボニーマスク
+          ヘラルボニーマスク(M・L)
         </Present>
       </motion.div>
     </motion.section>

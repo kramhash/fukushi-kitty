@@ -42,7 +42,7 @@ const Present = ({
         {children}
       </motion.h4>
       <motion.img
-        src={prefix(`assets/top/messageform/${img}.png`)}
+        src={prefix(`assets/top/messageform/${img}.webp`)}
         loading="lazy"
         width={width}
         height={height}

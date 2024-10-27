@@ -37,7 +37,7 @@ export const MessageForm = () => {
 
         <motion.div className="relative aspect-[10/6] w-full">
           <motion.img
-            src={prefix("assets/top/messageform/img1.png")}
+            src={prefix("assets/top/messageform/img1.webp")}
             className="absolute top-1/2 left-1/2"
             width={354}
             height={354}
@@ -63,7 +63,7 @@ export const MessageForm = () => {
             loading="lazy"
           />
           <motion.img
-            src={prefix("assets/top/messageform/img3.png")}
+            src={prefix("assets/top/messageform/img3.webp")}
             className="absolute top-1/2 left-1/2"
             style={{
               width: "min(30vw, 354px)",
@@ -77,7 +77,7 @@ export const MessageForm = () => {
           />
 
           <motion.img
-            src={prefix("assets/top/messageform/img2.png")}
+            src={prefix("assets/top/messageform/img2.webp")}
             className="absolute top-1/2 left-1/2"
             style={{
               width: "min(30vw, 354px)",
@@ -91,6 +91,11 @@ export const MessageForm = () => {
           />
         </motion.div>
 
+        <motion.section className="max-w-[620px] mx-auto">
+          <SVGTitle src="assets/top/messageform/howto.svg" width={248} />
+          <motion.p className="mt-[5%] w-[80%] mx-auto leading-[160%]">{`本サイトで生成した画像と「#なにゆえ私が福祉職」のハッシュタグをつけて、XかInstagramにて投稿してください。鍵アカウント(非公開)の場合は、対象となりませんのでお気をつけください。`}</motion.p>
+        </motion.section>
+
         <motion.section
           className="flex flex-col md:flex-row mx-auto justify-center mt-[60px] items-center md:items-stretch gap-12 md:gap-0 mb-[92px]"
           transition={{ staggerChildren: 0.2 }}
@@ -103,7 +108,7 @@ export const MessageForm = () => {
             text="東京都福祉局のアカウント（@tocho_fukuho）をフォロー＆リツイート"
           >
             <motion.img
-              src={prefix("assets/top/messageform/step1-img.png")}
+              src={prefix("assets/top/messageform/step1-img.webp")}
               className="w-full"
               loading="lazy"
               width={237}
@@ -120,7 +125,7 @@ export const MessageForm = () => {
 
           <Step step={2} text="下記のジェネレーターで画像を生成">
             <motion.img
-              src={prefix("assets/top/messageform/step2-img.png")}
+              src={prefix("assets/top/messageform/step2-img.webp")}
               className="w-full"
               loading="lazy"
               width={234}
@@ -140,7 +145,7 @@ export const MessageForm = () => {
             text="生成した画像とハッシュタグ「＃なにゆえ私が福祉職」を付けてXで投稿する。※画像を付けると当選確率アップ"
           >
             <motion.img
-              src={prefix("assets/top/messageform/step3-img.png")}
+              src={prefix("assets/top/messageform/step3-img.webp")}
               className="w-full"
               loading="lazy"
               width={218}

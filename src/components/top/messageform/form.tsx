@@ -141,7 +141,7 @@ const GeneratorForm = memo(function GeneratorForm({
             </Input>
             <Input
               n={2}
-              maxLength={25}
+              maxLength={15}
               name="job"
               errors={errors.job}
               placeholder={"職種"}

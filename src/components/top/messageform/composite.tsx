@@ -86,6 +86,7 @@ const Composite = () => {
           <ImageFrame width={width} />
           <TriggerText text={data.trigger} />
           <JobText job={data.job} name={data.name} />
+          <NameText text={data.name} />
           {/* <NameText text={data.job} /> */}
         </Layer>
       </Stage>
@@ -150,33 +151,40 @@ const UserImage = memo(function UserImage() {
   );
 });
 
-const JobText = memo(function JobText({
-  job,
-  name,
-}: {
-  job: string;
-  name: string;
-}) {
+const JobText = memo(function JobText({ job }: { job: string; name: string }) {
   const urltext = useAtomValue(uploadImageAtom);
-
-  const { text } = useMemo(() => {
-    return {
-      text: urltext == null ? `${job}\n${name}` : `${job} ${name}`,
-    };
-  }, [job, name, urltext]);
 
   return (
     <Text
-      text={text}
-      x={600}
-      y={urltext ? 1220 : 1000}
-      fontSize={49}
-      width={400}
+      text={job}
+      x={575}
+      y={urltext ? 1215 : 1000}
+      fontSize={30}
+      width={450}
       fill="#000000"
       fontFamily="M PLUS Rounded 1c"
       fontStyle="800"
       align="center"
       lineHeight={1.5}
+    />
+  );
+});
+
+const NameText = memo(function NameText({ text }: { text: string }) {
+  const urltext = useAtomValue(uploadImageAtom);
+
+  return (
+    <Text
+      text={text}
+      x={500}
+      y={urltext ? 1260 : 1050}
+      width={580}
+      fill="#000000"
+      fontFamily="M PLUS Rounded 1c"
+      fontSize={42}
+      fontStyle="800"
+      align="center"
+      lineHeight={1.2}
     />
   );
 });
@@ -188,7 +196,7 @@ const TriggerText = ({ text }: { text: string }) => {
     <Text
       text={text}
       x={800}
-      y={urltext ? 1115 : 630}
+      y={urltext ? 1100 : 600}
       width={urltext ? 1600 : 1200}
       fontSize={urltext ? 66 : 76}
       fill="#000000"

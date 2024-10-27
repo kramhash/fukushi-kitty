@@ -5,7 +5,15 @@ import Link from "next/link";
 import { Box, Label } from "../commons";
 import { prefix } from "@/utils";
 
-export const InfoInterviewBox = ({}: { intId: number }) => {
+export const InfoInterviewBox = ({
+  name,
+  intId,
+  link,
+}: {
+  intId: number;
+  name: string;
+  link: string;
+}) => {
   return (
     <Box
       px={0}
@@ -14,14 +22,17 @@ export const InfoInterviewBox = ({}: { intId: number }) => {
       className="flex flex-col justify-center"
     >
       <motion.div className="flex-col sm:flex-row flex justify-center items-center sm:items-stretch gap-[20px] sm:gap-[4%] px-[5%] mb-[12%] sm:mb-0">
-        <motion.div className="max-w-[108px] sm:max-w-[210px]">
-          <motion.img src={`assets/top/info/int-1-prof.png`} width={210} />
+        <motion.div className="max-w-[108px] sm:max-w-[210px] rounded-full border-[2px] md:border-[4px] border-black">
+          <motion.img
+            src={`assets/interview/icon/icon-${intId}.png`}
+            width={210}
+          />
         </motion.div>
         <motion.div className="flex flex-col gap-[20px] sm:gap-[10%]  items-start">
           <Label borderWidth={3} className="mx-auto sm:mx-0 px-[20px]" size="s">
-            中澤真希さんの場合｜介護職
+            {name}
           </Label>
-          <motion.img src={`assets/top/info/int-1-title.png`} />
+          <motion.img src={`assets/top/info/int-${intId}-title.png`} />
         </motion.div>
       </motion.div>
 
@@ -29,16 +40,16 @@ export const InfoInterviewBox = ({}: { intId: number }) => {
         <motion.picture>
           <source
             media="(min-width: 640px)"
-            srcSet={prefix(`assets/top/info/int-1-img.png`)}
+            srcSet={prefix(`assets/top/info/int-${intId}-img.png`)}
             width={912}
             height={303}
           />
           <source
-            srcSet={prefix(`assets/top/info/int-1-img-sp.png`)}
+            srcSet={prefix(`assets/top/info/int-${intId}-img-sp.png`)}
             width={536}
           />
           <motion.img
-            src={prefix(`assets/top/info/int-1-img.png`)}
+            src={prefix(`assets/top/info/int-${intId}-img.png`)}
             width={912}
             height={303}
             className="max-w-full"
@@ -50,10 +61,10 @@ export const InfoInterviewBox = ({}: { intId: number }) => {
 
       <motion.div className="flex justify-end mt-[5%] pr-[5%] text-black">
         <Link
-          href="/interview/1/"
+          href={`/interview/${intId}/`}
           className="text-20md lg:text-26lg font-mplus1c font-black flex items-center gap-[2vw]"
         >
-          <div className="whitespace-pre-wrap sm:whitespace-normal text-right">{`中澤さんの
+          <div className="whitespace-pre-wrap sm:whitespace-normal text-right">{`${link}の
 インタビュー記事はこちら`}</div>
           <div className="grow-0">
             <Arrow />

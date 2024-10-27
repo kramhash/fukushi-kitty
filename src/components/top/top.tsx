@@ -59,7 +59,6 @@ const Resize = memo(function Resize() {
   const scroll = useScrollTo();
 
   useEffect(() => {
-    console.log("test");
     const hash = window.location.hash;
     if (hash) {
       setTimeout(() => {

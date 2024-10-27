@@ -14,6 +14,7 @@ export const Interview = memo(function Interview({
 }: {
   interviews: IArticleShort[];
 }) {
+  console.log(interviews);
   return (
     <motion.section
       className=" w-full bg-kitty_red pb-[200px] overflow-hidden has-anchor"

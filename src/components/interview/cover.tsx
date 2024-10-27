@@ -15,7 +15,7 @@ export const Cover = memo(function Cover({ data }: { data: IArticle }) {
       <motion.div className="overflow-hidden aspect-[1.615/1.35] relative">
         <motion.div className="p-[3%] md:p-[1.5%] w-full absolute">
           <motion.img
-            src={img}
+            src={prefix(`assets/interview/main-${data.id}.webp`)}
             alt=""
             className="rounded-t-[20px] md:rounded-t-[60px] top-0 w-full"
           />

@@ -1,6 +1,6 @@
 export interface IArticle {
   _id: string;
-  id: string;
+  id: number;
   title: string;
   belong: string;
   job: string;

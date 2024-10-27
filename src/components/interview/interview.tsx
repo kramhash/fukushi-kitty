@@ -7,6 +7,7 @@ import { IArticle } from "@/types/newt";
 import { AnchorLabel, BackArrow, DisplayNumber } from "../commons";
 import { Cover, TOC, Career } from "./";
 import { NextArea } from "./nextarea";
+import { prefix } from "@/utils";
 
 export const Interview = memo(function Interview({
   data,
@@ -16,13 +17,19 @@ export const Interview = memo(function Interview({
   nextItem: IArticle;
 }) {
   return (
-    <motion.section className="pt-[100px] w-full">
+    <motion.section className="pt-[100px] w-full px-[2%] overflow-hidden">
       <div className="w-full inline-block">
         <BackButton />
       </div>
 
-      <motion.div className="rounded-[23px] mt-[5%] md:rounded-[72px] bg-white max-w-[878px] mx-auto pb-[4%] border-black border-[3px] md:border-[5px]">
+      <motion.div className="rounded-[23px] mt-[5%] md:rounded-[72px] bg-white max-w-[878px] mx-auto pb-[4%] border-black border-[3px] md:border-[5px] relative">
         <Cover data={data} />
+        <motion.img
+          src={prefix("assets/interview-section/name/1.png")}
+          className="absolute top-0 left-0 max-w-[183px] w-[20%]"
+          style={{ x: "-12%", y: "-30%" }}
+          loading="lazy"
+        />
         <motion.div className="max-w-[692px] w-[90%] mx-auto pt-[10%]">
           <motion.h2 className="font-mplus1c text-30lg font-extrabold text-center whitespace-pre-wrap mb-[5%]">
             {data.title}

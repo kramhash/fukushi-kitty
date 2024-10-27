@@ -4,12 +4,13 @@ import { Interview } from "@/components/interview";
 
 import "./interview.css";
 import { Footer, Header, JotaiProvider } from "@/components/commons";
+import { prefix } from "@/utils";
 
 export default async function Page({ params }: { params: { id: string } }) {
   const list = await getInterviewList();
   let nextId = parseInt(params.id) + 1;
   for (let i = 0; i < list.length; i++) {
-    if (list[i].id === params.id) {
+    if (list[i].id.toString() === params.id) {
       if (i === list.length - 1) {
         nextId = 1;
         break;
@@ -27,6 +28,19 @@ export default async function Page({ params }: { params: { id: string } }) {
   if (nextItem === null) {
     return notFound();
   }
+
+  item.body = item.body.map((paragraph, index) => {
+    // console.log(paragraph);
+    return {
+      title: paragraph.title,
+      content: paragraph.content.replace(
+        /(.*)?<img src="(.*.jpg)?" [^<]*>?(.*)/,
+        `$1<img src="${prefix(
+          `assets/interview/${item.id}/img-${index + 1}.webp`
+        )}" />$3`
+      ),
+    };
+  });
 
   return (
     <main>

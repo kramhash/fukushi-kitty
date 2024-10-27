@@ -10,6 +10,7 @@ import { useResizeObserver, useWindowSize } from "usehooks-ts";
 import { useAtomValue, useSetAtom } from "jotai";
 import { windowSizeAtom } from "../states";
 import { useScrollTo } from "@/hooks";
+import { TopBanner } from "./top-banner";
 
 export const Top = memo(function Top() {
   return (
@@ -19,6 +20,7 @@ export const Top = memo(function Top() {
       <InterviewLine y={-60} />
       <LogoCover />
       <InterviewLine direction={-1} />
+      <TopBanner />
       <About />
     </motion.section>
   );

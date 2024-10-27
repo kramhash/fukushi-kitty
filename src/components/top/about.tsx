@@ -5,8 +5,8 @@ import { prefix } from "@/utils";
 
 export const About = () => {
   return (
-    <motion.div className="relative overflow-hidden w-full">
-      <SpecialBox className="mt-[133px]">
+    <motion.div className="relative overflow-hidden w-full pointer-events-none">
+      <SpecialBox className="mt-[50%] md:mt-[133px]">
         <SVGTitle
           src="assets/commons/title.svg"
           width={761}

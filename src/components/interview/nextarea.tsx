@@ -8,7 +8,7 @@ import { Label, NextArrow } from "../commons";
 
 export const NextArea = ({ data }: { data: IArticle }) => {
   return (
-    <Link href={`/interview/${data.id}/`} className="relative">
+    <Link href={`/interview/${data.id}/`} className="relative block">
       <motion.div className="rounded-[24px] bg-white aspect-[1/0.795] relative overflow-hidden border-[2px] border-black max-w-[878px] mx-auto">
         <motion.div className="p-[14px] relative">
           <motion.img

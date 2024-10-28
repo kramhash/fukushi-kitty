@@ -54,7 +54,7 @@ export const Cover = memo(function Cover({ data }: { data: IArticle }) {
           {data.motivation}
         </motion.p>
         <motion.p className="text-16xs  whitespace-pre-wrap">{`${data.belong} | ${data.job}`}</motion.p>
-        <motion.p className="text-23lg">{data.name}</motion.p>
+        <motion.p className="text-16xs">{data.name}</motion.p>
       </motion.div>
     </motion.div>
   );

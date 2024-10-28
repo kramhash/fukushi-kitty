@@ -217,9 +217,9 @@ const GeneratorForm = memo(function GeneratorForm({
           </motion.div>
         </motion.div>
 
-        <motion.div className="bg-[#f5f5f5] h-[118px]  px-[20px] pt-[20px] rounded-[20px] border-[3px] border-border_color mt-[60px]">
+        <motion.div className="bg-[#f5f5f5] h-[130px]  px-[min(20px,2%)] pt-[min(20px,3%)] rounded-[20px] border-[3px] border-border_color mt-[60px]">
           <motion.div className="overflow-y-scroll h-full">
-            <motion.div className="text-[0.875rem] leading-[150%] h-full whitespace-pre-wrap text-center">
+            <motion.div className="text-10xs md:text-14lg leading-[150%] h-full whitespace-pre-wrap text-center">
               {term}
             </motion.div>
           </motion.div>

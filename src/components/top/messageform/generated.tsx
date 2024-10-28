@@ -15,6 +15,9 @@ import { useResetAtom } from "jotai/utils";
 import { useCallback, useEffect } from "react";
 import { useScrollTo, useSendForm } from "@/hooks";
 
+const url =
+  "https://www.fukushijinzai.metro.tokyo.lg.jp/hello-essential-work/pr-gekkan/";
+
 export const GeneratedImage = () => {
   const imageData = useAtomValue(generatedImageAtom);
   const setMode = useSetAtom(modeAtom);
@@ -63,7 +66,11 @@ export const GeneratedImage = () => {
     });
 
     try {
-      await navigator.share({ text: "#なにゆえ私が福祉職", files: [file] });
+      await navigator.share({
+        text: "#なにゆえ私が福祉職",
+        url,
+        files: [file],
+      });
     } catch (e) {
       console.error(e);
     }
@@ -113,7 +120,7 @@ export const GeneratedImage = () => {
         )}
         {!isMobile && (
           <AnchorLabel
-            href={`https://x.com/intent/post?hashtags=なにゆえ私が福祉職\nhttps://www.fukushijinzai.metro.tokyo.lg.jp/hello-essential-work/pr-gekkan/`}
+            href={`https://x.com/intent/post?hashtags=なにゆえ私が福祉職\n${url}`}
             target="_blank"
             bgColor="#000"
             fontColor="#fff"

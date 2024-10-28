@@ -152,7 +152,7 @@ export const GeneratedImage = () => {
         </motion.button>*/}
       </motion.div>
 
-      <motion.div className="flex justify-center mt-[35px] md:mt-[5%]">
+      <motion.div className="flex justify-center mt-[35px] md:mt-[5%] w-auto md:w-[90%] mx-auto">
         <ButtonLabel
           onClick={reset}
           width={"100%"}

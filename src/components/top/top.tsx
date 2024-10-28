@@ -14,7 +14,10 @@ import { TopBanner } from "./top-banner";
 
 export const Top = memo(function Top() {
   return (
-    <motion.section className="w-full relative" id="top">
+    <motion.section
+      className="w-full relative top-[150px] sm:top-[50px] md:top-0"
+      id="top"
+    >
       <Resize />
       <Background />
       <InterviewLine y={-60} />

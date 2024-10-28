@@ -176,7 +176,7 @@ const NameText = memo(function NameText({ text }: { text: string }) {
   return (
     <Text
       text={text}
-      x={500}
+      x={510}
       y={urltext ? 1260 : 1050}
       width={580}
       fill="#000000"

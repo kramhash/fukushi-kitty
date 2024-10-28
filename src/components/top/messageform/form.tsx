@@ -144,7 +144,7 @@ const GeneratorForm = memo(function GeneratorForm({
               maxLength={15}
               name="job"
               errors={errors.job}
-              placeholder={"職種（5文字以内）"}
+              placeholder={"職種（15文字以内）"}
               register={register("job")}
               defaultValue={formData.job}
             >

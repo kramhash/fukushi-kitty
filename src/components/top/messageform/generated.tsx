@@ -63,7 +63,7 @@ export const GeneratedImage = () => {
     });
 
     try {
-      await navigator.share({ text: "これはテストです #test", files: [file] });
+      await navigator.share({ text: "#なにゆえ私が福祉職", files: [file] });
     } catch (e) {
       console.error(e);
     }

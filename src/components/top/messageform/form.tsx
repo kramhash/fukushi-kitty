@@ -134,7 +134,7 @@ const GeneratorForm = memo(function GeneratorForm({
               register={register("name")}
               maxLength={25}
               errors={errors.name}
-              placeholder={"名前"}
+              placeholder={"名前（25文字以内）"}
               defaultValue={formData.name}
             >
               名前(ニックネーム可)を記入して下さい
@@ -144,7 +144,7 @@ const GeneratorForm = memo(function GeneratorForm({
               maxLength={15}
               name="job"
               errors={errors.job}
-              placeholder={"職種"}
+              placeholder={"職種（5文字以内）"}
               register={register("job")}
               defaultValue={formData.job}
             >
@@ -156,7 +156,7 @@ const GeneratorForm = memo(function GeneratorForm({
               maxLength={22}
               register={register("trigger")}
               errors={errors.trigger}
-              placeholder={"働くきっかけ"}
+              placeholder={"働くきっかけ（22文字以内）"}
               defaultValue={formData.trigger}
             >{`福祉職で働く理由やきっかけを記入してください`}</Input>
           </motion.div>

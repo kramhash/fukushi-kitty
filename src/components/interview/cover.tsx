@@ -12,7 +12,7 @@ export const Cover = memo(function Cover({ data }: { data: IArticle }) {
 
   return (
     <motion.div className="relative">
-      <motion.div className="overflow-hidden aspect-[369/412] relative">
+      <motion.div className="overflow-hidden aspect-[369/428] md:aspect-[369/410] relative">
         <motion.div className="p-[3%] md:p-[1.5%] w-full absolute">
           <motion.img
             src={prefix(`assets/interview/main-${data.id}.webp`)}
@@ -41,8 +41,7 @@ export const Cover = memo(function Cover({ data }: { data: IArticle }) {
 
         <motion.img
           src={prefix("assets/interview/mask-white.svg")}
-          className="absolute top-0"
-          style={{ y: "55%" }}
+          className="absolute top-0 translate-y-[60%] md:translate-y-[55%]"
         />
       </motion.div>
       <motion.div className="absolute top-0 text-white mt-[50%] ml-[3%] font-mplus1c font-extrabold">
@@ -50,10 +49,10 @@ export const Cover = memo(function Cover({ data }: { data: IArticle }) {
           src={prefix(`assets/interview/copy.svg`)}
           className="w-[40%] max-w-[228px]"
         />
-        <motion.p className="text-22xs   pr-[5%] leading-[130%] mb-[5%] mt-[2%]">
+        <motion.p className="text-22xs   pr-[5%] leading-[130%] mb-[3%] mt-[2%]">
           {data.motivation}
         </motion.p>
-        <motion.p className="text-16xs  whitespace-pre-wrap">{`${data.belong} | ${data.job}`}</motion.p>
+        <motion.p className="text-16xs  whitespace-pre-wrap">{`${data.belong}\n${data.job}`}</motion.p>
         <motion.p className="text-16xs">{data.name}</motion.p>
       </motion.div>
     </motion.div>

@@ -22,7 +22,7 @@ export const Interview = memo(function Interview({
         <BackButton />
       </div>
 
-      <motion.div className="rounded-[23px] mt-[5%] md:rounded-[72px] bg-white max-w-[878px] mx-auto pb-[4%] border-black border-[3px] md:border-[5px] relative">
+      <motion.div className="rounded-[23px] mt-[3%] md:rounded-[72px] bg-white max-w-[878px] mx-auto pb-[4%] border-black border-[3px] md:border-[5px] relative">
         <Cover data={data} />
         <motion.img
           src={prefix(`assets/interview-section/name/${data.id}.png`)}
@@ -30,8 +30,8 @@ export const Interview = memo(function Interview({
           style={{ x: "-12%", y: "-30%" }}
           loading="lazy"
         />
-        <motion.div className="max-w-[692px] w-[90%] mx-auto pt-[10%]">
-          <motion.h2 className="font-mplus1c text-30lg font-extrabold text-center whitespace-pre-wrap mb-[5%]">
+        <motion.div className="max-w-[692px] w-[90%] mx-auto pt-[5%]">
+          <motion.h2 className="font-mplus1c text-16xs font-extrabold text-center whitespace-pre-wrap mb-[5%]">
             {data.title}
           </motion.h2>
           <TOC data={data.body} />

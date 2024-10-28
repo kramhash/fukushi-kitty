@@ -67,7 +67,7 @@ export const GeneratedImage = () => {
 
     try {
       await navigator.share({
-        text: "#なにゆえ私が福祉職",
+        text: `#なにゆえ私が福祉職\n${url}`,
         url,
         files: [file],
       });

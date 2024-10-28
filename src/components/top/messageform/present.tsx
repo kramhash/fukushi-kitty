@@ -15,10 +15,10 @@ export const PresentSection = () => {
 
       <motion.div className="flex flex-col gap-[30px]">
         <Present img="present1" width={617} height={399}>
-          ヘラルボニーサブバッグ（M）
+          ヘラルボニーサブバッグ（M）30名
         </Present>
         <Present img="present2" width={623} height={404}>
-          ヘラルボニーマスク(M・L)
+          ヘラルボニーマスク（M・L）300名
         </Present>
       </motion.div>
     </motion.section>

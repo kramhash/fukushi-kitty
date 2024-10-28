@@ -113,7 +113,7 @@ export const GeneratedImage = () => {
         )}
         {!isMobile && (
           <AnchorLabel
-            href={`https://x.com/intent/post?hashtags=なにゆえ私が福祉職`}
+            href={`https://x.com/intent/post?hashtags=なにゆえ私が福祉職\nhttps://www.fukushijinzai.metro.tokyo.lg.jp/hello-essential-work/pr-gekkan/`}
             target="_blank"
             bgColor="#000"
             fontColor="#fff"

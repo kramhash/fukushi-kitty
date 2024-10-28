@@ -25,7 +25,7 @@ export const Interview = memo(function Interview({
       <motion.div className="rounded-[23px] mt-[5%] md:rounded-[72px] bg-white max-w-[878px] mx-auto pb-[4%] border-black border-[3px] md:border-[5px] relative">
         <Cover data={data} />
         <motion.img
-          src={prefix("assets/interview-section/name/1.png")}
+          src={prefix(`assets/interview-section/name/${data.id}.png`)}
           className="absolute top-0 left-0 max-w-[183px] w-[20%]"
           style={{ x: "-12%", y: "-30%" }}
           loading="lazy"

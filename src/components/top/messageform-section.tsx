@@ -33,7 +33,7 @@ export const MessageForm = () => {
           />
         </motion.div>
 
-        <motion.p className=" whitespace-pre-wrap text-left w-[80%] mx-auto leading-[160%] max-w-[620px]">{`#なにゆえ私が福祉職 ジェネレーターは、福祉職で働く「理由」や「きっかけ」を画像にできる装置です。日頃の想いを発信してみませんか？なおハッシュタグ「#なにゆえ私が福祉職 」をつけて、生成した画像をXに投稿すると、抽選で特別なグッズがGETできるチャンス！ぜひ、皆さんの話を聞かせてくださいね。`}</motion.p>
+        <motion.p className=" whitespace-pre-wrap text-left w-[80%] mx-auto leading-[160%] max-w-[620px]">{`#なにゆえ私が福祉職 ジェネレーターは、福祉職で働く「理由」や「きっかけ」を画像にできる装置です。日頃の想いを発信してみませんか？なおハッシュタグ「#なにゆえ私が福祉職 」をつけて、生成した画像をXまたはInstagramに投稿すると、抽選で特別なグッズがGETできるチャンス！ぜひ、皆さんの話を聞かせてくださいね。`}</motion.p>
 
         <motion.div className="relative aspect-[10/6] w-full">
           <motion.img
@@ -105,7 +105,7 @@ export const MessageForm = () => {
         >
           <Step
             step={1}
-            text="東京都福祉局のアカウント（@tocho_fukuho）をフォロー＆リツイート"
+            text="「なにゆえ私が福祉職ジェネレーター」で画像を生成。"
           >
             <motion.img
               src={prefix("assets/top/messageform/step1-img.webp")}
@@ -123,7 +123,7 @@ export const MessageForm = () => {
             <Arrow />
           </motion.div>
 
-          <Step step={2} text="下記のジェネレーターで画像を生成">
+          <Step step={2} text="XまたはInstagramをひらく(両方での投稿も歓迎)">
             <motion.img
               src={prefix("assets/top/messageform/step2-img.webp")}
               className="w-full"
@@ -142,7 +142,7 @@ export const MessageForm = () => {
 
           <Step
             step={3}
-            text="生成した画像とハッシュタグ「＃なにゆえ私が福祉職」を付けてXで投稿する。※画像を付けると当選確率アップ"
+            text="ハッシュタグ「#なにゆえ私が福祉職」と生成した画像を添えて投稿"
           >
             <motion.img
               src={prefix("assets/top/messageform/step3-img.webp")}
@@ -161,7 +161,7 @@ export const MessageForm = () => {
             <span className="text-[2.875rem]">11</span>
             <span>月</span>
             <span className="text-[2.875rem]">1</span>
-            <span>日 (金) 00:00 ～ </span>
+            <span>日 (金) 〜 </span>
             <span className="text-[2.875rem]">11</span>
             <span>月</span>
             <span className="text-[2.875rem]">30</span>

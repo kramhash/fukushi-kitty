@@ -15,7 +15,7 @@ export const Info = () => {
     >
       <motion.div className="max-w-[1024px] w-full mx-auto">
         <Label className="mt-[6%] mx-auto mb-[2vw]" size="m">
-          CASESTUDY
+          Work style
         </Label>
         <motion.div className="relative flex flex-col justify-center items-center px-[3vw] w-full mb-[10%] md:mb-[5%]">
           <SVGTitle

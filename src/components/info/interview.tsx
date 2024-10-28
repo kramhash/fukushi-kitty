@@ -20,7 +20,7 @@ export const InfoInterviewBox = ({
 
   const title = useMemo(() => {
     // console.log("sm", sm);
-    if (sm) return name;
+    if (sm || name.length < 20) return name;
 
     return name.replace("｜", "");
   }, [sm, name]);

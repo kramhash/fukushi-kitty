@@ -35,6 +35,7 @@ const config: Config = {
         "8xs": "var(--font-8xs)",
         "10xs": "var(--font-10xs)",
         "16xs": "var(--font-16xs)",
+        "22xs": "var(--font-22xs)",
         "14md": "clamp(10px, 100vw * 14 / 768, 14px)",
         "16md": "clamp(12px, 100vw * 16 / 768, 16px)",
         "18md": "var(--font-18md)",

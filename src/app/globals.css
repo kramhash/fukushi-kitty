@@ -16,6 +16,8 @@
   --font-10xs: clamp(8px, 100vw * 10 / 390, 21px);
   --font-14xs: clamp(10px, 100vw * 14 / 390, 32px);
   --font-16xs: clamp(10px, 100vw * 16 / 390, 41px);
+  --font-22xs: clamp(10px, 100vw * 22 / 390, 61px);
+
   --font-16md: clamp(10px, 100vw * 16 / 768, 16px);
   --font-18md: clamp(12px, 100vw * 18 / 768, 18px);
   --font-20md: clamp(14px, 100vw * 20 / 768, 20px);
@@ -24,6 +26,7 @@
   --font-18lg: clamp(10px, 100vw * 18 / 1024, 18px);
   --font-20lg: clamp(10px, 100vw * 20 / 1024, 20px);
   --font-21lg: clamp(10px, 100vw * 21 / 1024, 21px);
+  --font-22lg: clamp(10px, 100vw * 22 / 1024, 22px);
   --font-23lg: clamp(10px, 100vw * 23 / 1024, 23px);
   --font-24lg: clamp(14px, 100vw * 24 / 1024, 24px);
   --font-25lg: clamp(12px, 100vw * 25 / 1024, 25px);

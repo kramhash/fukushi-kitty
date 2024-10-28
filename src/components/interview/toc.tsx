@@ -18,7 +18,7 @@ export const TOC = ({ data }: { data: IArticleSection[] }) => {
             </motion.div>
             <motion.a
               href={`#interview-section-${index + 1}`}
-              className="font-mplus1c font-extrabold"
+              className="font-mplus1c font-extrabold border-b border-black"
             >
               {section.title}
             </motion.a>

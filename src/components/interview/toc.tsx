@@ -11,7 +11,7 @@ export const TOC = ({ data }: { data: IArticleSection[] }) => {
         {data.map((section, index) => (
           <motion.li
             key={`contents-${index}`}
-            className="flex gap-[2%] text-18lg"
+            className="flex gap-[2%] text-14xs md:text-18lg"
           >
             <motion.div className="font-mplus1c font-extrabold">
               {index + 1}

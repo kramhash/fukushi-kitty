@@ -47,7 +47,7 @@ export const About = () => {
 ユニークな福祉職の人たちから、
 ホンネの話を聞いてみませんか。
 
-※すこし想豫とはちがうかも`}
+※すこし想像とはちがうかも`}
         </motion.div>
       </SpecialBox>
     </motion.div>

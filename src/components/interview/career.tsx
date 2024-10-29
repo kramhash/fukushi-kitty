@@ -22,7 +22,7 @@ export const Career = ({ data }: { data: IArticle }) => {
           />
           <motion.p className="shrink-0">{data.name}</motion.p>
         </motion.div>
-        <motion.p className="text-18lg text-center md:text-left mt-[10px] md:mt-0">
+        <motion.p className="text-14xs md:text-18lg text-center md:text-left mt-[10px] md:mt-0">
           {data.career}
         </motion.p>
       </motion.div>

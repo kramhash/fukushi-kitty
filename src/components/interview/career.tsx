@@ -15,7 +15,7 @@ export const Career = ({ data }: { data: IArticle }) => {
         className="my-[3%]"
       />
       <motion.div className="flex-col md:flex-row items-center md:items-start flex gap-[3%] w-full mt-[3%] md:mt-0">
-        <motion.div className="flex flex-col items-center gap-[5%] w-full md:w-[15.6%]">
+        <motion.div className="flex flex-col items-center gap-[5%] w-full md:w-[15.6%] shrink-0">
           <motion.img
             src={prefix(`assets/interview/icon/icon-${data.id}.png`)}
             className="max-w-[108px] w-[25%]  md:w-full"

@@ -15,7 +15,7 @@ import { TopBanner } from "./top-banner";
 export const Top = memo(function Top() {
   return (
     <motion.section
-      className="w-full relative top-[70px] sm:top-[50px] md:top-0"
+      className="w-full relative mt-[70px] sm:top-[50px] md:mt-0"
       id="top"
     >
       <Resize />

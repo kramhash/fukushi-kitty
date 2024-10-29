@@ -43,11 +43,11 @@ export const Footer = () => {
           ></iframe>
         </motion.div>
       </motion.div>
-      <motion.div className=" leading-[200%] mt-[60px] flex flex-col md:flex-row gap-[30px] md:gap-0 w-full justify-between text-[12px] font-black">
+      <motion.div className="max-w-[1312px] mx-auto leading-[200%] mt-[60px] flex flex-col md:flex-row gap-[30px] md:gap-0 w-full justify-between text-[12px] font-black">
         <motion.p className=" whitespace-pre-wrap text-[12px] basis-1/2">{`東京都福祉局企画部企画政策課　福祉人材・サービス基盤担当(東京都福祉人材確保対策推進協議会　事務局)
 電話:03-5320-4049　メール:S1140403@section.metro.tokyo.jp`}</motion.p>
 
-        <motion.div>
+        <motion.div className="">
           <motion.p className="md:text-right whitespace-pre-wrap">{`Copyright © Bureau of Social Welfare,
 Tokyo Metropolitan Government. All Rights Reserved.`}</motion.p>
 
@@ -64,7 +64,7 @@ Tokyo Metropolitan Government. All Rights Reserved.`}</motion.p>
           </motion.p>
         </motion.div>
       </motion.div>
-      <motion.div className="mb-[3%]">
+      <motion.div className="mb-[3%] max-w-[1312px] mx-auto">
         <FooterLogo />
       </motion.div>
     </motion.footer>
@@ -85,6 +85,7 @@ const FooterLogo = memo(function FooterLogo() {
       width={1372}
       height={293}
       loading="lazy"
+      className=" mx-auto"
     />
   );
 });

@@ -19,7 +19,7 @@
   --font-22xs: clamp(10px, 100vw * 22 / 390, 48px);
 
   --font-16md: clamp(10px, 100vw * 16 / 768, 16px);
-  --font-18md: clamp(12px, 100vw * 18 / 768, 18px);
+  --font-18md: clamp(14px, 100vw * 18 / 768, 18px);
   --font-20md: clamp(14px, 100vw * 20 / 768, 20px);
   --font-14lg: clamp(10px, 100vw * 14 / 1024, 14px);
   --font-16lg: clamp(12px, 100vw * 16 / 1024, 16px);

@@ -2,6 +2,7 @@
 
 import { prefix } from "@/utils";
 import { motion } from "framer-motion";
+import Link from "next/link";
 import { memo } from "react";
 // import { useAtomValue } from "jotai";
 // import { windowSizeAtom } from "../states";
@@ -29,23 +30,33 @@ export const Footer = () => {
             <Banner n={i + 1} key={i} href={conf.href} />
           ))}
         </motion.div>
-        <motion.div className="aspect-[565/274] w-full sm:w-[45%] rounded-[10px] overflow-hidden mt-[5%] sm:mt-0">
-          <iframe
-            width="565"
-            height="274"
-            src="https://www.youtube.com/embed/gPZU2D9E_U8?si=0zE9rvmUhgzuZVNs"
-            title="YouTube video player"
-            frameBorder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            referrerPolicy="strict-origin-when-cross-origin"
-            allowFullScreen
-            className="w-full h-full"
-          ></iframe>
+        <motion.div className="w-full sm:w-[45%] mt-[5%] sm:mt-0 flex flex-col items-end">
+          <motion.div className="aspect-[565/274] w-full rounded-[10px] overflow-hidden ">
+            <iframe
+              width="565"
+              height="274"
+              src="https://www.youtube.com/embed/gPZU2D9E_U8?si=0zE9rvmUhgzuZVNs"
+              title="YouTube video player"
+              frameBorder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              referrerPolicy="strict-origin-when-cross-origin"
+              allowFullScreen
+              className="w-full h-full"
+            ></iframe>
+          </motion.div>
+          <Link
+            href="https://www.fukushijinzai.metro.tokyo.lg.jp/new-you-welfare-lp/"
+            target="_blank"
+            className="font-extrabold text-14 sm:text-16lg border-b border-black mt-[1%]"
+          >
+            その他の動画はこちら
+          </Link>
         </motion.div>
       </motion.div>
       <motion.div className="max-w-[1312px] mx-auto leading-[200%] mt-[60px] flex flex-col md:flex-row gap-[30px] md:gap-0 w-full justify-between text-[12px] font-black">
         <motion.p className=" whitespace-pre-wrap text-[12px] basis-1/2">{`東京都福祉局企画部企画政策課　福祉人材・サービス基盤担当(東京都福祉人材確保対策推進協議会　事務局)
-電話:03-5388-3904　メール:S1140201@section.metro.tokyo.jp`}</motion.p>
+電話:03-5388-3904
+メール:S1140201@section.metro.tokyo.jp`}</motion.p>
 
         <motion.div className="">
           <motion.p className="md:text-right whitespace-pre-wrap">{`Copyright © Bureau of Social Welfare,

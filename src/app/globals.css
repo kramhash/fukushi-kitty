@@ -15,7 +15,7 @@
   --font-8xs: clamp(7px, 100vw * 8 / 390, 18px);
   --font-10xs: clamp(8px, 100vw * 10 / 390, 21px);
   --font-14xs: clamp(10px, 100vw * 14 / 390, 32px);
-  --font-16xs: clamp(10px, 100vw * 16 / 390, 32px);
+  --font-16xs: clamp(12px, 100vw * 16 / 390, 32px);
   --font-22xs: clamp(10px, 100vw * 22 / 390, 48px);
 
   --font-16md: clamp(10px, 100vw * 16 / 768, 16px);

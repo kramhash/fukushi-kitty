@@ -62,7 +62,7 @@ export const Info = () => {
           </motion.div>
         </motion.div>
 
-        <motion.div className="flex flex-col md:flex-row gap-[10px]">
+        <motion.div className="flex flex-col md:flex-row gap-[24px] mb-[24px]">
           <InfoBox
             className="text-black"
             title="professional"
@@ -93,7 +93,7 @@ export const Info = () => {
             jobTarget="施設長、園長、エリアマネージャーなど"
           ></InfoBox>
         </motion.div>
-        <motion.div className=" flex flex-col md:flex-row gap-[10px]">
+        <motion.div className=" flex flex-col md:flex-row gap-[24px] mb-[15%]">
           <InfoBox
             title="planner"
             description={`チームで支えていく福祉の仕事は、リーダーの存在が必要不可欠です。福祉の仕事は若くしてリーダーポジションにつきやすいのが特徴の1つ。リーダーになると給与アップも目指せます。`}
@@ -151,7 +151,7 @@ const InfoBox = ({
   jobTarget: string;
 }) => {
   return (
-    <Box className={`mb-[50px] ${className}`} bgColor={bgColor}>
+    <Box className={` ${className}`} bgColor={bgColor} pb={0}>
       <motion.div className="flex flex-col justify-start h-full">
         <SVGTitle src={`assets/top/info/${title}.svg`} width={titleWidth} />
         {/* <motion.p className="font-notosans font-black text-[16px] mt-[50px]">
@@ -177,14 +177,14 @@ const InfoBox = ({
           />
         </motion.div>
 
-        <SmallBox width={"100%"} className="mx-auto my-[50px]">
-          <motion.div className="font-black flex flex-col gap-[14px]">
+        <SmallBox width={"100%"} className="mx-auto mt-[50px]">
+          <motion.div className="font-black flex flex-col gap-[12px]">
             {recommendTexts.map((text, index) => (
               <motion.div
                 key={`infobox-${index}`}
                 className="flex items-center"
               >
-                <motion.i className="grow-0 shrink">
+                <motion.i className="grow-0 shrink w-[10%] max-w-[34px]">
                   <motion.img
                     className="w-full"
                     src={prefix("assets/commons/star.svg")}
@@ -192,7 +192,7 @@ const InfoBox = ({
                     height={34}
                   />
                 </motion.i>
-                <motion.p className="ml-[15px] 1rem grow w-full">
+                <motion.p className="ml-[15px] 1rem grow w-full text-16lg">
                   {text}
                 </motion.p>
               </motion.div>
@@ -208,8 +208,10 @@ const InfoBox = ({
           </motion.div>
         </SmallBox>
 
-        <motion.div className="h-[2rem] flex items-center">
-          <motion.p className="font-notosans font-black">{jobTarget}</motion.p>
+        <motion.div className="my-[5%] flex items-center">
+          <motion.p className="font-notosans font-black text-16lg">
+            {jobTarget}
+          </motion.p>
         </motion.div>
       </motion.div>
     </Box>

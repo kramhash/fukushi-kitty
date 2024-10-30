@@ -3,5 +3,4 @@ export const prefix = (path: string) => {
   return `${basePath}/${path}`;
 };
 
-export const URL =
-  "https://www.fukushijinzai.metro.tokyo.lg.jp/hello-essential-work/pr-gekkan/";
+export const URL = process.env.NEXT_PUBLIC_URL || "http://localhost:3000/";

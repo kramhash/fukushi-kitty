@@ -120,7 +120,7 @@ export const GeneratedImage = () => {
         )}
         {!isMobile && (
           <AnchorLabel
-            href={`https://x.com/intent/post?hashtags=なにゆえ私が福祉職\n${url}`}
+            href={`https://x.com/intent/post?hashtags=なにゆえ私が福祉職&text=${url}`}
             target="_blank"
             bgColor="#000"
             fontColor="#fff"

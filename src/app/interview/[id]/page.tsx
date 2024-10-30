@@ -1,10 +1,31 @@
+import { Metadata, ResolvingMetadata } from "next";
 import { notFound } from "next/navigation";
 import { getInterview, getInterviewList } from "@/lib/newt";
 import { Interview } from "@/components/interview";
 
 import "./interview.css";
 import { Footer, Header, JotaiProvider } from "@/components/commons";
-import { prefix } from "@/utils";
+import { prefix, URL } from "@/utils";
+
+type Props = {
+  params: Promise<{ id: string }>;
+};
+
+export async function generateMetadata(
+  { params }: Props,
+  parent: ResolvingMetadata
+): Promise<Metadata> {
+  const id = (await params).id;
+  const item = await getInterview(id);
+
+  return {
+    title: `${item?.title} ${item?.name}`,
+    openGraph: {
+      title: `${item?.title} ${item?.name}`,
+      images: [`${URL}ogp/opg-${item?.id}.png`],
+    },
+  };
+}
 
 export default async function Page({ params }: { params: { id: string } }) {
   const list = await getInterviewList();

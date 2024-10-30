@@ -1,18 +1,8 @@
 import type { Metadata } from "next";
-import localFont from "next/font/local";
 import { Noto_Sans_JP } from "next/font/google";
 import "./globals.css";
 
-const geistSans = localFont({
-  src: "./fonts/GeistVF.woff",
-  variable: "--font-geist-sans",
-  weight: "100 900",
-});
-const geistMono = localFont({
-  src: "./fonts/GeistMonoVF.woff",
-  variable: "--font-geist-mono",
-  weight: "100 900",
-});
+import { prefix, URL } from "@/utils";
 
 const notoSans = Noto_Sans_JP({
   subsets: ["latin"],
@@ -21,14 +11,18 @@ const notoSans = Noto_Sans_JP({
 
 const title = "#なにゆえ私が福祉職キャンペーンサイト｜東京都福祉局";
 const desc =
-  "福祉の仕事は、「誰かの役に立つ大切な仕事」「日本では将来性のある仕事」もちろん、私たちのやりがいです。でも、ほんとうの理由は、「おしゃべりが好きだから」「プライベートを大切にしたいから」そんな小さなことが、大きいのかもしれません。さあ、あなたも。ユニークな福祉職の人たちから、ホンネの話を聞いてみませんか。※すこし想豫とはちがうかも";
+  "福祉人材集中PR月間のスペシャルサイトを公開！#なにゆえ私が福祉職 をテーマに、福祉の仕事をする1人1人の理由をまとめたスペシャルサイトを公開しました。現場の方から、ほんとうの話を聞いてみませんか。※すこし想像とはちがうかも。";
 
 export const metadata: Metadata = {
-  title: title,
+  title: {
+    template: `%s | ${title}`,
+    default: title,
+  },
   description: desc,
   openGraph: {
-    url: "https://www.fukushijinzai.metro.tokyo.lg.jp/hello-essential-work/pr-gekkan/",
-    title: title,
+    url: URL,
+    images: [`${URL}ogp/opg.png`],
+    title: { template: `%s | ${title}`, default: title },
     description: desc,
     type: "website",
     siteName: title,
@@ -63,13 +57,23 @@ export default function RootLayout({
           href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@100;300;400;500;700;800;900&display=swap"
           media="all"
         />
+        <link
+          rel="icon"
+          type="image/png"
+          href={prefix("/favicon-96x96.png")}
+          sizes="96x96"
+        />
+        <link rel="icon" type="image/svg+xml" href={prefix("favicon.svg")} />
+        <link rel="shortcut icon" href={prefix("favicon.ico")} />
+        <link
+          rel="apple-touch-icon"
+          sizes="180x180"
+          href={prefix("apple-touch-icon.png")}
+        />
+        <link rel="manifest" href={prefix("site.webmanifest")} />
       </head>
 
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} ${notoSans.variable}  antialiased`}
-      >
-        {children}
-      </body>
+      <body className={`${notoSans.variable}  antialiased`}>{children}</body>
     </html>
   );
 }

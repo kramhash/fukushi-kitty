@@ -36,6 +36,10 @@ const schema = yup.object().shape({
   email: yup
     .string()
     .email("メールアドレスの形式が正しくありません")
+    .matches(
+      /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/,
+      "メールアドレスの形式が正しくありません"
+    )
     .required("メールアドレスを入力してください"),
   xaccount: yup
     .string()

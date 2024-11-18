@@ -7,6 +7,8 @@ build_stg:
 
 zip:
 	rm -rf out/**/.DS_Store
+	rm -rf out/404
+	rm out/404.html
 	@rm -rf pr-gekkan/*
 	@cp -r out pr-gekkan
 	@zip -r pr-gekkan.zip pr-gekkan

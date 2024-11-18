@@ -39,7 +39,7 @@ export const Label = ({
 }: ILabel) => {
   return (
     <motion.h3
-      className={` flex items-center ${bgColor} ${fontColor} rounded-full w-fit text-center font-mplus1c font-black  label ${
+      className={`flex items-center ${bgColor} ${fontColor} rounded-full w-fit text-center font-mplus1c font-black label px-[15px] ${
         className ?? ""
       } ${size ?? ""}`}
       style={{
@@ -132,7 +132,7 @@ export const ButtonLabel = ({
       >
         {children}
       </div>
-      {rightIcon && <div className="basis-[10%]">{rightIcon}</div>}
+      {rightIcon && <div className="w-[10%]">{rightIcon}</div>}
     </motion.button>
   );
 };

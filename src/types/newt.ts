@@ -23,8 +23,6 @@ export interface IArticleSection {
 
 export interface IGallery {
   _id: string;
-  name: string;
-  text: string;
   generatedImage: INewtImage;
 }
 

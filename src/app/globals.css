@@ -78,7 +78,7 @@ hr {
 }
 
 .label {
-  @apply border-[2px] md:border-[3px] border-black px-[5%] md:px-[2%] min-w-[130px] sm:min-w-[264px]  py-[12px] md:py-[19px] text-20md md:text-20lg;
+  @apply border-[2px] md:border-[3px] border-black px-[4rem] md:px-[2rem] min-w-[130px] sm:min-w-[264px]  py-[12px] md:py-[19px] text-20md md:text-20lg;
 }
 
 .label.l {

@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import { Noto_Sans_JP } from "next/font/google";
+import { GoogleAnalytics } from "@next/third-parties/google";
+
 import "./globals.css";
 
 import { prefix, URL } from "@/utils";
@@ -40,6 +42,7 @@ export default function RootLayout({
   return (
     <html lang="ja">
       <head>
+        <GoogleAnalytics gaId="GTM-MXRC2CD" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link
           rel="preconnect"

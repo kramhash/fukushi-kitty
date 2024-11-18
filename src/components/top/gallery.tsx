@@ -18,6 +18,7 @@ export const Gallery = ({ data }: { data: IGallery[] }) => {
         src="assets/top/title-gallery.png"
         width={801}
         className="mb-[100px]"
+        minScale={0.25}
       />
       <GalleryInternal data={data} />
       <motion.div className="flex justify-center mt-[30px]">

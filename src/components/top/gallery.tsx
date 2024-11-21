@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { FreeMode } from "swiper/modules";
+import { FreeMode, Autoplay } from "swiper/modules";
 
 import "swiper/css";
 import { IGallery } from "@/types/newt";
@@ -10,6 +10,7 @@ import { prefix } from "@/utils";
 
 import "./gallery.css";
 import { BlankIcon, Label, MiniArrow, SVGTitle } from "../commons";
+import { useState } from "react";
 
 export const Gallery = ({ data }: { data: IGallery[] }) => {
   return (
@@ -45,17 +46,34 @@ export const Gallery = ({ data }: { data: IGallery[] }) => {
 };
 
 const GalleryInternal = ({ data }: { data: IGallery[] }) => {
+  const [s, setState] = useState(false);
   return (
-    <motion.div className="w-[calc(100%+50px)] overflow-hidden ">
+    <motion.div
+      className="w-[calc(100%+50px)] overflow-hidden translate-x-[-25px] pointer-events-auto"
+      onClick={() => {
+        setState(true);
+      }}
+    >
       <Swiper
         slidesPerView={2}
         spaceBetween={20}
         freeMode={true}
-        modules={[FreeMode]}
+        modules={[FreeMode, Autoplay]}
         breakpoints={{ 768: { slidesPerView: 3, spaceBetween: 40 } }}
         slidesOffsetAfter={50}
         centeredSlides={true}
         loop={true}
+        autoplay={{
+          delay: 2000,
+          disableOnInteraction: false,
+          pauseOnMouseEnter: true,
+        }}
+        // onMouseEnter={() => {
+        //   console.log("enter");
+        // }}
+        // onClick={() => {
+        //   console.log("click");
+        // }}
         // initialSlide={1}
       >
         {data.map((item) => (

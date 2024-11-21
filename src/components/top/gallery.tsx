@@ -55,6 +55,7 @@ const GalleryInternal = ({ data }: { data: IGallery[] }) => {
         breakpoints={{ 768: { slidesPerView: 3, spaceBetween: 40 } }}
         slidesOffsetAfter={50}
         centeredSlides={true}
+        loop={true}
         // initialSlide={1}
       >
         {data.map((item) => (

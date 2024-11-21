@@ -10,7 +10,7 @@ import { prefix } from "@/utils";
 
 import "./gallery.css";
 import { BlankIcon, Label, MiniArrow, SVGTitle } from "../commons";
-import { useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 
 export const Gallery = ({ data }: { data: IGallery[] }) => {
   return (
@@ -45,15 +45,32 @@ export const Gallery = ({ data }: { data: IGallery[] }) => {
   );
 };
 
+const shuffleArray = (array: IGallery[]) => {
+  const cloneArray = [...array];
+
+  const result = cloneArray.reduce((_, cur, idx) => {
+    const rand = Math.floor(Math.random() * (idx + 1));
+    cloneArray[idx] = cloneArray[rand];
+    cloneArray[rand] = cur;
+    return cloneArray;
+  }, [] as IGallery[]);
+
+  return result;
+};
+
 const GalleryInternal = ({ data }: { data: IGallery[] }) => {
-  const [s, setState] = useState(false);
+  const [_data, setData] = useState<IGallery[] | null>(null);
+
+  useEffect(() => {
+    setData(shuffleArray(data));
+  }, []);
+
+  if (_data === null) {
+    return <></>;
+  }
+
   return (
-    <motion.div
-      className="w-[calc(100%+50px)] overflow-hidden translate-x-[-25px] pointer-events-auto"
-      onClick={() => {
-        setState(true);
-      }}
-    >
+    <motion.div className="w-[calc(100%+50px)] overflow-hidden translate-x-[-25px] pointer-events-auto">
       <Swiper
         slidesPerView={2}
         spaceBetween={20}
@@ -76,7 +93,7 @@ const GalleryInternal = ({ data }: { data: IGallery[] }) => {
         // }}
         // initialSlide={1}
       >
-        {data.map((item) => (
+        {_data.map((item) => (
           <SwiperSlide key={`${item._id}`}>
             <GalleryItem data={item} />
           </SwiperSlide>

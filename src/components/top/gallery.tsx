@@ -10,7 +10,7 @@ import { prefix } from "@/utils";
 
 import "./gallery.css";
 import { BlankIcon, Label, MiniArrow, SVGTitle } from "../commons";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 
 export const Gallery = ({ data }: { data: IGallery[] }) => {
   return (
@@ -18,9 +18,12 @@ export const Gallery = ({ data }: { data: IGallery[] }) => {
       <SVGTitle
         src="assets/top/title-gallery.png"
         width={801}
-        className="mb-[100px]"
+        className="mb-[24px]"
         minScale={0.25}
       />
+
+      <div className="text-[16px] md:text-center mx-auto max-w-[80%] font-mplus1c font-black mb-[35px]">{`ハッシュタグ「＃なにゆえ私が福祉職」で、さまざまな投稿が集まりました。`}</div>
+
       <GalleryInternal data={data} />
       <motion.div className="flex justify-center mt-[30px]">
         <motion.a
@@ -63,7 +66,7 @@ const GalleryInternal = ({ data }: { data: IGallery[] }) => {
 
   useEffect(() => {
     setData(shuffleArray(data));
-  }, []);
+  }, [data]);
 
   if (_data === null) {
     return <></>;

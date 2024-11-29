@@ -1,6 +1,6 @@
 "use client";
 import { motion } from "framer-motion";
-import { Label, BlankIcon, SVGTitle, MiniArrow } from "../commons";
+import { Label, BlankIcon, MiniArrow } from "../commons";
 import Link from "next/link";
 import { prefix } from "@/utils";
 

@@ -171,7 +171,7 @@ export const MessageForm = () => {
 
         <PresentSection />
 
-        <Form />
+        {/* <Form /> */}
       </SpecialBox>
     </motion.section>
   );

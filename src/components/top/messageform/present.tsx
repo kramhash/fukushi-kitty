@@ -7,7 +7,7 @@ import { ReactNode } from "react";
 
 export const PresentSection = () => {
   return (
-    <motion.section className="flex flex-col mt-[125px] max-w-[620px] mx-auto">
+    <motion.section className="flex flex-col mt-[125px] max-w-[620px] mx-auto mb-[30px]">
       <SVGTitle src="assets/top/messageform/present.svg" width={443} />
       <motion.p className="font-mplus1c text-left mb-[50px] mt-[20px]">
         {`上記、ハッシュタグ投稿をいただいた方の中から抽選で、ヘラルボニーの「トートバッグ」または「マスク」をプレゼント！`}

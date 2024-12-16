@@ -5,20 +5,20 @@ import { SVGTitle } from "../commons";
 import { prefix } from "@/utils";
 
 const config = [
-  { id: 1 },
-  { id: 2 },
-  { id: 3 },
-  { id: 4 },
-  { id: 5 },
-  { id: 6 },
-  { id: 7 },
-  { id: 8 },
-  { id: 9 },
-  { id: 10 },
-  { id: 11 },
-  { id: 12 },
-  { id: 13 },
-  { id: 14 },
+  { id: 1, href: "https://www.heralbony.jp/" },
+  { id: 2, href: "https://www.intern-inc.jp/" },
+  { id: 3, href: "https://itforce.co.jp/" },
+  { id: 4, href: "https://www.instagram.com/caremate_recruit/" },
+  { id: 5, href: "https://www.aba-lab.com/" },
+  { id: 6, href: "https://www.aba-lab.com/" },
+  { id: 7, href: "https://www.magicshields.co.jp/" },
+  { id: 8, href: "https://caitech.co.jp/" },
+  { id: 9, href: "https://lookmee.jp/" },
+  { id: 10, href: "https://www.bibrid.co.jp/" },
+  { id: 11, href: "https://eustylelab.co.jp/" },
+  { id: 12, href: "https://solit-japan.com/" },
+  { id: 13, href: "https://www.sketter.jp/" },
+  { id: 14, href: "https://rehabforjapan.com/" },
 ];
 
 export const Cooperation = () => {
@@ -29,17 +29,22 @@ export const Cooperation = () => {
         福祉現場や福祉人材を応援し、業界を盛り上げていくことに賛同いただいた企業・団体の皆様です。
       </motion.p>
       <motion.div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-[16px] max-w-[90%] mx-auto">
-        {config.map(({ id }) => {
-          return <Cell index={id} key={`cell-${id}`} />;
+        {config.map(({ id, href }) => {
+          return <Cell index={id} key={`cell-${id}`} href={href} />;
         })}
       </motion.div>
     </motion.section>
   );
 };
 
-export const Cell = ({ index }: { index: number }) => {
+export const Cell = ({ index, href }: { index: number; href: string }) => {
   return (
-    <motion.a className="flex max-w-[160px] md:max-w-[260px] justify-center items-center aspect-square bg-white rounded-[20px]">
+    <motion.a
+      className="flex max-w-[160px] md:max-w-[260px] justify-center items-center aspect-square bg-white rounded-[20px]"
+      href={href}
+      rel="noreferrer"
+      target="_blank"
+    >
       <motion.div className="w-[85%]">
         <motion.img
           className="w-auto h-auto"

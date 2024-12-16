@@ -44,8 +44,13 @@ export const Cell = ({ index, href }: { index: number; href: string }) => {
       href={href}
       rel="noreferrer"
       target="_blank"
+      initial="init"
+      whileHover={"hover"}
     >
-      <motion.div className="w-[85%]">
+      <motion.div
+        className="w-[85%]"
+        variants={{ init: { width: "85%" }, hover: { width: "90%" } }}
+      >
         <motion.img
           className="w-auto h-auto"
           src={prefix(`assets/cooperation/${index}.png`)}

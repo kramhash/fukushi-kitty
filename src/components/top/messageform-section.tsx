@@ -4,7 +4,7 @@ import { motion, Variants } from "framer-motion";
 import { Label, SpecialBox, SVGTitle } from "../commons";
 import { ReactNode } from "react";
 import { prefix } from "@/utils";
-import { Form, PresentSection } from "./messageform";
+import { PresentSection } from "./messageform";
 
 export const MessageForm = () => {
   return (
@@ -156,7 +156,7 @@ export const MessageForm = () => {
 
         <motion.section className="flex flex-col justify-center">
           <SVGTitle src="assets/top/messageform/period.svg" width={248} />
-          <motion.p className="font-mplus1c font-black text-center mt-[20px] text-[1.625rem] leading-[150%]">
+          <motion.p className="font-mplus1c font-black text-center mt-[24px] text-[1.625rem] leading-[150%]">
             <span>2024年</span>
             <span className="text-[2.875rem]">11</span>
             <span>月</span>
@@ -167,6 +167,8 @@ export const MessageForm = () => {
             <span className="text-[2.875rem]">30</span>
             <span>日(土) 23:59</span>
           </motion.p>
+          <motion.p className=" whitespace-pre-wrap text-center text-26lg font-mplus1c font-black leading-[180%] mt-[12px]">{`本キャンペーンの応募は終了いたしました。
+たくさんのご応募ありがとうございました。`}</motion.p>
         </motion.section>
 
         <PresentSection />

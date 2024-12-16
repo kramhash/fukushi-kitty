@@ -26,11 +26,7 @@ export const Download = () => {
       </picture>
 
       <p className="w-[80%] max-w-[620px] font-mplus1c font-black mt-[22px] mb-[20px] md:mb-[38px]">{`福祉の仕事に、どんなイメージを持っていますか。あたらしい時代の福祉の仕事を知っていただくため、チラシを作成しました。学生、先生や保護者の方など、福祉の仕事の魅力を届けたい方にぜひお渡しください。`}</p>
-      <Link
-        href={prefix("assets/top/chirashi.pdf")}
-        target="_blank"
-        rel="noreferrer"
-      >
+      <Link href={"/assets/top/chirashi.pdf"} target="_blank" rel="noreferrer">
         <Label size="s" rightIcon={<MiniArrow fill="white" />}>
           <p className="px-[10px]  leading-none flex items-center text-20lg self-center mx-auto justify-center">
             チラシをダウンロード{<BlankIcon className="ml-[2px]" />}

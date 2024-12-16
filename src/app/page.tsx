@@ -7,6 +7,7 @@ import {
   MessageForm,
   Gallery,
   Download,
+  Cooperation,
 } from "@/components/top";
 import { Footer } from "@/components/commons";
 
@@ -35,6 +36,7 @@ export default async function Home() {
         <MessageForm />
         <Gallery data={galleries} />
         <Download />
+        <Cooperation />
         <Header />
         <Footer />
       </JotaiProvider>
